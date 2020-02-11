@@ -1,0 +1,21 @@
+language: python
+python:
+- '3.6'
+before_script:
+- yes | python setup.py install
+- git clone https://github.com/uc-cdis/dictionaryutils; cd dictionaryutils
+
+script:
+- ./run_tests.sh
+deploy:
+  provider: s3
+  access_key_id: AKIAINGUO6FUCYLYY2AQ
+  secret_access_key:
+    secure: mG5LMm4RRsfcyCfjnHeFN0Xz5FkaioiC7N5ICEBIA5TwHvWkczucwi3TQBntsJX10NdBbf7rWfotW0z5OyR2nFfHDVjFGHt/ZlzPvmhHBA/gFXDDM02HgfblgFFcTljx+H/dTy1NKihnt3Jf3e5nHNhkWL39g1WB1i7ERhUXRVSfCvo67KybbIcHZ7Wneh1/yttzbA5D74+PGJfHF6YXFsRedbdyCAZabt8elw76HG/S8Qh90axl8tJJlQQF98LnQzMumIKtj9xilhKbaXv8wTuqyjHJ+dPdTSYjVReMktkVkuPow6BsZPkpxPBZy8b8WrtCG6iA3u3eAmEne9WHI2XqPZ1LhEp5psf97hoUOSqs3FmmszJXy1VHQ38mclB3PYb/NdS5sKUR5gKkz8dcrfuvBYloj93kll2c6BmvlhH68rJGU3UU0LigETXvhRLBVkzWm/kD7gaHKNPZweghsdVROEhrwu+XPZebHDCvpDdXngHpxj3TULgH6++FGEvfX23il43jNFmpp47GzbyZsdezm/DuqfKf6TcDPN1H4/YgVASHZFKd2usOTJ0ivS13kddSAVPa9NgCQ6c4SRMRA3w7nwzYonajC3Asl/2dctmGxK6JBoUX/tag6EEUhBuJjfzGhl0D6/WPqvKdSws/Iz3/s3u3i1xwZUt5doVmclA=
+  bucket: dictionary-artifacts
+  local-dir: artifacts
+  upload-dir: openneuro_dictionary/$TRAVIS_BRANCH
+  skip_cleanup: true
+  on:
+    repo: uc-cdis/openneuro_dictionary
+    all_branches: true
