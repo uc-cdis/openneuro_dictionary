@@ -108,7 +108,7 @@ properties:
       - study
 
   id:
-    $ref: "_definitions#/UUID"
+    $ref: "_definitions.yaml#/UUID"
     systemAlias: node_id
   submitter_id:
     description: >
