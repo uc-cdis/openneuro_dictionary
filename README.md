@@ -1,4 +1,4 @@
-Data Model for OpenNeuro Data
+Data Model for Open Access Data
 
 # Data Dictionary
 
