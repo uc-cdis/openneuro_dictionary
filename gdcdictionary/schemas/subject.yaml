@@ -1,7 +1,7 @@
 $schema: "http://json-schema.org/draft-04/schema#"
 
-id: "case"
-title: Case
+id: "subject"
+title: Subject
 type: object
 nodeTerms: null
 namespace: https://data.braincommons.org/
@@ -23,7 +23,7 @@ systemProperties:
 
 links:
   - name: studies
-    backref: cases
+    backref: subjects
     label: member_of
     target_type: study
     multiplicity: many_to_many
@@ -43,26 +43,32 @@ properties:
 
   $ref: "_definitions.yaml#/ubiquitous_properties"
 
+  accession:
+    description: The subject's accession ID or number.
+    type: string
+
   age_at_enrollment:
-    description: The age of the study subject in days at enrollment, if the age is
-      less than 90 years.
+    description: The age of the study subject at enrollment; must be less than 90 years.
     type: integer
-    maximum: 32872
+    maximum: 89
     minimum: 0
 
   age_at_enrollment_gt89:
-    description: The age of the study subject in days at enrollment, if age is greater
-      than 89 years.
+    description: The age of the subject at enrollment is greater than 89 years.
     enum:
       - "No"
       - "Yes"
 
-  age_of_immigration:
-    description: The age of the study subject at immigration, if the age is less than
-      90 years.
+  age_at_immigration:
+    description: The age of the study subject at immigration, if the age is less than 90 years.
     type: integer
     maximum: 89
     minimum: 0
+
+  birth_year:
+    description: The subject's birth year.
+    type: integer
+    minimum: 1928
 
   collaboration_id:
     description: For instances in which multiple institutions use the same patient
@@ -71,25 +77,23 @@ properties:
       collaborators to decide on the patient's id.
     type: string
 
-  datasrc_data_source:
-    description: Data Source (datasrc)
-    type: string
-
   days_to_birth:
-    description: The number of days between the case Index Date and the date of birth
-      (birthyr).
+    description: The number of days between the subject's Index Date and the date of birth.
     type: integer
     maximum: 0
     minimum: -32872
 
   days_to_immigration:
-    description: The number of days between the case Index Date and the date subject
-      immigrated To North America
+    description: The number of days between the subject's Index Date and the date subject
+      immigrated To North America.
     type: integer
 
   days_to_lost_to_followup:
-    description: The number of days between the date used for index and the date the
-      patient was lost to follow-up.
+    description: The number of days between the date used for index and the date the patient was lost to follow-up.
+    type: integer
+
+  death_year:
+    description: The subject's death year.
     type: integer
 
   ethnicity:
@@ -108,7 +112,7 @@ properties:
     type: string
 
   experimental_group:
-    description: The group into which this case has been classified for this study.
+    description: The group into which this subject has been classified for this study.
     type: string
 
   gender:
@@ -128,7 +132,7 @@ properties:
       - Mixed
       - Right
 
-  index_event:
+  index_date:
     description: The reference or anchor date used during date obfuscation, where
       a single date is obscurred by creating one or more date ranges in relation to
       this date.
@@ -151,19 +155,12 @@ properties:
     enum:
       - "No"
       - Not Applicable
+      - Not Reported
       - "Yes"
 
   place_of_birth:
-    description: Place Of Birth
-    enum:
-      - Africa
-      - Asia
-      - Australia/New Zealand
-      - Canada
-      - Europe
-      - Mexico
-      - Other
-      - United States
+    description: Place of birth or origin.
+    type: string
 
   race:
     term:
@@ -178,10 +175,6 @@ properties:
       - Other (specify)
       - Unknown
       - White
-
-  race_not_specified_comment:
-    description: Race Not Specified Comments
-    enum:
       - Caribbean Indian
       - Hispanic
       - Jewish
@@ -189,23 +182,12 @@ properties:
 
   race_other:
     description: If 'Other (specify)' was chosen for race, free text to describe race
-      as collected
+      as collected.
     type: string
 
   species:
-    description: Taxonomic species of the case.
-    enum:
-      - Drosophila melanogaster
-      - Homo sapiens
-      - Mus musculus
-      - Mustela putorius furo
-      - Rattus rattus
-      - Sus scrofa
-
-  year_of_birth:
-    description: The year of study subject birth
-    type: integer
-    minimum: 1928
+    description: Taxonomic species of the subject.
+    type: string
 
   studies:
     $ref: "_definitions.yaml#/to_many"

@@ -4,7 +4,7 @@ id: "visit"
 title: Visit
 type: object
 nodeTerms: null
-namespace: https://data.braincommons.org/
+namespace: https://gen3.datacommons.io/
 category: administrative
 program: '*'
 project: '*'
@@ -28,19 +28,17 @@ systemProperties:
   - updated_datetime
 
 links:
-  - name: cases
+  - name: subjects
     backref: visits
     label: describes
-    target_type: case
+    target_type: subject
     multiplicity: many_to_one
     required: true
 
 required:
   - submitter_id
   - type
-  - cases
-  - visit_label
-  - visit_method
+  - subjects
 
 uniqueKeys:
   - [id]
@@ -172,5 +170,5 @@ properties:
       - Week
       - Year
 
-  cases:
+  subjects:
     $ref: "_definitions.yaml#/to_one"

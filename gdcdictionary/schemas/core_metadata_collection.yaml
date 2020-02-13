@@ -4,11 +4,11 @@ id: "core_metadata_collection"
 title: Core Metadata Collection
 type: object
 nodeTerms: null
-namespace: https://data.braincommons.org/
+namespace: https://gen3.datacommons.io/
 category: administrative
 program: '*'
 project: '*'
-description: Structured description of a collection of several dataset
+description: A collection of data files in a project.
 additionalProperties: false
 submittable: true
 validators: null

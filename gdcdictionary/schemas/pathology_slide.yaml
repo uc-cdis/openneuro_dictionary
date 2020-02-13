@@ -1,14 +1,14 @@
 $schema: "http://json-schema.org/draft-04/schema#"
 
-id: "imaging_file"
-title: Imaging File
+id: "pathology_slide"
+title: Pathology Slide
 type: object
-namespace: https://gen3.datacommons.io/
+namespace: https://vpodc.org/
 category: data_file
 program: '*'
 project: '*'
 description: >
-  Data file containing a diagnostic image from a clinical imaging exam.
+  Data file containing a pathology slide.
 additionalProperties: false
 submittable: true
 downloadable: true
@@ -28,15 +28,21 @@ links:
     required: true
     subgroup:
       - name: core_metadata_collections
-        backref: imaging_files
+        backref: pathology_slides
         label: data_from
         target_type: core_metadata_collection
         multiplicity: many_to_one
         required: false
       - name: subjects
-        backref: imaging_files
+        backref: pathology_slides
         label: data_from
         target_type: subject
+        multiplicity: many_to_one
+        required: false
+      - name: samples
+        backref: pathology_slides
+        label: data_from
+        target_type: sample
         multiplicity: many_to_one
         required: false
 
@@ -77,37 +83,26 @@ properties:
       $ref: "_terms.yaml#/data_category"
     type: string
 
-  study_date:
-    $ref: "_definitions.yaml#/datetime"
-
   magnification:
     description: "Magnification used to capture the image."
     type: number
 
   body_part_examined:
-    description: "Part of the body that was studied."
+    description: "What part of the body was studied."
     type: string
 
   days_to_image:
-    description: "Days from the subject's index event to the date the image was acquired."
+    description: "Days from the case index date to the date the image was acquired."
     type: integer
 
   imaging_instrument:
     description: >
-      The imaging instrument manufacturer and model.
+      The instrument model used to acquire the image.
     type: string
-
-  imaging_type:
-    description: "The type of imaging exam performed."
-    enum:
-      - "MRI"
-      - "fMRI"
-      - "CT Scan"
-      - "Ultrasound"
 
   modality:
     description: >
-      Mode instrument was in during image acquisition.
+      What mode the imaging instrument was in during image acquisition.
     type: string
 
   scan_id:
@@ -118,4 +113,6 @@ properties:
   core_metadata_collections:
     $ref: "_definitions.yaml#/to_one"
   subjects:
+    $ref: "_definitions.yaml#/to_one"
+  samples:
     $ref: "_definitions.yaml#/to_one"

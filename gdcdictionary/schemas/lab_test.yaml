@@ -1,10 +1,10 @@
 $schema: "http://json-schema.org/draft-04/schema#"
 
-id: "clinical_lab_test"
-title: Clinical Laboratory Test
+id: "lab_test"
+title: Lab Test
 type: object
 nodeTerms: null
-namespace: https://data.braincommons.org/
+namespace: https://gen3.datacommons.io/
 category: data_observations
 program: '*'
 project: '*'
@@ -23,10 +23,10 @@ systemProperties:
   - updated_datetime
 
 links:
-  - name: visits
-    backref: clinical_lab_tests
+  - name: subjects
+    backref: lab_tests
     label: related_to
-    target_type: visit
+    target_type: subject
     multiplicity: many_to_one
     required: true
 
@@ -36,7 +36,7 @@ required:
   - sample_composition
   - test_type
   - analyte_name
-  - visits
+  - subjects
 
 uniqueKeys:
   - [id]
@@ -558,5 +558,5 @@ properties:
     description: Year Laboratory Tests Obtained
     type: integer
 
-  visits:
+  subjects:
     $ref: "_definitions.yaml#/to_one"
