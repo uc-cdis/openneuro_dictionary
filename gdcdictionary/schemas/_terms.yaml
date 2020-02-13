@@ -923,6 +923,17 @@ is_paired_end: # TOREVIEW
   description: >
     Are the reads paired end?
 
+lane_number:
+  description: >
+    The basic machine unit for sequencing. For Illumina machines, this reflects the physical lane number.
+    Wrong or missing information may affect analysis results.
+  termDef:
+    term: null
+    source: null
+    cde_id: null
+    cde_version: null
+    term_url: null
+
 last_known_disease_status:
   description: >
     Text term that describes the last known state or condition of an individual's neoplasm.
