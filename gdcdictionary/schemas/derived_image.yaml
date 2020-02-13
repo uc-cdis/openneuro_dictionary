@@ -1,7 +1,7 @@
 $schema: "http://json-schema.org/draft-04/schema#"
 
-id: "derived_image_file"
-title: Derived Image File
+id: "derived_image"
+title: Derived Image
 type: object
 nodeTerms: null
 namespace: https://gen3.datacommons.io/
@@ -9,7 +9,7 @@ category: data_file
 program: '*'
 project: '*'
 description: Data file containing a derived image or a composite image created from
-  the combination of individual slices or scans
+  the combination of individual slices or scans.
 additionalProperties: false
 submittable: true
 validators: null
@@ -28,13 +28,13 @@ links:
     required: true
     subgroup:
       - name: core_metadata_collections
-        backref: derived_image_files
+        backref: derived_images
         label: data_from
         target_type: core_metadata_collection
         multiplicity: many_to_one
         required: false
       - name: imaging_files
-        backref: derived_image_files
+        backref: derived_images
         label: derived_from
         target_type: imaging_file
         multiplicity: many_to_many

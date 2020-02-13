@@ -1,0 +1,81 @@
+$schema: "http://json-schema.org/draft-04/schema#"
+
+id: "publication"
+title: Publication
+type: object
+nodeTerms: null
+namespace: https://data.braincommons.org/
+category: administrative
+program: '*'
+project: '*'
+description: Publication for a project.
+additionalProperties: false
+submittable: true
+validators: null
+
+systemProperties:
+  - id
+  - project_id
+  - state
+  - created_datetime
+  - updated_datetime
+
+links:
+  - name: projects
+    backref: publications
+    label: refers_to
+    target_type: project
+    multiplicity: many_to_many
+    required: true
+
+required:
+  - submitter_id
+  - type
+  - projects
+
+uniqueKeys:
+  - [id]
+  - [project_id, submitter_id]
+
+properties:
+
+  $ref: "_definitions.yaml#/ubiquitous_properties"
+
+  publication_title:
+    description: The title of an association publication.
+    type: string
+
+  doi:
+    description: The DOI of the publication.
+    type: string
+
+  publication_id:
+    description: An standard identification code for a publication (PMID, PMCID, etc.).
+    type: string
+
+  authors:
+    description: A list of authors on the publication.
+    type: string
+
+  affiliations:
+    description: A list of publication author affiliations.
+    type: string
+
+  acknowledgements:
+    description: A list of acknowledgees in the publication.
+    type: string
+
+  citation:
+    description: The citation for the publication.
+    type: string
+
+  corresponding_author:
+    description: The corresponding author for the publication.
+    type: string
+
+  contact_info:
+    description: The contact info for the corresponding author of the publication.
+    type: string
+
+  projects:
+    $ref: "_definitions.yaml#/to_many_project"
