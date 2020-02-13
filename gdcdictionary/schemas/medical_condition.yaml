@@ -44,10 +44,14 @@ properties:
   symptoms:
     description: List any symptoms relevant to the primary disease.
     type: array
+      items:
+        type: string
 
   comorbidities:
     description: List any comorbidities relevant to the primary disease.
     type: array
+      items:
+        type: string
 
   childhood_trauma_diagnosis:
     description: The determined diagnosis of childhood trauma.
