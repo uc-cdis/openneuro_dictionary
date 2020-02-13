@@ -8,7 +8,10 @@ namespace: https://gen3.datacommons.io/
 category: medical_history
 program: '*'
 project: '*'
-description: Information related to the medical condition of a subject within the context of a particular study. This includes a snapshot of the subject's status with respect to certain diseases, disorders, symptoms, injuries, or illnesses within the context of the study.
+description: Information related to the medical condition of a subject within the
+  context of a particular study. This includes a snapshot of the subject's status
+  with respect to certain diseases, disorders, symptoms, injuries, or illnesses within
+  the context of the study.
 additionalProperties: false
 submittable: true
 validators: null
@@ -41,64 +44,6 @@ properties:
 
   $ref: "_definitions.yaml#/ubiquitous_properties"
 
-  symptom:
-    description: List any symptoms relevant to listed condition.
-    type: string
-
-  comorbidity:
-    description: List any comorbidities with respect to the primary diagnosis.
-    type: string
-
-  childhood_trauma_diagnosis:
-    description: The determined diagnosis of childhood trauma.
-    type: string
-
-  childhood_trauma_scale:
-    description: The scale used to determine the childhood trauma score.
-    type: string
-
-  childhood_trauma_score:
-    description: Score given to quantify the patient's level of childhood trauma at
-      the time of diagnosis.
-    type: string
-
-  depression_diagnosis:
-    description: The patient's depression diagnosis.
-    type: string
-
-  depression_diagnosis_scale:
-    description: The scale used to diagnose the patient's depression.
-    type: string
-
-  depression_severity:
-    description: The severity of the patient's depression.
-    type: string
-
-  substance_abuse_scale:
-    description: The scale used to determine the patient's substance abuse score.
-    type: string
-
-  substance_abuse_score:
-    description: Score given to quantify the patient's substance abuse at the time
-      of diagnosis.
-    type: string
-
-  tbi_diagnosis:
-    description: The patient's diagnosis for a traumatic brain injury.
-    type: string
-
-  tbi_type:
-    description: The type of TBI with which the patient has been diagnosed.
-    type: string
-
-  total_tbi:
-    description: The total number of TBIs that the patient has experienced.
-    type: integer
-
-  year_of_diagnosis:
-    description: Year of this diagnosis record.
-    type: integer
-
   adult_trauma_diagnosis:
     description: Diagnosis of adult trauma in the patient.
     type: string
@@ -113,7 +58,8 @@ properties:
     type: string
 
   age_at_diagnosis:
-    description: The age of the subject when the primary diagnosis was determined. See age_at_diagnosis_gt89 if the age is over 89 years.
+    description: The age of the subject when the primary diagnosis was determined.
+      See age_at_diagnosis_gt89 if the age is over 89 years.
     type: integer
     maximum: 89
     minimum: 0
@@ -126,7 +72,8 @@ properties:
       - "Yes"
 
   age_at_onset:
-    description: The age at which the subject acquired, developed, or first experienced symptoms of the primary disease or disorder. If age is greater than 89 years,
+    description: The age at which the subject acquired, developed, or first experienced
+      symptoms of the primary disease or disorder. If age is greater than 89 years,
       see age_at_onset_gt89.
     type: number
     maximum: 89
@@ -139,10 +86,39 @@ properties:
       - "No"
       - "Yes"
 
+  childhood_trauma_diagnosis:
+    description: The determined diagnosis of childhood trauma.
+    type: string
+
+  childhood_trauma_scale:
+    description: The scale used to determine the childhood trauma score.
+    type: string
+
+  childhood_trauma_score:
+    description: Score given to quantify the patient's level of childhood trauma at
+      the time of diagnosis.
+    type: string
+
+  comorbidity:
+    description: List any comorbidities with respect to the primary diagnosis.
+    type: string
+
   days_to_diagnosis:
     description: Number of days between the date used for index and the date of the
       patient's diagnosis.
     type: integer
+
+  depression_diagnosis:
+    description: The patient's depression diagnosis.
+    type: string
+
+  depression_diagnosis_scale:
+    description: The scale used to diagnose the patient's depression.
+    type: string
+
+  depression_severity:
+    description: The severity of the patient's depression.
+    type: string
 
   diagnostic_code:
     description: A code used to describe the patient's diagnosis (e.g., ICD code).
@@ -156,6 +132,36 @@ properties:
   neurological_disorders:
     description: Specify any neurological disorder(s).
     type: string
+
+  organ_system:
+    description: The classification of organ system affected by the medical condition.
+    enum:
+      - Blood and lymphatic system disorders
+      - Cardiac disorders
+      - Congenital, familial and genetic disorders
+      - Ear and labyrinth disorders
+      - Endocrine disorders
+      - Eye disorders
+      - Gastrointestinal disorders
+      - General disorders and administration site conditions
+      - Hepatobiliary disorders
+      - Immune system disorders
+      - Infections and infestations
+      - Injury, poisoning and procedural complications
+      - Investigations
+      - Metabolism and nutrition disorders
+      - Musculoskeletal and connective tissue disorders
+      - Neoplasms benign, malignant and unspecified (incl cysts and polyps)
+      - Nervous system disorders
+      - Pregnancy, puerperium and perinatal conditions
+      - Psychiatric disorders
+      - Renal and urinary disorders
+      - Reproductive system and breast disorders
+      - Respiratory, thoracic and mediastinal disorders
+      - Skin and subcutaneous tissue disorders
+      - Social Circumstances
+      - Surgical and medical procedures
+      - Vascular disorders
 
   pd_diagnosis_category:
     description: Parkinson's Disease Category.
@@ -228,8 +234,8 @@ properties:
       - Lewy-body Disease
       - Parkinson's Disease
       - Parkinsonism-dementia complex of Guam
-      - Post-traumatic Stress Disorder (PTSD)
       - Post-traumatic Parkinsonism
+      - Post-traumatic Stress Disorder (PTSD)
       - Prodromal
       - Progressive Supranuclear Palsy
       - SWEDD
@@ -266,35 +272,34 @@ properties:
     description: The number of years the patient has experienced PTSD symptoms.
     type: number
 
-  organ_system:
-    description: The classification of organ system affected by the medical condition.
-    enum:
-      - Blood and lymphatic system disorders
-      - Cardiac disorders
-      - Congenital, familial and genetic disorders
-      - Ear and labyrinth disorders
-      - Endocrine disorders
-      - Eye disorders
-      - Gastrointestinal disorders
-      - General disorders and administration site conditions
-      - Hepatobiliary disorders
-      - Immune system disorders
-      - Infections and infestations
-      - Injury, poisoning and procedural complications
-      - Investigations
-      - Metabolism and nutrition disorders
-      - Musculoskeletal and connective tissue disorders
-      - Neoplasms benign, malignant and unspecified (incl cysts and polyps)
-      - Nervous system disorders
-      - Pregnancy, puerperium and perinatal conditions
-      - Psychiatric disorders
-      - Renal and urinary disorders
-      - Reproductive system and breast disorders
-      - Respiratory, thoracic and mediastinal disorders
-      - Skin and subcutaneous tissue disorders
-      - Social Circumstances
-      - Surgical and medical procedures
-      - Vascular disorders
+  substance_abuse_scale:
+    description: The scale used to determine the patient's substance abuse score.
+    type: string
+
+  substance_abuse_score:
+    description: Score given to quantify the patient's substance abuse at the time
+      of diagnosis.
+    type: string
+
+  symptom:
+    description: List any symptoms relevant to listed condition.
+    type: string
+
+  tbi_diagnosis:
+    description: The patient's diagnosis for a traumatic brain injury.
+    type: string
+
+  tbi_type:
+    description: The type of TBI with which the patient has been diagnosed.
+    type: string
+
+  total_tbi:
+    description: The total number of TBIs that the patient has experienced.
+    type: integer
+
+  year_of_diagnosis:
+    description: Year of this diagnosis record.
+    type: integer
 
   subjects:
     $ref: "_definitions.yaml#/to_one"

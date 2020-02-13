@@ -8,7 +8,8 @@ namespace: https://gen3.datacommons.io/
 category: medical_history
 program: '*'
 project: '*'
-description: Information related to procedures in medical history like surgery, radiation, biopsy, etc.
+description: Information related to procedures in medical history like surgery, radiation,
+  biopsy, etc.
 additionalProperties: false
 submittable: true
 validators: null
@@ -44,20 +45,9 @@ properties:
   adverse_event:
     description: Was there an adverse event related to the procedure?
     enum:
-      - "Yes"
       - "No"
-      - "Not Reported"
-
-  procedure_type:
-    description: The general type of procedure (e.g., "Surgery").
-    enum:
-      - Surgery
-      - Biopsy
-      - Radiation
-
-  related_medications:
-    description: Any medications or infusions related to the procedure like chemotherapy drugs.
-    type: string
+      - Not Reported
+      - "Yes"
 
   anatomic_site:
     description: The term that best describes the primary anatomic site of the procedure.
@@ -171,6 +161,7 @@ properties:
       - Ganglia
       - Gastroesophageal Junction
       - Gastrointestinal Tract
+      - Globus Pallidus (GPi)
       - Groin
       - Gum
       - Hand
@@ -250,6 +241,7 @@ properties:
       - Nerve
       - Nerve(s) Cranial
       - Not Allowed To Collect
+      - Not Applicable
       - Not Reported
       - Occipital Cortex
       - Ocular Orbits
@@ -314,6 +306,7 @@ properties:
       - Stomach
       - Stomach - Mucosa Only
       - Subcutaneous Tissue
+      - Subthalamic Nucleus (STN)
       - Synovium
       - Temporal Cortex
       - Tendon
@@ -347,12 +340,10 @@ properties:
       - Vulva
       - White Blood Cells
       - Wrist
-      - Globus Pallidus (GPi)
-      - Not Applicable
-      - Subthalamic Nucleus (STN)
 
   anatomic_site_other:
-    description: If 'Other (specify)' was chosen for 'anatomic_site', enter the anatomic site here.
+    description: If 'Other (specify)' was chosen for 'anatomic_site', enter the anatomic
+      site here.
     type: string
 
   general_anesthesia:
@@ -370,6 +361,18 @@ properties:
 
   procedure_purpose:
     description: Describe the purpose of the procedure.
+    type: string
+
+  procedure_type:
+    description: The general type of procedure (e.g., "Surgery").
+    enum:
+      - Biopsy
+      - Radiation
+      - Surgery
+
+  related_medications:
+    description: Any medications or infusions related to the procedure like chemotherapy
+      drugs.
     type: string
 
   type_of_surgery_for_pd:

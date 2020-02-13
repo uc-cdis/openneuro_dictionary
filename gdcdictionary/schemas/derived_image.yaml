@@ -108,6 +108,18 @@ properties:
     description: Identifier given to this scan.
     type: string
 
+  workflow_end_datetime:
+    description: The datetime the workflow ended.
+    type: string
+
+  workflow_link:
+    description: A hyperlink or storage location for the workflow used.
+    type: string
+
+  workflow_start_datetime:
+    description: The datetime the workflow started.
+    type: string
+
   workflow_type:
     term:
       $ref: "_terms.yaml#/workflow_type"
@@ -128,20 +140,8 @@ properties:
       - Subcortical GWAS Resting State GWAS
       - Subcortical GWAS Resting State Machine Learning
 
-  workflow_link:
-    description: "A hyperlink or storage location for the workflow used."
-    type: string
-
   workflow_version:
-    description: "The version number of the workflow."
-    type: string
-
-  workflow_start_datetime:
-    description: The datetime the workflow started.
-    type: string
-
-  workflow_end_datetime:
-    description: The datetime the workflow ended.
+    description: The version number of the workflow.
     type: string
 
   core_metadata_collections:

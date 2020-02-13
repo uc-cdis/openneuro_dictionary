@@ -62,7 +62,7 @@ study	study_design	Summary of the goals the study is designed to discover. Gener
 study	study_objective	The general objective of the study. What the study hopes to discover or determine through testing.	enum					Accuracy | Interference | Limit of Detection | Precision (Repeatability) | Precision (Reproducibility) | Specificity/Sensitivity | Stability 							
 study	study_setup	A high level description of the setup used to achieve the study objectives.	enum					Detection/Enumeration/Isolation | Genetic Analysis 							
 study	type	The node_id of this node.	enum					study 							
-study	id			_definitions#/UUID											
+study	id			_definitions.yaml#/UUID											
 study	submitter_id	"A project-specific identifier for a node. This property is the calling card/nickname/alias for a unit of submission. It can be used in place of the UUID for identifying or recalling a node.
 "	string												
 study	state			_definitions.yaml#/state											
@@ -763,6 +763,14 @@ clinical_assessment	total_score	The subject's total score on the assessment.	str
 clinical_assessment	year_of_assessment	The year the asssessment was taken.	integer												
 clinical_assessment	age_at_assessment	The age of the subject when the assessment was taken in years. See age_at_assessment_gt89 if the age is over 89 years.	integer			89	0								
 clinical_assessment	age_at_assessment_gt89	Indicates whether the age of the subject when the assessment was taken is greater than 89 years.	enum					No | Yes 							
+publication	type	The node_id of this node.	enum					publication 							
+publication	id			_definitions.yaml#/UUID											
+publication	submitter_id	"A project-specific identifier for a node. This property is the calling card/nickname/alias for a unit of submission. It can be used in place of the UUID for identifying or recalling a node.
+"	string												
+publication	state			_definitions.yaml#/state											
+publication	project_id			_definitions.yaml#/project_id											
+publication	created_datetime			_definitions.yaml#/datetime											
+publication	updated_datetime			_definitions.yaml#/datetime											
 publication	publication_title	The title of an association publication.	string												
 publication	doi	The DOI of the publication.	string												
 publication	publication_id	An standard identification code for a publication (PMID, PMCID, etc.).	string												

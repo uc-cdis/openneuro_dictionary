@@ -8,7 +8,9 @@ namespace: https://gen3.datacommons.io/
 category: medical_history
 program: '*'
 project: '*'
-description: Data related to a subject's score on a particular clinical assessment, survey, or scale. Records include both motor and non-motor assessments, and can be related to a particular diagnosis or not.
+description: Data related to a subject's score on a particular clinical assessment,
+  survey, or scale. Records include both motor and non-motor assessments, and can
+  be related to a particular diagnosis or not.
 additionalProperties: false
 submittable: true
 validators: null
@@ -41,6 +43,20 @@ properties:
 
   $ref: "_definitions.yaml#/ubiquitous_properties"
 
+  age_at_assessment:
+    description: The age of the subject when the assessment was taken in years. See
+      age_at_assessment_gt89 if the age is over 89 years.
+    type: integer
+    maximum: 89
+    minimum: 0
+
+  age_at_assessment_gt89:
+    description: Indicates whether the age of the subject when the assessment was
+      taken is greater than 89 years.
+    enum:
+      - "No"
+      - "Yes"
+
   assessment_class:
     description: Classification of the clinical assessment.
     type: string
@@ -60,18 +76,6 @@ properties:
   year_of_assessment:
     description: The year the asssessment was taken.
     type: integer
-
-  age_at_assessment:
-    description: The age of the subject when the assessment was taken in years. See age_at_assessment_gt89 if the age is over 89 years.
-    type: integer
-    maximum: 89
-    minimum: 0
-
-  age_at_assessment_gt89:
-    description: Indicates whether the age of the subject when the assessment was taken is greater than 89 years.
-    enum:
-      - "No"
-      - "Yes"
 
   subjects:
     $ref: "_definitions.yaml#/to_one"

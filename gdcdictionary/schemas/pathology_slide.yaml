@@ -3,23 +3,22 @@ $schema: "http://json-schema.org/draft-04/schema#"
 id: "pathology_slide"
 title: Pathology Slide
 type: object
+nodeTerms: null
 namespace: https://vpodc.org/
 category: data_file
 program: '*'
 project: '*'
-description: >
-  Data file containing a pathology slide.
+description: Data file containing a pathology slide.
 additionalProperties: false
 submittable: true
-downloadable: true
 validators: null
 
 systemProperties:
   - id
   - project_id
+  - state
   - created_datetime
   - updated_datetime
-  - state
   - file_state
   - error_type
 
@@ -57,64 +56,65 @@ required:
   - data_category
 
 uniqueKeys:
-  - [ id ]
-  - [ project_id, submitter_id ]
+  - [id]
+  - [project_id, submitter_id]
 
 properties:
+
   $ref: "_definitions.yaml#/data_file_properties"
 
-  data_type:
-    term:
-      $ref: "_terms.yaml#/data_type"
+  body_part_examined:
+    description: What part of the body was studied.
     type: string
-
-  data_format:
-    term:
-      $ref: "_terms.yaml#/data_format"
-    enum:
-      - JPEG
-      - SVS
-      - TIFF
-      - PNG
-      - GIF
-      - DCM
-      - NII
 
   data_category:
     term:
       $ref: "_terms.yaml#/data_category"
     type: string
 
-  magnification:
-    description: "Magnification used to capture the image."
-    type: number
+  data_format:
+    term:
+      $ref: "_terms.yaml#/data_format"
+    enum:
+      - DCM
+      - GIF
+      - JPEG
+      - NII
+      - PNG
+      - SVS
+      - TIFF
 
-  body_part_examined:
-    description: "What part of the body was studied."
+  data_type:
+    term:
+      $ref: "_terms.yaml#/data_type"
     type: string
 
   days_to_image:
-    description: "Days from the case index date to the date the image was acquired."
+    description: Days from the case index date to the date the image was acquired.
     type: integer
 
   imaging_instrument:
-    description: >
-      The instrument model used to acquire the image.
+    description: The instrument model used to acquire the image.
     type: string
 
+  magnification:
+    description: Magnification used to capture the image.
+    type: number
+
   modality:
-    description: >
-      What mode the imaging instrument was in during image acquisition.
+    description: What mode the imaging instrument was in during image acquisition.
     type: string
 
   scan_id:
-    description: >
-      The identification number for a stack of images generated during a single scan.
+    description: The identification number for a stack of images generated during
+      a single scan.
     type: string
 
   core_metadata_collections:
     $ref: "_definitions.yaml#/to_one"
+
   subjects:
     $ref: "_definitions.yaml#/to_one"
+
   samples:
     $ref: "_definitions.yaml#/to_one"

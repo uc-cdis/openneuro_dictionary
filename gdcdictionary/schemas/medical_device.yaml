@@ -41,12 +41,18 @@ properties:
 
   $ref: "_definitions.yaml#/ubiquitous_properties"
 
-  device_name:
-    description: The name of the medical device.
+  days_to_device_end:
+    description: The number of days between the subject's index date and the date
+      the subject ended use of the medical device.
     type: string
 
-  device_type:
-    description: The general classification of the medical device.
+  days_to_device_start:
+    description: The number of days between the subject's index date and the date
+      the subject was first exposed to the medical device.
+    type: string
+
+  device_code:
+    description: A code used to describe the medical device.
     type: string
 
   device_manufacturer:
@@ -57,16 +63,12 @@ properties:
     description: The model name or version of the medical device.
     type: string
 
-  device_code:
-    description: A code used to describe the medical device.
+  device_name:
+    description: The name of the medical device.
     type: string
 
-  days_to_device_start:
-    description: The number of days between the subject's index date and the date the subject was first exposed to the medical device.
-    type: string
-
-  days_to_device_end:
-    description: The number of days between the subject's index date and the date the subject ended use of the medical device.
+  device_type:
+    description: The general classification of the medical device.
     type: string
 
   subjects:
