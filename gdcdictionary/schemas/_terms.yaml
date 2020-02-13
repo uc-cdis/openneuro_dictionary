@@ -744,6 +744,46 @@ flow_cell_barcode: # TOREVIEW
   description: >
     Flow Cell Barcode.
 
+fragment_maximum_length:
+  description: >
+    Maximum length of the sequenced fragments (e.g., as predicted by Agilent Bioanalyzer).
+  termDef:
+    term: null
+    source: null
+    cde_id: null
+    cde_version: null
+    term_url: null
+
+fragment_mean_length:
+  description: >
+    Mean length of the sequenced fragments (e.g., as predicted by Agilent Bioanalyzer).
+  termDef:
+    term: null
+    source: null
+    cde_id: null
+    cde_version: null
+    term_url: null
+
+fragment_minimum_length:
+  description: >
+    Minimum length of the sequenced fragments (e.g., as predicted by Agilent Bioanalyzer).
+  termDef:
+    term: null
+    source: null
+    cde_id: null
+    cde_version: null
+    term_url: null
+
+fragment_standard_deviation_length:
+  description: >
+    Standard deviation of the sequenced fragments length (e.g., as predicted by Agilent Bioanalyzer).
+  termDef:
+    term: null
+    source: null
+    cde_id: null
+    cde_version: null
+    term_url: null
+
 freezing_method:
   description: >
     Text term that represents the method used for freezing the sample.
@@ -882,6 +922,17 @@ is_ffpe:
 is_paired_end: # TOREVIEW
   description: >
     Are the reads paired end?
+
+lane_number:
+  description: >
+    The basic machine unit for sequencing. For Illumina machines, this reflects the physical lane number.
+    Wrong or missing information may affect analysis results.
+  termDef:
+    term: null
+    source: null
+    cde_id: null
+    cde_version: null
+    term_url: null
 
 last_known_disease_status:
   description: >
@@ -1381,6 +1432,17 @@ read_group_name: # TOREVIEW
   description: >
     The name of the read group.
 
+read_pair_number:
+  description: >
+    Denotes whether a submitted FASTQ file contains forward (R1) or reverse (R2) reads for
+    paired-end sequencing.
+  termDef:
+    term: null
+    source: null
+    cde_id: null
+    cde_version: null
+    term_url: null
+
 relationship_age_at_diagnosis:
   description: >
     The age (in years) when the patient's relative was first diagnosed.
@@ -1843,3 +1905,13 @@ years_smoked:
     cde_id: 3137957
     cde_version: 1.0
     term_url: "https://cdebrowser.nci.nih.gov/CDEBrowser/search?elementDetails=9&FirstTimer=0&PageId=ElementDetailsGroup&publicId=3137957&version=1.0"
+
+multiplex_barcode:
+  description: >
+    The barcode/index sequence used. Wrong or missing information may affect analysis results.
+  termDef:
+    term: null
+    source: null
+    cde_id: null
+    cde_version: null
+    term_url: null

@@ -47,6 +47,8 @@ required:
   - file_size
   - md5sum
   - data_format
+  - data_type
+  - data_category
 
 uniqueKeys:
   - [ id ]
@@ -54,6 +56,38 @@ uniqueKeys:
 
 properties:
   $ref: "_definitions.yaml#/data_file_properties"
+
+  echo_time:
+    description: The time (milliseconds) between the application of the radiofrequency excitation pulse and the peak of the signal induced in the coil.
+    type: number
+
+  field_strength:
+    description: The field strength (in Tesla, T) of the MRI magnet.
+    type: number
+
+  field_angle:
+    description: the angle of excitation for a field echo pulse sequence.
+    type: number
+
+  fov:
+    description: Field-of-view (FOV); the distance (in cm or mm) over which an MR image is acquired or displayed. The FOV is typically divided into several hundred picture elements (pixels), each approximately 1 mm² in size.
+    type: number
+
+  pulse_sequence:
+    description: The name of the particular instrument setting of pulse sequences and pulsed field gradients (e.g., "GRE" (gradient echo), "SE" (spin echo), or "IR" (inversion-recovery), etc.).
+    type: string
+
+  inversion_time:
+    description: The time period (TI; milliseconds) between the 180° inversion pulse and the 90° excitation pulse in an inversion recovery pulse sequence. The inversion time controls the signal of different tissues.
+    type: number
+
+  repetition_time:
+    description: The repetition time (TR; milliseconds) is the time from the application of an excitation pulse to the application of the next pulse. It determines how much longitudinal magnetization recovers between each pulse.
+    type: number
+
+  matrix_size:
+    description: The matrix size is the number of frequency encoding steps, in one direction; and the number of phase encoding steps, in the other direction of the image plane. Assuming everything else is constant, increasing the number of frequency encodings or the number of phase steps results in improved resolution.
+    type: string
 
   data_type:
     term:
@@ -92,9 +126,14 @@ properties:
     description: "Days from the subject's index event to the date the image was acquired."
     type: integer
 
-  imaging_instrument:
+  instrument_model:
     description: >
-      The imaging instrument manufacturer and model.
+      The imaging instrument or scanner model.
+    type: string
+
+  instrument_manufacturer:
+    description: >
+      The imaging instrument or scanner manufacturer.
     type: string
 
   imaging_type:
@@ -104,6 +143,11 @@ properties:
       - "fMRI"
       - "CT Scan"
       - "Ultrasound"
+
+  imaging_subtype:
+    description: "The subtype of imaging exam performed."
+    enum:
+      - "T1-Weighted"
 
   modality:
     description: >
