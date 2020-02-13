@@ -41,6 +41,13 @@ properties:
 
   $ref: "_definitions.yaml#/ubiquitous_properties"
 
+  adverse_event:
+    description: Was there an adverse event related to the procedure?
+    enum:
+      - "Yes"
+      - "No"
+      - "Not Reported"
+
   procedure_type:
     description: The general type of procedure (e.g., "Surgery").
     enum:
@@ -48,7 +55,7 @@ properties:
       - Biopsy
       - Radiation
 
-  concomitant_medications:
+  related_medications:
     description: Any medications or infusions related to the procedure like chemotherapy drugs.
     type: string
 
@@ -340,33 +347,20 @@ properties:
       - Vulva
       - White Blood Cells
       - Wrist
+      - Globus Pallidus (GPi)
+      - Not Applicable
+      - Subthalamic Nucleus (STN)
 
   anatomic_site_other:
     description: If 'Other (specify)' was chosen for 'anatomic_site', enter the anatomic site here.
     type: string
 
-  major_surgery_with_general_anesthesia:
-    description: Major Surgery with General Anesthesia?
+  general_anesthesia:
+    description: Did subject receive general anesthesia?
     type: boolean
 
-  pd_surgery_location_gpi:
-    description: PD Surgery Location - GPi?
-    type: boolean
-
-  pd_surgery_location_not_applicable:
-    description: PD Surgery Location - Not Applicable
-    type: boolean
-
-  pd_surgery_location_stn:
-    description: PD Surgery Location - STN
-    type: boolean
-
-  pd_surgery_location_unknown:
-    description: PD Surgery Location - Unknown
-    type: boolean
-
-  side_of_surgery_for_pd:
-    description: Side Of Surgery For Parkinson Disease
+  laterality:
+    description: Side of body for the procedure's anatomic site.
     enum:
       - Bilateral
       - Left
@@ -374,21 +368,8 @@ properties:
       - Right
       - Unknown
 
-  surgery_for_pd:
-    description: Had Surgery For Parkinson Disease?
-    type: boolean
-
-  surgery_location:
-    description: Location in the body where surgery was performed
-    enum:
-      - Globus Pallidus (GPi)
-      - Not Applicable
-      - Subthalamic Nucleus (STN)
-      - Unknown
-
-  surgery_location_other:
-    description: If 'other (specify)' was chosen for 'surgery_location', location
-      in the body where surgery was performed
+  procedure_purpose:
+    description: Describe the purpose of the procedure.
     type: string
 
   type_of_surgery_for_pd:
