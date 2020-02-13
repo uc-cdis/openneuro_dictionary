@@ -1,0 +1,300 @@
+$schema: "http://json-schema.org/draft-04/schema#"
+
+id: "medical_condition"
+title: Medical Condition
+type: object
+nodeTerms: null
+namespace: https://gen3.datacommons.io/
+category: medical_history
+program: '*'
+project: '*'
+description: Information related to the medical condition of a subject within the context of a particular study. This includes a snapshot of the subject's status with respect to certain diseases, disorders, symptoms, injuries, or illnesses within the context of the study.
+additionalProperties: false
+submittable: true
+validators: null
+
+systemProperties:
+  - id
+  - project_id
+  - state
+  - created_datetime
+  - updated_datetime
+
+links:
+  - name: subjects
+    backref: medical_conditions
+    label: related_to
+    target_type: subject
+    multiplicity: many_to_one
+    required: true
+
+required:
+  - submitter_id
+  - type
+  - subjects
+
+uniqueKeys:
+  - [id]
+  - [project_id, submitter_id]
+
+properties:
+
+  $ref: "_definitions.yaml#/ubiquitous_properties"
+
+  symptoms:
+    description: List any symptoms relevant to the primary disease.
+    type: array
+
+  comorbidities:
+    description: List any comorbidities relevant to the primary disease.
+    type: array
+
+  childhood_trauma_diagnosis:
+    description: The determined diagnosis of childhood trauma.
+    type: string
+
+  childhood_trauma_scale:
+    description: The scale used to determine the childhood trauma score.
+    type: string
+
+  childhood_trauma_score:
+    description: Score given to quantify the patient's level of childhood trauma at
+      the time of diagnosis.
+    type: string
+
+  depression_diagnosis:
+    description: The patient's depression diagnosis.
+    type: string
+
+  depression_diagnosis_scale:
+    description: The scale used to diagnose the patient's depression.
+    type: string
+
+  depression_severity:
+    description: The severity of the patient's depression.
+    type: string
+
+  substance_abuse_scale:
+    description: The scale used to determine the patient's substance abuse score.
+    type: string
+
+  substance_abuse_score:
+    description: Score given to quantify the patient's substance abuse at the time
+      of diagnosis.
+    type: string
+
+  tbi_diagnosis:
+    description: The patient's diagnosis for a traumatic brain injury.
+    type: string
+
+  tbi_type:
+    description: The type of TBI with which the patient has been diagnosed.
+    type: string
+
+  total_tbi:
+    description: The total number of TBIs that the patient has experienced.
+    type: integer
+
+  year_of_diagnosis:
+    description: Year of this diagnosis record.
+    type: integer
+
+  adult_trauma_diagnosis:
+    description: Diagnosis of adult trauma in the patient.
+    type: string
+
+  adult_trauma_scale:
+    description: Scale used to determine the adult trauma score.
+    type: string
+
+  adult_trauma_score:
+    description: Score given to quantify the patient's level of adult trauma at the
+      time of diagnosis.
+    type: string
+
+  age_at_diagnosis:
+    description: The age of the subject when the primary diagnosis was determined. See age_at_diagnosis_gt89 if the age is over 89 years.
+    type: integer
+    maximum: 89
+    minimum: 0
+
+  age_at_diagnosis_gt89:
+    description: Indicates whether the age of the subject when the primary diagnosis
+      was determined is greater than 89 years.
+    enum:
+      - "No"
+      - "Yes"
+
+  age_at_onset:
+    description: The age at which the subject acquired, developed, or first experienced symptoms of the primary disease or disorder. If age is greater than 89 years,
+      see age_at_onset_gt89.
+    type: number
+    maximum: 89
+    minimum: 0
+
+  age_at_onset_gt89:
+    description: Indicate whether the 'Age at onset (ageonset) in years' is greater
+      than 89 years.
+    enum:
+      - "No"
+      - "Yes"
+
+  days_to_diagnosis:
+    description: Number of days between the date used for index and the date of the
+      patient's diagnosis.
+    type: integer
+
+  diagnostic_code:
+    description: A code used to describe the patient's diagnosis (e.g., ICD code).
+    type: string
+
+  diagnostic_code_type:
+    description: Text term used to describe the code used to describe the patient's
+      diagnosis (e.g., International Classification of Diseases or ICD).
+    type: string
+
+  neurological_disorders:
+    description: Specify any neurological disorder(s).
+    type: string
+
+  pd_diagnosis_category:
+    description: Parkinson's Disease Category.
+    enum:
+      - Accepted PD By Diagnosis Form
+      - Definitely Not PD By Autopsy
+      - Definitely PD By Autopsy
+      - Definitely PD By Diagnosis Form
+      - Not PD by Diagnosis Form
+      - Undetermined
+
+  pd_most_affected_side_onset:
+    description: Side most affected at PD onset
+    enum:
+      - Left
+      - Right
+      - Symmetric
+
+  pd_primary_diagnosis:
+    description: Most Likely Primary Diagnosis
+    enum:
+      - Alzheimer's Disease
+      - Dementia With Lewy Bodies
+      - Dopa-Responsive Dystonia
+      - Essential Tremor
+      - Hemiparkinson/Hemiatrophy Syndrome
+      - Idiopathic PD
+      - Motor Neuron Disease With Parkinsonism
+      - Multiple System Atrophy
+      - Neuroleptic-induced Parkinsonism
+      - No PD Nor Other Neurological Disorder
+      - Other Neurological Disorder(s) (Specify)
+      - Prodromal Motor PD
+      - Prodromal Non-motor PD
+      - Progressive Supranuclear Palsy
+      - Psychogenic Illness
+      - Spinocerebellar Ataxia (SCA)
+      - Vascular Parkinsonism
+
+  pd_probability:
+    description: Probability that individual has Parkinson's disease (PROBIPD)
+    enum:
+      - 0 Pct - 9 Pct
+      - 10 Pct - 49 Pct
+      - 50 Pct - 89 Pct
+      - 90 Pct - 100 Pct
+
+  persistent_asymmetry_side_onset_most:
+    description: Persistent asymmetry affecting the side of onset most (DCASYMM).
+    enum:
+      - "No"
+      - Not Applicable
+      - "Yes"
+
+  primary_diagnosis:
+    term:
+      $ref: "_terms.yaml#/primary_diagnosis"
+    enum:
+      - Alcohol Abuse
+      - Alzheimer's Disease
+      - Anxiety
+      - Attention Deficit Hyperactivity Disorder (ADHD)
+      - Bipolar Disorder
+      - Cancer
+      - Depression
+      - Drug Abuse
+      - Drug- or Toxin-induced Parkinsonism
+      - Healthy
+      - Healthy Control
+      - Lewy-body Disease
+      - Parkinson's Disease
+      - Parkinsonism-dementia complex of Guam
+      - Post-traumatic Stress Disorder (PTSD)
+      - Post-traumatic Parkinsonism
+      - Prodromal
+      - Progressive Supranuclear Palsy
+      - SWEDD
+      - Schizophrenia
+      - Trauma
+      - Traumatic Brain Injury/Post-Concussion Syndrome
+      - Viral Parkinsonism
+
+  ptsd_diagnosis_current:
+    description: The patient's PTSD diagnosis at the time of diagnosis.
+    type: string
+
+  ptsd_diagnosis_lifetime:
+    description: The patient's PTSD diagnosis over the course of their lifetime.
+    type: string
+
+  ptsd_diagnosis_scale:
+    description: The scale used to diagnose the patient with PTSD.
+    type: string
+
+  ptsd_severity_current:
+    description: The patient's PTSD severity at the time of diagnosis.
+    type: string
+
+  ptsd_severity_lifetime:
+    description: The patient's PTSD severity over the course of their lifetime.
+    type: string
+
+  ptsd_severity_scale:
+    description: The scale used to determine the severity of the patient's PTSD.
+    type: string
+
+  ptsd_symptom_duration:
+    description: The number of years the patient has experienced PTSD symptoms.
+    type: number
+
+  organ_system:
+    description: The classification of organ system affected by the medical condition.
+    enum:
+      - Blood and lymphatic system disorders
+      - Cardiac disorders
+      - Congenital, familial and genetic disorders
+      - Ear and labyrinth disorders
+      - Endocrine disorders
+      - Eye disorders
+      - Gastrointestinal disorders
+      - General disorders and administration site conditions
+      - Hepatobiliary disorders
+      - Immune system disorders
+      - Infections and infestations
+      - Injury, poisoning and procedural complications
+      - Investigations
+      - Metabolism and nutrition disorders
+      - Musculoskeletal and connective tissue disorders
+      - Neoplasms benign, malignant and unspecified (incl cysts and polyps)
+      - Nervous system disorders
+      - Pregnancy, puerperium and perinatal conditions
+      - Psychiatric disorders
+      - Renal and urinary disorders
+      - Reproductive system and breast disorders
+      - Respiratory, thoracic and mediastinal disorders
+      - Skin and subcutaneous tissue disorders
+      - Social Circumstances
+      - Surgical and medical procedures
+      - Vascular disorders
+
+  subjects:
+    $ref: "_definitions.yaml#/to_one"

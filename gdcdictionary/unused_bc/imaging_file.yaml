@@ -1,15 +1,15 @@
 $schema: "http://json-schema.org/draft-04/schema#"
 
-id: "other_data_file"
-title: Other Data File
+id: "imaging_file"
+title: Imaging File
 type: object
 nodeTerms: null
 namespace: https://data.braincommons.org/
 category: data_file
 program: '*'
 project: '*'
-description: A generic data file node for object data that do not fall into any other
-  data file category.
+description: Data file containing the raw imaging data; individual slices for a scan
+  or single image files.
 additionalProperties: false
 submittable: true
 validators: null
@@ -28,15 +28,15 @@ links:
     required: true
     subgroup:
       - name: core_metadata_collections
-        backref: other_data_files
+        backref: imaging_files
         label: data_from
         target_type: core_metadata_collection
         multiplicity: many_to_one
         required: false
-      - name: visits
-        backref: other_data_files
-        label: related_to
-        target_type: visit
+      - name: imaging_exams
+        backref: imaging_files
+        label: performed_at
+        target_type: imaging_exam
         multiplicity: many_to_one
         required: false
 
@@ -45,10 +45,10 @@ required:
   - type
   - file_name
   - file_size
-  - md5sum
-  - data_category
   - data_format
   - data_type
+  - data_category
+  - md5sum
 
 uniqueKeys:
   - [id]
@@ -64,22 +64,45 @@ properties:
     type: string
 
   data_format:
-    term:
-      $ref: "_terms.yaml#/data_format"
-    type: string
+    description: The format of the imaging file
+    enum:
+      - DICOM/DCM
+      - GIF
+      - HDR
+      - IMG
+      - JPEG
+      - MAT
+      - MGH
+      - MGZ
+      - NII/NIFTI
+      - PNG
+      - TIF
 
   data_type:
     term:
       $ref: "_terms.yaml#/data_type"
     type: string
 
-  days_to_file:
-    description: The total number of days between the file's creation and the case
-      index date.
+  experimental_strategy:
+    term:
+      $ref: "_terms.yaml#/experimental_strategy"
+    type: string
+
+  image_quality:
+    description: Good, poor, or average image quality
+    enum:
+      - Average image quality
+      - Good image quality
+      - Not Reported
+      - Poor image quality
+
+  series:
+    description: If a series of images were taken, what is the order number of this
+      image file in that series
     type: integer
 
   core_metadata_collections:
     $ref: "_definitions.yaml#/to_one"
 
-  visits:
+  imaging_exams:
     $ref: "_definitions.yaml#/to_one"

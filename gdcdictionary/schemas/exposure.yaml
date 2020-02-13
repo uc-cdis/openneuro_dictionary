@@ -4,7 +4,7 @@ id: "exposure"
 title: Exposure
 type: object
 nodeTerms: null
-namespace: https://data.braincommons.org/
+namespace: https://gen3.datacommons.io/
 category: medical_history
 program: '*'
 project: '*'
@@ -21,17 +21,17 @@ systemProperties:
   - updated_datetime
 
 links:
-  - name: visits
+  - name: subjects
     backref: exposures
     label: related_to
-    target_type: visit
+    target_type: subject
     multiplicity: many_to_one
     required: true
 
 required:
   - submitter_id
   - type
-  - visits
+  - subjects
 
 uniqueKeys:
   - [id]
@@ -2263,5 +2263,5 @@ properties:
     maximum: 89
     minimum: 0
 
-  visits:
+  subjects:
     $ref: "_definitions.yaml#/to_one"

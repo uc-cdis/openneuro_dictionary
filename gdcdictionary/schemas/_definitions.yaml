@@ -235,8 +235,11 @@ ubiquitous_properties:
     description: >
       A project-specific identifier for a node. This property is the calling card/nickname/alias for
       a unit of submission. It can be used in place of the UUID for identifying or recalling a node.
-  case_submitter_id:
-    description: "The submitter_id of the associated patient, study subject or case."
+  subject_id:
+    description: "The submitter_id of a subject in the study."
+    type: string
+  visit_id:
+    description: "The submitter_id of a subject's visit in the study."
     type: string
   state:
     $ref: "#/state"

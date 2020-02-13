@@ -1,0 +1,121 @@
+$schema: "http://json-schema.org/draft-04/schema#"
+
+id: "medical_record"
+title: Medical Record
+type: object
+nodeTerms: null
+namespace: https://gen3.datacommons.io/
+category: medical_history
+program: '*'
+project: '*'
+description: Information belonging to the complete and longitudinal timeline of a subject's medical history.
+additionalProperties: false
+submittable: true
+validators: null
+
+systemProperties:
+  - id
+  - project_id
+  - state
+  - created_datetime
+  - updated_datetime
+
+links:
+  - name: subjects
+    backref: medical_records
+    label: related_to
+    target_type: subject
+    multiplicity: many_to_one
+    required: true
+
+required:
+  - submitter_id
+  - type
+  - subjects
+  - primary_diagnosis
+
+uniqueKeys:
+  - [id]
+  - [project_id, submitter_id]
+
+properties:
+
+  $ref: "_definitions.yaml#/ubiquitous_properties"
+
+  record_type:
+    description: The type of information recorded in this medical record (e.g., "diagnosis" or "adverse event").
+    enum:
+      - Diagnosis
+      - Symptom
+      - Adverse Event
+      - Procedure
+      - Surgery
+      - Physical Exam
+      - Vision Exam
+      - Dental Exam
+      - Neurological Exam
+      - Imaging Exam
+      - Clinical Assessment
+      - Follow-up
+      - Biopsy
+      - Blood Draw
+      - Lumbar Puncture
+      - Treatment
+      - Monitoring
+      - Sensor Data
+      - Vital Signs
+
+  observation_name:
+    description: The name of the medical observation being recorded (e.g., "shortness of breath" for an "Adverse Event" type).
+    type: string
+
+  observation_value:
+    description: The value for the type of medical observation listed in observation_name.
+    type: string
+
+  observation_method:
+    description: A term used to decribe the method used to record or perform a medical event.
+    enum:
+      - Phone Call
+      - Clinic Visit
+      - Home Visit
+      - Online Consult
+      - Remote Monitoring
+      - In-patient
+      - Out-patient
+
+  notes:
+    description: General comments or notes on this medical record.
+    type: string
+
+  year_of_record:
+    description: The year of this medical record.
+    type: integer
+
+  month_of_record:
+    description: The month of this medical record.
+    type: integer
+
+  days_to_record:
+    description: The number of days between the subject's index date and the date of this medical record.
+    type: integer
+
+  age_at_record:
+    description: The age of the subject when the medical record was created. See age_at_record_gt89 if the age is over 89 years.
+    type: integer
+    maximum: 89
+    minimum: 0
+
+  age_at_record_gt89:
+    description: Indicates whether the age of the subject when the primary diagnosis
+      was determined is greater than 89 years.
+    enum:
+      - "No"
+      - "Yes"
+
+  medical_code:
+    description: A code used to describe the patient's medical condition, diagnosis, procedure or device (e.g., ICD code).
+    type: string
+
+  subjects:
+    $ref: "_definitions.yaml#/to_one"
