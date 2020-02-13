@@ -33,7 +33,7 @@ required:
   - submitter_id
   - type
   - studies
-  - index_event
+  - index_date
 
 uniqueKeys:
   - [id]

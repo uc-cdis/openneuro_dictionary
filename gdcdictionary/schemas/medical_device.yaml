@@ -1,0 +1,73 @@
+$schema: "http://json-schema.org/draft-04/schema#"
+
+id: "medical_device"
+title: Medical Device
+type: object
+nodeTerms: null
+namespace: https://gen3.datacommons.io/
+category: medical_history
+program: '*'
+project: '*'
+description: Information related to a subject's exposure to or use of a medical device.
+additionalProperties: false
+submittable: true
+validators: null
+
+systemProperties:
+  - id
+  - project_id
+  - state
+  - created_datetime
+  - updated_datetime
+
+links:
+  - name: subjects
+    backref: medical_devices
+    label: related_to
+    target_type: subject
+    multiplicity: many_to_one
+    required: true
+
+required:
+  - submitter_id
+  - type
+  - subjects
+
+uniqueKeys:
+  - [id]
+  - [project_id, submitter_id]
+
+properties:
+
+  $ref: "_definitions.yaml#/ubiquitous_properties"
+
+  device_name:
+    description: The name of the medical device.
+    type: string
+
+  device_type:
+    description: The general classification of the medical device.
+    type: string
+
+  device_manufacturer:
+    description: The manufacturer of the medical device.
+    type: string
+
+  device_model:
+    description: The model name or version of the medical device.
+    type: string
+
+  device_code:
+    description: A code used to describe the medical device.
+    type: string
+
+  days_to_device_start:
+    description: The number of days between the subject's index date and the date the subject was first exposed to the medical device.
+    type: string
+
+  days_to_device_end:
+    description: The number of days between the subject's index date and the date the subject ended use of the medical device.
+    type: string
+
+  subjects:
+    $ref: "_definitions.yaml#/to_one"

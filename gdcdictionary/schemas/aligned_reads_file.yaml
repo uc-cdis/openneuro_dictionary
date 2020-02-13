@@ -58,6 +58,8 @@ required:
   - file_name
   - file_size
   - data_format
+  - data_type
+  - data_category
   - md5sum
 
 uniqueKeys:

@@ -41,6 +41,14 @@ properties:
 
   $ref: "_definitions.yaml#/ubiquitous_properties"
 
+  exposure_type:
+    description: The general type of exposure (e.g., radiation, alcohol, tobacco, pollutants, etc.).
+    type: string
+
+  exposure_level:
+    description: The general level of exposure.
+    type: string
+
   acetaminophen_pills_per_week:
     description: Acetaminophen Average Dose (tablets per week)
     type: integer
