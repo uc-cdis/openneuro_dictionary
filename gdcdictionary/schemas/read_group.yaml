@@ -245,7 +245,7 @@ properties:
 
   target_capture_kit:
     term:
-      $ref: "_terms.yaml#/target_capture_kit"
+      $ref: "_terms.yaml#/target_capture_kit_name"
     enum:
       - "Custom AmpliSeq Cancer Hotspot GENIE-MDA Augmented Panel v1 - 46 Genes"
       - "Custom GENIE-DFCI OncoPanel - 275 Genes"
