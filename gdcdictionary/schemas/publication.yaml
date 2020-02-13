@@ -39,6 +39,11 @@ uniqueKeys:
 
 properties:
 
+  type:
+    description: The node_id of this node.
+    enum:
+      - publication
+
   id:
     $ref: "_definitions.yaml#/UUID"
     systemAlias: node_id
