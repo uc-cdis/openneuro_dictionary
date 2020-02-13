@@ -744,6 +744,46 @@ flow_cell_barcode: # TOREVIEW
   description: >
     Flow Cell Barcode.
 
+fragment_maximum_length:
+  description: >
+    Maximum length of the sequenced fragments (e.g., as predicted by Agilent Bioanalyzer).
+  termDef:
+    term: null
+    source: null
+    cde_id: null
+    cde_version: null
+    term_url: null
+
+fragment_mean_length:
+  description: >
+    Mean length of the sequenced fragments (e.g., as predicted by Agilent Bioanalyzer).
+  termDef:
+    term: null
+    source: null
+    cde_id: null
+    cde_version: null
+    term_url: null
+
+fragment_minimum_length:
+  description: >
+    Minimum length of the sequenced fragments (e.g., as predicted by Agilent Bioanalyzer).
+  termDef:
+    term: null
+    source: null
+    cde_id: null
+    cde_version: null
+    term_url: null
+
+fragment_standard_deviation_length:
+  description: >
+    Standard deviation of the sequenced fragments length (e.g., as predicted by Agilent Bioanalyzer).
+  termDef:
+    term: null
+    source: null
+    cde_id: null
+    cde_version: null
+    term_url: null
+
 freezing_method:
   description: >
     Text term that represents the method used for freezing the sample.
