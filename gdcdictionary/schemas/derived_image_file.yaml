@@ -4,7 +4,7 @@ id: "derived_image_file"
 title: Derived Image File
 type: object
 nodeTerms: null
-namespace: https://data.braincommons.org/
+namespace: https://gen3.datacommons.io/
 category: data_file
 program: '*'
 project: '*'
