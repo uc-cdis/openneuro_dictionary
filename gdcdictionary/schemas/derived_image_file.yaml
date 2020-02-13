@@ -147,5 +147,5 @@ properties:
   core_metadata_collections:
     $ref: "_definitions.yaml#/to_one"
 
-  imaging_file:
+  imaging_files:
     $ref: "_definitions.yaml#/to_many"
