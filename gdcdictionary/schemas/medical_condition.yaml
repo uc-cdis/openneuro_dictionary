@@ -41,17 +41,13 @@ properties:
 
   $ref: "_definitions.yaml#/ubiquitous_properties"
 
-  symptoms:
-    description: List any symptoms relevant to the primary disease.
-    type: array
-      items:
-        type: string
+  symptom:
+    description: List any symptoms relevant to listed condition.
+    type: string
 
-  comorbidities:
-    description: List any comorbidities relevant to the primary disease.
-    type: array
-      items:
-        type: string
+  comorbidity:
+    description: List any comorbidities with respect to the primary diagnosis.
+    type: string
 
   childhood_trauma_diagnosis:
     description: The determined diagnosis of childhood trauma.
