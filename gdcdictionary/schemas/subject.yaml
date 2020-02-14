@@ -33,7 +33,6 @@ required:
   - submitter_id
   - type
   - studies
-  - index_date
 
 uniqueKeys:
   - [id]
@@ -111,8 +110,7 @@ properties:
       - Unknown
 
   ethnicity_other:
-    description: If 'Other (specify)' was chosen for ethnicity, Ethnicity (free text)
-      (ethnctxt)
+    description: If 'Other (specify)' was chosen for ethnicity, Ethnicity (free text).
     type: string
 
   experimental_group:
@@ -130,7 +128,7 @@ properties:
       - Unspecified
 
   handedness:
-    description: Handedness of the subject
+    description: Handedness of the subject.
     enum:
       - Left
       - Mixed
