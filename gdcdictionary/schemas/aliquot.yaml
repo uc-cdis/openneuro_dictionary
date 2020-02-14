@@ -48,23 +48,18 @@ properties:
   aliquot_container:
     description: The device in which the final aliquot is held.
     enum:
-      - Slide
-      - Vial
       - Microplate
+      - Slide
       - Tube
-
-  aliquot_weight:
-    description: The initial weight of the aliquot.
-    type: number
+      - Vial
 
   aliquot_volume:
     description: The initial volume of the aliquot.
     type: number
 
-  isolation_method:
-    description: The name or general description of the method used to isolate the
-      analyte. Alternatively, if you have provided a protocol, put the file_name here.
-    type: string
+  aliquot_weight:
+    description: The initial weight of the aliquot.
+    type: number
 
   analyte_qc_class:
     description: Term that best describes the analyte's QC Class.
@@ -125,6 +120,11 @@ properties:
     description: The amount of time, in days, between the date used for index and
       the assay used to address this analyte.
     type: integer
+
+  isolation_method:
+    description: The name or general description of the method used to isolate the
+      analyte. Alternatively, if you have provided a protocol, put the file_name here.
+    type: string
 
   preservation_method:
     term:

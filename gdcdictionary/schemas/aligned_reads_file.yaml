@@ -7,19 +7,17 @@ namespace: https://gen3.datacommons.io/
 category: data_file
 program: '*'
 project: '*'
-description: >
-  Data file containing aligned reads.
+description: Data file containing aligned reads.
 additionalProperties: false
 submittable: true
-downloadable: false
 validators: null
 
 systemProperties:
   - id
   - project_id
+  - state
   - created_datetime
   - updated_datetime
-  - state
   - file_state
   - error_type
 
@@ -63,59 +61,65 @@ required:
   - md5sum
 
 uniqueKeys:
-  - [ id ]
-  - [ project_id, submitter_id ]
+  - [id]
+  - [project_id, submitter_id]
 
 properties:
+
   $ref: "_definitions.yaml#/data_file_properties"
 
   alignment_workflow:
-    description: >
-      Indicate the alignment workflow or pipeline used for alignment of unaligned reads.
+    description: Indicate the alignment workflow or pipeline used for alignment of
+      unaligned reads.
     type: string
 
   data_category:
     term:
       $ref: "_terms.yaml#/data_category"
     enum:
-      - "Sequencing Data"
-      - "Sequencing Reads"
-      - "Raw Sequencing Data"
-
-  data_type:
-    term:
-      $ref: "_terms.yaml#/data_type"
-    enum: [ "Aligned Reads" ]
+      - Raw Sequencing Data
+      - Sequencing Data
+      - Sequencing Reads
 
   data_format:
     term:
       $ref: "_terms.yaml#/data_format"
-    enum: [ "BAM" ]
+    enum:
+      - BAM
+
+  data_type:
+    term:
+      $ref: "_terms.yaml#/data_type"
+    enum:
+      - Aligned Reads
 
   experimental_strategy:
     term:
       $ref: "_terms.yaml#/experimental_strategy"
     enum:
-      - "WGS"
-      - "WXS"
-      - "Low Pass WGS"
-      - "RNA-Seq"
-      - "miRNA-Seq"
-      - "Targeted Sequencing"
-      - "Bisulfite-Seq"
-      - "ChIP-Seq"
-      - "ATAC-Seq"
+      - ATAC-Seq
+      - Bisulfite-Seq
+      - ChIP-Seq
+      - Low Pass WGS
+      - RNA-Seq
+      - Targeted Sequencing
+      - WGS
+      - WXS
+      - miRNA-Seq
 
   molecular_tagging_workflow:
-    description: >
-      A description of the specific bioinformatics workflow or pipeline used for molecular tagging of sequenced reads.
+    description: A description of the specific bioinformatics workflow or pipeline
+      used for molecular tagging of sequenced reads.
     type: string
+
+  core_metadata_collections:
+    $ref: "_definitions.yaml#/to_one"
 
   read_groups:
     $ref: "_definitions.yaml#/to_many"
-  core_metadata_collections:
-    $ref: "_definitions.yaml#/to_one"
-  subjects:
-    $ref: "_definitions.yaml#/to_many"
+
   unaligned_reads_files:
     $ref: "_definitions.yaml#/to_many"
+
+  subjects:
+    $ref: "_definitions.yaml#/to_one"

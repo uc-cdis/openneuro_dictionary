@@ -1,7 +1,7 @@
 $schema: "http://json-schema.org/draft-04/schema#"
 
-id: "derived_image_file"
-title: Derived Image File
+id: "derived_image"
+title: Derived Image
 type: object
 nodeTerms: null
 namespace: https://gen3.datacommons.io/
@@ -9,7 +9,7 @@ category: data_file
 program: '*'
 project: '*'
 description: Data file containing a derived image or a composite image created from
-  the combination of individual slices or scans
+  the combination of individual slices or scans.
 additionalProperties: false
 submittable: true
 validators: null
@@ -28,13 +28,13 @@ links:
     required: true
     subgroup:
       - name: core_metadata_collections
-        backref: derived_image_files
+        backref: derived_images
         label: data_from
         target_type: core_metadata_collection
         multiplicity: many_to_one
         required: false
       - name: imaging_files
-        backref: derived_image_files
+        backref: derived_images
         label: derived_from
         target_type: imaging_file
         multiplicity: many_to_many
@@ -108,6 +108,18 @@ properties:
     description: Identifier given to this scan.
     type: string
 
+  workflow_end_datetime:
+    description: The datetime the workflow ended.
+    type: string
+
+  workflow_link:
+    description: A hyperlink or storage location for the workflow used.
+    type: string
+
+  workflow_start_datetime:
+    description: The datetime the workflow started.
+    type: string
+
   workflow_type:
     term:
       $ref: "_terms.yaml#/workflow_type"
@@ -128,20 +140,8 @@ properties:
       - Subcortical GWAS Resting State GWAS
       - Subcortical GWAS Resting State Machine Learning
 
-  workflow_link:
-    description: "A hyperlink or storage location for the workflow used."
-    type: string
-
   workflow_version:
-    description: "The version number of the workflow."
-    type: string
-
-  workflow_start_datetime:
-    description: The datetime the workflow started.
-    type: string
-
-  workflow_end_datetime:
-    description: The datetime the workflow ended.
+    description: The version number of the workflow.
     type: string
 
   core_metadata_collections:

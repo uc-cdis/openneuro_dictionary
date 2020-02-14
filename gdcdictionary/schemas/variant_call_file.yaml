@@ -3,23 +3,22 @@ $schema: "http://json-schema.org/draft-04/schema#"
 id: "variant_call_file"
 title: Variant Call File (VCF)
 type: object
+nodeTerms: null
 namespace: https://gen3.datacommons.io/
 category: data_file
 program: '*'
 project: '*'
-description: >
-  Data file containing variants called from sequencing reads.
+description: Data file containing variants called from sequencing reads.
 additionalProperties: false
 submittable: false
-downloadable: true
 validators: null
 
 systemProperties:
   - id
   - project_id
+  - state
   - created_datetime
   - updated_datetime
-  - state
   - file_state
   - error_type
 
@@ -51,47 +50,50 @@ required:
   - data_category
 
 uniqueKeys:
-  - [ id ]
-  - [ project_id, submitter_id ]
+  - [id]
+  - [project_id, submitter_id]
 
 properties:
+
   $ref: "_definitions.yaml#/data_file_properties"
 
   data_category:
     term:
       $ref: "_terms.yaml#/data_category"
     enum:
-      - "Simple Nucleotide Variation"
-      - "Combined Nucleotide Variation"
+      - Combined Nucleotide Variation
+      - Simple Nucleotide Variation
+
+  data_format:
+    term:
+      $ref: "_terms.yaml#/data_format"
+    enum:
+      - VCF
 
   data_type:
     term:
       $ref: "_terms.yaml#/data_type"
     enum:
-      - "Annotated Somatic Mutation"
-      - "Raw Simple Somatic Mutation"
-
-  data_format:
-    term:
-      $ref: "_terms.yaml#/data_format"
-    enum: [ "VCF" ]
+      - Annotated Somatic Mutation
+      - Raw Simple Somatic Mutation
 
   experimental_strategy:
     term:
       $ref: "_terms.yaml#/experimental_strategy"
     enum:
-      - "WGS"
-      - "WXS"
-      - "Low Pass WGS"
-      - "Validation"
-      - "Targeted Sequencing"
+      - Low Pass WGS
+      - Targeted Sequencing
+      - Validation
+      - WGS
+      - WXS
 
   variant_calling_workflow:
-    description: >
-      Indicate the variant calling workflow or pipeline used to generate the variant calls.
+    description: Indicate the variant calling workflow or pipeline used to generate
+      the variant calls.
     type: string
 
   core_metadata_collections:
     $ref: "_definitions.yaml#/to_one"
+
   subjects:
     $ref: "_definitions.yaml#/to_many"

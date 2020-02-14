@@ -3,23 +3,22 @@ $schema: "http://json-schema.org/draft-04/schema#"
 id: "imaging_file"
 title: Imaging File
 type: object
+nodeTerms: null
 namespace: https://gen3.datacommons.io/
 category: data_file
 program: '*'
 project: '*'
-description: >
-  Data file containing a diagnostic image from a clinical imaging exam.
+description: Data file containing a diagnostic image from a clinical imaging exam.
 additionalProperties: false
 submittable: true
-downloadable: true
 validators: null
 
 systemProperties:
   - id
   - project_id
+  - state
   - created_datetime
   - updated_datetime
-  - state
   - file_state
   - error_type
 
@@ -51,115 +50,126 @@ required:
   - data_category
 
 uniqueKeys:
-  - [ id ]
-  - [ project_id, submitter_id ]
+  - [id]
+  - [project_id, submitter_id]
 
 properties:
+
   $ref: "_definitions.yaml#/data_file_properties"
 
-  echo_time:
-    description: The time (milliseconds) between the application of the radiofrequency excitation pulse and the peak of the signal induced in the coil.
-    type: number
-
-  field_strength:
-    description: The field strength (in Tesla, T) of the MRI magnet.
-    type: number
-
-  field_angle:
-    description: the angle of excitation for a field echo pulse sequence.
-    type: number
-
-  fov:
-    description: Field-of-view (FOV); the distance (in cm or mm) over which an MR image is acquired or displayed. The FOV is typically divided into several hundred picture elements (pixels), each approximately 1 mm² in size.
-    type: number
-
-  pulse_sequence:
-    description: The name of the particular instrument setting of pulse sequences and pulsed field gradients (e.g., "GRE" (gradient echo), "SE" (spin echo), or "IR" (inversion-recovery), etc.).
+  body_part_examined:
+    description: Part of the body that was studied.
     type: string
-
-  inversion_time:
-    description: The time period (TI; milliseconds) between the 180° inversion pulse and the 90° excitation pulse in an inversion recovery pulse sequence. The inversion time controls the signal of different tissues.
-    type: number
-
-  repetition_time:
-    description: The repetition time (TR; milliseconds) is the time from the application of an excitation pulse to the application of the next pulse. It determines how much longitudinal magnetization recovers between each pulse.
-    type: number
-
-  matrix_size:
-    description: The matrix size is the number of frequency encoding steps, in one direction; and the number of phase encoding steps, in the other direction of the image plane. Assuming everything else is constant, increasing the number of frequency encodings or the number of phase steps results in improved resolution.
-    type: string
-
-  data_type:
-    term:
-      $ref: "_terms.yaml#/data_type"
-    type: string
-
-  data_format:
-    term:
-      $ref: "_terms.yaml#/data_format"
-    enum:
-      - JPEG
-      - SVS
-      - TIFF
-      - PNG
-      - GIF
-      - DCM
-      - NII
 
   data_category:
     term:
       $ref: "_terms.yaml#/data_category"
     type: string
 
-  study_date:
-    $ref: "_definitions.yaml#/datetime"
+  data_format:
+    term:
+      $ref: "_terms.yaml#/data_format"
+    enum:
+      - DCM
+      - GIF
+      - JPEG
+      - NII
+      - PNG
+      - SVS
+      - TIFF
 
-  magnification:
-    description: "Magnification used to capture the image."
-    type: number
-
-  body_part_examined:
-    description: "Part of the body that was studied."
+  data_type:
+    term:
+      $ref: "_terms.yaml#/data_type"
     type: string
 
   days_to_image:
-    description: "Days from the subject's index event to the date the image was acquired."
+    description: Days from the subject's index event to the date the image was acquired.
     type: integer
 
-  instrument_model:
-    description: >
-      The imaging instrument or scanner model.
-    type: string
+  echo_time:
+    description: The time (milliseconds) between the application of the radiofrequency
+      excitation pulse and the peak of the signal induced in the coil.
+    type: number
 
-  instrument_manufacturer:
-    description: >
-      The imaging instrument or scanner manufacturer.
-    type: string
+  field_angle:
+    description: the angle of excitation for a field echo pulse sequence.
+    type: number
 
-  imaging_type:
-    description: "The type of imaging exam performed."
-    enum:
-      - "MRI"
-      - "fMRI"
-      - "CT Scan"
-      - "Ultrasound"
+  field_strength:
+    description: The field strength (in Tesla, T) of the MRI magnet.
+    type: number
+
+  fov:
+    description: Field-of-view (FOV); the distance (in cm or mm) over which an MR
+      image is acquired or displayed. The FOV is typically divided into several hundred
+      picture elements (pixels), each approximately 1 mm² in size.
+    type: number
 
   imaging_subtype:
-    description: "The subtype of imaging exam performed."
+    description: The subtype of imaging exam performed.
     enum:
-      - "T1-Weighted"
+      - T1-Weighted
+
+  imaging_type:
+    description: The type of imaging exam performed.
+    enum:
+      - CT Scan
+      - MRI
+      - Ultrasound
+      - fMRI
+
+  instrument_manufacturer:
+    description: The imaging instrument or scanner manufacturer.
+    type: string
+
+  instrument_model:
+    description: The imaging instrument or scanner model.
+    type: string
+
+  inversion_time:
+    description: The time period (TI; milliseconds) between the 180° inversion pulse
+      and the 90° excitation pulse in an inversion recovery pulse sequence. The inversion
+      time controls the signal of different tissues.
+    type: number
+
+  magnification:
+    description: Magnification used to capture the image.
+    type: number
+
+  matrix_size:
+    description: The matrix size is the number of frequency encoding steps, in one
+      direction; and the number of phase encoding steps, in the other direction of
+      the image plane. Assuming everything else is constant, increasing the number
+      of frequency encodings or the number of phase steps results in improved resolution.
+    type: string
 
   modality:
-    description: >
-      Mode instrument was in during image acquisition.
+    description: Mode instrument was in during image acquisition.
     type: string
 
-  scan_id:
-    description: >
-      The identification number for a stack of images generated during a single scan.
+  pulse_sequence:
+    description: The name of the particular instrument setting of pulse sequences
+      and pulsed field gradients (e.g., "GRE" (gradient echo), "SE" (spin echo), or
+      "IR" (inversion-recovery), etc.).
     type: string
+
+  repetition_time:
+    description: The repetition time (TR; milliseconds) is the time from the application
+      of an excitation pulse to the application of the next pulse. It determines how
+      much longitudinal magnetization recovers between each pulse.
+    type: number
+
+  scan_id:
+    description: The identification number for a stack of images generated during
+      a single scan.
+    type: string
+
+  study_date:
+    $ref: "_definitions.yaml#/datetime"
 
   core_metadata_collections:
     $ref: "_definitions.yaml#/to_one"
+
   subjects:
     $ref: "_definitions.yaml#/to_one"

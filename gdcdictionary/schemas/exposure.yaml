@@ -41,14 +41,6 @@ properties:
 
   $ref: "_definitions.yaml#/ubiquitous_properties"
 
-  exposure_type:
-    description: The general type of exposure (e.g., radiation, alcohol, tobacco, pollutants, etc.).
-    type: string
-
-  exposure_level:
-    description: The general level of exposure.
-    type: string
-
   acetaminophen_pills_per_week:
     description: Acetaminophen Average Dose (tablets per week)
     type: integer
@@ -1307,6 +1299,15 @@ properties:
   ex_smoking_pipes_stop_age:
     description: Ex-Smoking - Smoking Pipes End Age
     type: integer
+
+  exposure_level:
+    description: The general level of exposure.
+    type: string
+
+  exposure_type:
+    description: The general type of exposure (e.g., radiation, alcohol, tobacco,
+      pollutants, etc.).
+    type: string
 
   green_tea_cups_per_week:
     description: Caffeinated green tea-cups per week. Variable from Caffeine RFQ Form

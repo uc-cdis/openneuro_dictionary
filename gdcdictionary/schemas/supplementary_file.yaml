@@ -9,7 +9,8 @@ category: data_file
 program: '*'
 project: '*'
 description: A file related to the study that provides additional context such as
-  documentation, notes, reference files, data dictionaries, or supplementary files or figures.
+  documentation, notes, reference files, data dictionaries, or supplementary files
+  or figures.
 additionalProperties: false
 submittable: true
 validators: null
