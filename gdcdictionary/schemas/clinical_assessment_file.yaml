@@ -1,14 +1,13 @@
 $schema: "http://json-schema.org/draft-04/schema#"
 
-id: "pathology_slide"
-title: Pathology Slide
+id: "clinical_assessment_file"
+title: Clinical Assessment File
 type: object
-nodeTerms: null
 namespace: https://gen3.datacommons.io/
 category: data_file
 program: '*'
 project: '*'
-description: Data file containing a pathology slide.
+description: Data file containing raw data from a clinical assessment.
 additionalProperties: false
 submittable: true
 validators: null
@@ -27,22 +26,22 @@ links:
     required: true
     subgroup:
       - name: core_metadata_collections
-        backref: pathology_slides
+        backref: clinical_assessment_files
         label: data_from
         target_type: core_metadata_collection
         multiplicity: many_to_one
         required: false
       - name: subjects
-        backref: pathology_slides
+        backref: clinical_assessment_files
         label: data_from
         target_type: subject
         multiplicity: many_to_one
         required: false
-      - name: samples
-        backref: pathology_slides
+      - name: clinical_assessments
+        backref: clinical_assessment_files
         label: data_from
-        target_type: sample
-        multiplicity: many_to_one
+        target_type: clinical_assessment
+        multiplicity: one_to_one
         required: false
 
 required:
@@ -63,10 +62,6 @@ properties:
 
   $ref: "_definitions.yaml#/data_file_properties"
 
-  body_part_examined:
-    description: What part of the body was studied.
-    type: string
-
   data_category:
     term:
       $ref: "_terms.yaml#/data_category"
@@ -75,33 +70,50 @@ properties:
   data_format:
     term:
       $ref: "_terms.yaml#/data_format"
-    type: string
+    enum:
+      - BAM
 
   data_type:
     term:
       $ref: "_terms.yaml#/data_type"
+    enum:
+      - Aligned Reads
+
+
+  age_at_assessment:
+    description: The age of the subject when the assessment was taken in years. See
+      age_at_assessment_gt89 if the age is over 89 years.
+    type: integer
+    maximum: 89
+    minimum: 0
+
+  age_at_assessment_gt89:
+    description: Indicates whether the age of the subject when the assessment was
+      taken is greater than 89 years.
+    enum:
+      - "No"
+      - "Yes"
+
+  assessment_class:
+    description: Classification of the clinical assessment.
     type: string
 
-  days_to_image:
-    description: Days from the case index date to the date the image was acquired.
+  assessment_name:
+    description: The name of the clinical assessment.
+    type: string
+
+  assessment_version:
+    description: The version of the clinical assessment.
+    type: string
+
+  total_score:
+    description: The subject's total score on the assessment.
+    type: string
+
+  year_of_assessment:
+    description: The year the asssessment was taken.
     type: integer
 
-  imaging_instrument:
-    description: The instrument model used to acquire the image.
-    type: string
-
-  magnification:
-    description: Magnification used to capture the image.
-    type: number
-
-  modality:
-    description: What mode the imaging instrument was in during image acquisition.
-    type: string
-
-  scan_id:
-    description: The identification number for a stack of images generated during
-      a single scan.
-    type: string
 
   core_metadata_collections:
     $ref: "_definitions.yaml#/to_one"
@@ -109,5 +121,5 @@ properties:
   subjects:
     $ref: "_definitions.yaml#/to_one"
 
-  samples:
+  clinical_assessments:
     $ref: "_definitions.yaml#/to_one"

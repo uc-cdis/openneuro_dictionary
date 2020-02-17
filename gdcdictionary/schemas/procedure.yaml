@@ -22,17 +22,25 @@ systemProperties:
   - updated_datetime
 
 links:
-  - name: subjects
-    backref: procedures
-    label: related_to
-    target_type: subject
-    multiplicity: many_to_one
+  - exclusive: false
     required: true
+    subgroup:
+      - name: subjects
+        backref: procedures
+        label: data_from
+        target_type: subject
+        multiplicity: many_to_one
+        required: false
+      - name: medical_conditions
+        backref: procedures
+        label: data_from
+        target_type: medical_condition
+        multiplicity: many_to_one
+        required: false
 
 required:
   - submitter_id
   - type
-  - subjects
 
 uniqueKeys:
   - [id]
@@ -380,4 +388,6 @@ properties:
       - Other, Specify
 
   subjects:
+    $ref: "_definitions.yaml#/to_one"
+  medical_conditions:
     $ref: "_definitions.yaml#/to_one"
