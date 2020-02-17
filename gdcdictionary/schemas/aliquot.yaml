@@ -47,11 +47,7 @@ properties:
 
   aliquot_container:
     description: The device in which the final aliquot is held.
-    enum:
-      - Microplate
-      - Slide
-      - Tube
-      - Vial
+    type: string
 
   aliquot_volume:
     description: The initial volume of the aliquot.
@@ -79,17 +75,8 @@ properties:
     description: Any aspect of an aliquot used in an analysis or assay to characterize
       the sample. These aspects range from molecules, such as DNA and RNA, that can
       be extracted from the aliquot to general descriptions of the aliquot's components,
-      such as cell count and morphology.
-    enum:
-      - Cell Count
-      - DNA
-      - Morphology
-      - Peptide
-      - Plasma
-      - Protein
-      - RNA
-      - Serum
-      - Whole blood
+      such as cell count and morphology (e.g., DNA, RNA, Leukocytes).
+    type: string
 
   clinical_or_contrived:
     description: Is the aliquot clinical or contrived?
@@ -129,14 +116,7 @@ properties:
   preservation_method:
     term:
       $ref: "_terms.yaml#/preservation_method"
-    enum:
-      - Cryopreserved
-      - FFPE
-      - Fresh
-      - Frozen
-      - OCT
-      - Snap Frozen
-      - Unknown
+    type: string
 
   storage_temperature:
     description: The temperature, in centigrade, at which the aliquot was preserved
