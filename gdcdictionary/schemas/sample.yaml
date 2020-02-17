@@ -160,5 +160,9 @@ properties:
     description: The sample storage temperature (C)
     type: number
 
+  time_point:
+    description: Indicate a text term that describes the time-point at which the sample was collected (e.g., "pre-deployment", "post-operation", "baseline", etc.)
+    type: string
+
   subjects:
     $ref: "_definitions.yaml#/to_one"
