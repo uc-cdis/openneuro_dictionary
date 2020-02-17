@@ -1,7 +1,7 @@
 $schema: "http://json-schema.org/draft-04/schema#"
 
-id: "aligned_reads_file"
-title: Aligned Reads File
+id: "clinical_assessment_file"
+title: Clinical Assessment File
 type: object
 namespace: https://gen3.datacommons.io/
 category: data_file
