@@ -3,7 +3,7 @@ $schema: "http://json-schema.org/draft-04/schema#"
 id: "publication"
 title: Publication
 type: object
-namespace: https://data.braincommons.org/
+namespace: https://gen3.datacommons.io/
 category: administrative
 program: '*'
 project: '*'

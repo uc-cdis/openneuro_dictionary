@@ -4,7 +4,7 @@ id: "pathology_slide"
 title: Pathology Slide
 type: object
 nodeTerms: null
-namespace: https://vpodc.org/
+namespace: https://gen3.datacommons.io/
 category: data_file
 program: '*'
 project: '*'
