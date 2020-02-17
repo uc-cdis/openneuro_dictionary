@@ -68,16 +68,7 @@ properties:
   data_type:
     term:
       $ref: "_terms.yaml#/data_type"
-    enum:
-      - Audio
-      - Data
-      - Data Dictionary
-      - Documentation
-      - Figure
-      - Image
-      - Other
-      - Software
-      - Video
+    type: string
 
   core_metadata_collections:
     $ref: "_definitions.yaml#/to_one"

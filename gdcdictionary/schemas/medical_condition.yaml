@@ -219,30 +219,7 @@ properties:
   primary_diagnosis:
     term:
       $ref: "_terms.yaml#/primary_diagnosis"
-    enum:
-      - Alcohol Abuse
-      - Alzheimer's Disease
-      - Anxiety
-      - Attention Deficit Hyperactivity Disorder (ADHD)
-      - Bipolar Disorder
-      - Cancer
-      - Depression
-      - Drug Abuse
-      - Drug- or Toxin-induced Parkinsonism
-      - Healthy
-      - Healthy Control
-      - Lewy-body Disease
-      - Parkinson's Disease
-      - Parkinsonism-dementia complex of Guam
-      - Post-traumatic Parkinsonism
-      - Post-traumatic Stress Disorder (PTSD)
-      - Prodromal
-      - Progressive Supranuclear Palsy
-      - SWEDD
-      - Schizophrenia
-      - Trauma
-      - Traumatic Brain Injury/Post-Concussion Syndrome
-      - Viral Parkinsonism
+    type: string
 
   ptsd_diagnosis_current:
     description: The patient's PTSD diagnosis at the time of diagnosis.

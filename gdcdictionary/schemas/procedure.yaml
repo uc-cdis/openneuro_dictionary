@@ -365,10 +365,7 @@ properties:
 
   procedure_type:
     description: The general type of procedure (e.g., "Surgery").
-    enum:
-      - Biopsy
-      - Radiation
-      - Surgery
+    type: string
 
   related_medications:
     description: Any medications or infusions related to the procedure like chemotherapy

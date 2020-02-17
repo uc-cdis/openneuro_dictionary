@@ -76,10 +76,7 @@ properties:
   data_category:
     term:
       $ref: "_terms.yaml#/data_category"
-    enum:
-      - Raw Sequencing Data
-      - Sequencing Data
-      - Sequencing Reads
+    type: string
 
   data_format:
     term:
@@ -96,16 +93,7 @@ properties:
   experimental_strategy:
     term:
       $ref: "_terms.yaml#/experimental_strategy"
-    enum:
-      - ATAC-Seq
-      - Bisulfite-Seq
-      - ChIP-Seq
-      - Low Pass WGS
-      - RNA-Seq
-      - Targeted Sequencing
-      - WGS
-      - WXS
-      - miRNA-Seq
+    type: string
 
   molecular_tagging_workflow:
     description: A description of the specific bioinformatics workflow or pipeline
