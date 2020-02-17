@@ -4,12 +4,11 @@ id: "medication"
 title: Medication
 type: object
 nodeTerms: null
-namespace: https://data.braincommons.org/
+namespace: https://gen3.datacommons.io/
 category: medical_history
 program: '*'
 project: '*'
-description: Concurrent medications, or medications taken for reasons not directly
-  related to the primary diagnosis (see Treatment for diagnosis-related meds).
+description: Drug treatments and medications taken by the subject. Can be linked to a particular medical_condition or not.
 additionalProperties: false
 submittable: true
 validators: null
@@ -22,18 +21,26 @@ systemProperties:
   - updated_datetime
 
 links:
-  - name: subjects
-    backref: medications
-    label: related_to
-    target_type: subject
-    multiplicity: many_to_one
+  - exclusive: false
     required: true
+    subgroup:
+      - name: subjects
+        backref: medications
+        label: data_from
+        target_type: subject
+        multiplicity: many_to_one
+        required: false
+      - name: medical_conditions
+        backref: medications
+        label: data_from
+        target_type: medical_condition
+        multiplicity: many_to_one
+        required: false
 
 required:
   - submitter_id
   - type
   - medication_name
-  - subjects
 
 uniqueKeys:
   - [id]
@@ -42,6 +49,10 @@ uniqueKeys:
 properties:
 
   $ref: "_definitions.yaml#/ubiquitous_properties"
+
+  comments:
+    description: Any general comments about the medication being taken (free text).
+    type: string
 
   active_deep_brain_stimulation_electrodes:
     description: Were active deep brain stimulation electrodes used? (Variable from
@@ -776,4 +787,6 @@ properties:
     type: integer
 
   subjects:
+    $ref: "_definitions.yaml#/to_one"
+  medical_conditions:
     $ref: "_definitions.yaml#/to_one"

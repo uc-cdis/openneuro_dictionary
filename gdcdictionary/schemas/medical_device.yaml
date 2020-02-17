@@ -8,7 +8,7 @@ namespace: https://gen3.datacommons.io/
 category: medical_history
 program: '*'
 project: '*'
-description: Information related to a subject's exposure to or use of a medical device.
+description: Information related to a subject's exposure to or use of a medical device. Can be linked to a specific medical_condition or not.
 additionalProperties: false
 submittable: true
 validators: null
@@ -21,17 +21,25 @@ systemProperties:
   - updated_datetime
 
 links:
-  - name: subjects
-    backref: medical_devices
-    label: related_to
-    target_type: subject
-    multiplicity: many_to_one
+  - exclusive: false
     required: true
+    subgroup:
+      - name: subjects
+        backref: medical_devices
+        label: data_from
+        target_type: subject
+        multiplicity: many_to_one
+        required: false
+      - name: medical_conditions
+        backref: medical_devices
+        label: data_from
+        target_type: medical_condition
+        multiplicity: many_to_one
+        required: false
 
 required:
   - submitter_id
   - type
-  - subjects
 
 uniqueKeys:
   - [id]
@@ -72,4 +80,6 @@ properties:
     type: string
 
   subjects:
+    $ref: "_definitions.yaml#/to_one"
+  medical_conditions:
     $ref: "_definitions.yaml#/to_one"
