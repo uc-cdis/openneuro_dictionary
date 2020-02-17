@@ -165,7 +165,7 @@ properties:
       from a study subject used for the test
     type: string
 
- sample_composition_other:
+  sample_composition_other:
     description: If 'other' was chosen for 'sample_composition', the type or composition
       of the sample or biological specimen taken from a study subject used for the
       test
