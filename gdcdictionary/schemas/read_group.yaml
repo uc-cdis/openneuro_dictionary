@@ -102,25 +102,7 @@ properties:
     type: boolean
 
   instrument_model:
-    enum:
-      - 454 GS FLX Titanium
-      - AB SOLiD 2
-      - AB SOLiD 3
-      - AB SOLiD 4
-      - Complete Genomics
-      - Illumina Genome Analyzer II
-      - Illumina Genome Analyzer IIx
-      - Illumina HiSeq 2000
-      - Illumina HiSeq 2500
-      - Illumina HiSeq 4000
-      - Illumina HiSeq X Five
-      - Illumina HiSeq X Ten
-      - Illumina MiSeq
-      - Illumina NextSeq
-      - Ion Torrent PGM
-      - Ion Torrent Proton
-      - Other
-      - PacBio RS
+    type: string
 
   is_paired_end:
     term:
@@ -160,15 +142,7 @@ properties:
   library_selection:
     term:
       $ref: "_terms.yaml#/library_selection"
-    enum:
-      - Affinity Enrichment
-      - Hybrid Selection
-      - Other
-      - PCR
-      - Poly-T Enrichment
-      - Random
-      - miRNA Size Fractionation
-      - rRNA Depletion
+    type: string
 
   library_strand:
     term:
@@ -182,17 +156,7 @@ properties:
   library_strategy:
     term:
       $ref: "_terms.yaml#/library_strategy"
-    enum:
-      - Amplicon
-      - Bisulfite-Seq
-      - ChIP-Seq
-      - Other
-      - RNA-Seq
-      - Targeted Sequencing
-      - Validation
-      - WGS
-      - WXS
-      - miRNA-Seq
+    type: string
 
   multiplex_barcode:
     term:
@@ -202,14 +166,7 @@ properties:
   platform:
     term:
       $ref: "_terms.yaml#/platform"
-    enum:
-      - Complete Genomics
-      - Illumina
-      - Ion Torrent
-      - LS454
-      - Other
-      - PacBio
-      - SOLiD
+    type: string
 
   read_group_name:
     description: Read Group Name
@@ -245,40 +202,7 @@ properties:
   target_capture_kit:
     term:
       $ref: "_terms.yaml#/target_capture_kit_name"
-    enum:
-      - Custom AmpliSeq Cancer Hotspot GENIE-MDA Augmented Panel v1 - 46 Genes
-      - Custom GENIE-DFCI OncoPanel - 275 Genes
-      - Custom GENIE-DFCI Oncopanel - 300 Genes
-      - Custom GENIE-DFCI Oncopanel - 447 Genes
-      - Custom HaloPlex DLBCL Panel - 370 Genes
-      - Custom Ion AmpliSeq Hotspot GENIE-MOSC3 Augmented Panel - 74 Genes
-      - Custom Large Construct Capture TARGET-OS Panel - 8 Genes
-      - Custom MSK IMPACT Panel - 341 Genes
-      - Custom MSK IMPACT Panel - 410 Genes
-      - Custom MSK IMPACT Panel - 468 Genes
-      - Custom Myeloid GENIE-VICC Panel - 37 Genes
-      - Custom PGDX SureSelect CancerSelect VAREPOP-APOLLO Panel - 203 Genes
-      - Custom PGDX SureSelect CancerSelect VAREPOP-APOLLO Panel - 88 Genes
-      - Custom SeqCap EZ HGSC VCRome v2.1 ER Augmented v1
-      - Custom SeqCap EZ HGSC VCRome v2.1 ER Augmented v2
-      - Custom SeqCap EZ TARGET-OS Panel - 7.0 Mb
-      - Custom Solid Tumor GENIE-VICC Panel - 34 Genes
-      - Custom SureSelect CGCI-BLGSP Panel - 4.6 Mb
-      - Custom SureSelect GENIE-UHN Panel - 555 Genes
-      - Custom SureSelect TARGET-AML_NBL_WT Panel - 2.8 Mb
-      - Foundation Medicine T5a Panel - 322 Genes
-      - Foundation Medicine T7 Panel - 429 Genes
-      - Ion AmpliSeq Cancer Hotspot Panel v2
-      - Ion AmpliSeq Comprehensive Cancer Panel
-      - Nextera Rapid Capture Exome v1.2
-      - Not Applicable
-      - SeqCap EZ HGSC VCRome v2.1
-      - SureSelect Human All Exon v3
-      - SureSelect Human All Exon v5
-      - TruSeq Amplicon Cancer Panel
-      - TruSeq Exome Enrichment - 62 Mb
-      - TruSight Myeloid Sequencing Panel
-      - Unknown
+    type: string
 
   to_trim_adapter_sequence:
     term:

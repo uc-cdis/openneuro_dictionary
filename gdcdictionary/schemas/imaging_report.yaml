@@ -65,40 +65,17 @@ properties:
   data_category:
     term:
       $ref: "_terms.yaml#/data_category"
-    enum:
-      - Combined Slice Image
-      - Derived Image
-      - Derived Measures
+    type: string
 
   data_format:
     term:
       $ref: "_terms.yaml#/data_format"
-    enum:
-      - CSV
-      - TSV
-      - TXT
-      - XLS/XLSX
+    type: string
 
   data_type:
     term:
       $ref: "_terms.yaml#/data_type"
-    enum:
-      - Amygdala Nuclei
-      - Cortical
-      - Cortical Thickness
-      - DTI Analysis
-      - Hippocampal Subfield
-      - Resting State
-      - Subcortical GWAS Cortical GWAS
-      - Subcortical GWAS DTI GWAS
-      - Subcortical GWAS Hippocampal Subfield GWAS
-      - Subcortical GWAS Resting State Canonical Network
-      - Subcortical GWAS Resting State Connectomic Network
-      - Subcortical GWAS Resting State Dynamic Functional
-      - Subcortical GWAS Resting State GWAS
-      - Subcortical GWAS Resting State Machine Learning
-      - Subcortical Volume
-      - Surface Area
+    type: string
 
   derivation_method:
     description: The name, version and description of the method, script or workflow

@@ -4,7 +4,7 @@ id: "study"
 title: Study
 type: object
 nodeTerms: null
-namespace: https://data.braincommons.org/
+namespace: https://gen3.datacommons.io/
 category: administrative
 program: '*'
 project: '*'

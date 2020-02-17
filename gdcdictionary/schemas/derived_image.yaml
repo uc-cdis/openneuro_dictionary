@@ -71,33 +71,12 @@ properties:
   data_format:
     term:
       $ref: "_terms.yaml#/data_format"
-    enum:
-      - DICOM/DCM
-      - GIF
-      - JPEG
-      - PNG
-      - TIF
+    type: string
 
   data_type:
     term:
       $ref: "_terms.yaml#/data_type"
-    enum:
-      - Amygdala Nuclei
-      - Cortical
-      - Cortical Thickness
-      - DTI Analysis
-      - Hippocampal Subfield
-      - Resting State
-      - Subcortical GWAS Cortical GWAS
-      - Subcortical GWAS DTI GWAS
-      - Subcortical GWAS Hippocampal Subfield GWAS
-      - Subcortical GWAS Resting State Canonical Network
-      - Subcortical GWAS Resting State Connectomic Network
-      - Subcortical GWAS Resting State Dynamic Functional
-      - Subcortical GWAS Resting State GWAS
-      - Subcortical GWAS Resting State Machine Learning
-      - Subcortical Volume
-      - Surface Area
+    type: string
 
   derivation_method:
     description: The name and version of the method, script or workflow used to generate
@@ -123,22 +102,7 @@ properties:
   workflow_type:
     term:
       $ref: "_terms.yaml#/workflow_type"
-    enum:
-      - Amygdala Nuclei
-      - Combining Image Slices
-      - ENIGMA Cortical Thickness/Surface Area
-      - ENIGMA DTI Analysis
-      - ENIGMA Hippocampal Subfield
-      - ENIGMA Resting State (seed/dual regression)
-      - ENIGMA Subcortical Volume
-      - Subcortical GWAS Cortical GWAS
-      - Subcortical GWAS DTI GWAS
-      - Subcortical GWAS Hippocampal Subfield GWAS
-      - Subcortical GWAS Resting State Canonical Network
-      - Subcortical GWAS Resting State Connectomic Network
-      - Subcortical GWAS Resting State Dynamic Functional
-      - Subcortical GWAS Resting State GWAS
-      - Subcortical GWAS Resting State Machine Learning
+    type: string
 
   workflow_version:
     description: The version number of the workflow.

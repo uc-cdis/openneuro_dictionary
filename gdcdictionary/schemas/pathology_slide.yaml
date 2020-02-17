@@ -75,14 +75,7 @@ properties:
   data_format:
     term:
       $ref: "_terms.yaml#/data_format"
-    enum:
-      - DCM
-      - GIF
-      - JPEG
-      - NII
-      - PNG
-      - SVS
-      - TIFF
+    type: string
 
   data_type:
     term:
