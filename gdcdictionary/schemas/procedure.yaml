@@ -389,5 +389,6 @@ properties:
 
   subjects:
     $ref: "_definitions.yaml#/to_one"
+
   conditions:
     $ref: "_definitions.yaml#/to_one"

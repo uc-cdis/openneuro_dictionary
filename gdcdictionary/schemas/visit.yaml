@@ -3,6 +3,7 @@ $schema: "http://json-schema.org/draft-04/schema#"
 id: "visit"
 title: Visit
 type: object
+nodeTerms: null
 namespace: https://gen3.datacommons.io/
 category: administrative
 program: '*'
