@@ -1,14 +1,14 @@
 $schema: "http://json-schema.org/draft-04/schema#"
 
-id: "medical_device"
-title: Medical Device
+id: "device"
+title: Device
 type: object
 nodeTerms: null
 namespace: https://gen3.datacommons.io/
 category: medical_history
 program: '*'
 project: '*'
-description: Information related to a subject's exposure to or use of a medical device. Can be linked to a specific medical_condition or not.
+description: Information related to a subject's exposure to or use of a device (e.g., a medical device like a heart monitor). Can be linked to a specific (medical) condition or not.
 additionalProperties: false
 submittable: true
 validators: null
@@ -25,15 +25,15 @@ links:
     required: true
     subgroup:
       - name: subjects
-        backref: medical_devices
+        backref: devices
         label: data_from
         target_type: subject
         multiplicity: many_to_one
         required: false
-      - name: medical_conditions
-        backref: medical_devices
+      - name: conditions
+        backref: devices
         label: data_from
-        target_type: medical_condition
+        target_type: condition
         multiplicity: many_to_one
         required: false
 
@@ -81,5 +81,5 @@ properties:
 
   subjects:
     $ref: "_definitions.yaml#/to_one"
-  medical_conditions:
+  conditions:
     $ref: "_definitions.yaml#/to_one"
