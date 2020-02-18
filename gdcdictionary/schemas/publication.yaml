@@ -39,8 +39,6 @@ uniqueKeys:
 
 properties:
 
-  $ref: "nan"
-
   acknowledgements:
     description: A list of acknowledgees in the publication.
     type: string
