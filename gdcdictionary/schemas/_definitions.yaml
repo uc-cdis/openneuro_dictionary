@@ -231,11 +231,8 @@ ubiquitous_properties:
     $ref: "#/UUID"
     systemAlias: node_id
   submitter_id:
-    type:
-      - string
-    description: >
-      A project-specific identifier for a node. This property is the calling card/nickname/alias for
-      a unit of submission. It can be used in place of the UUID for identifying or recalling a node.
+    description: "A human-readable, unique identifier for a record in the metadata database. It can be used in place of the UUID for identifying or recalling a record (e.g., in data queries or uploads/exports)."
+    type: string
   subject_id:
     description: "The submitter_id of a subject in the study."
     type: string
