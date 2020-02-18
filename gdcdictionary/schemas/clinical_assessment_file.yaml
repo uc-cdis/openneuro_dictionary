@@ -3,6 +3,7 @@ $schema: "http://json-schema.org/draft-04/schema#"
 id: "clinical_assessment_file"
 title: Clinical Assessment File
 type: object
+nodeTerms: null
 namespace: https://gen3.datacommons.io/
 category: data_file
 program: '*'
@@ -62,24 +63,6 @@ properties:
 
   $ref: "_definitions.yaml#/data_file_properties"
 
-  data_category:
-    term:
-      $ref: "_terms.yaml#/data_category"
-    type: string
-
-  data_format:
-    term:
-      $ref: "_terms.yaml#/data_format"
-    enum:
-      - BAM
-
-  data_type:
-    term:
-      $ref: "_terms.yaml#/data_type"
-    enum:
-      - Aligned Reads
-
-
   age_at_assessment:
     description: The age of the subject when the assessment was taken in years. See
       age_at_assessment_gt89 if the age is over 89 years.
@@ -106,6 +89,23 @@ properties:
     description: The version of the clinical assessment.
     type: string
 
+  data_category:
+    term:
+      $ref: "_terms.yaml#/data_category"
+    type: string
+
+  data_format:
+    term:
+      $ref: "_terms.yaml#/data_format"
+    enum:
+      - BAM
+
+  data_type:
+    term:
+      $ref: "_terms.yaml#/data_type"
+    enum:
+      - Aligned Reads
+
   total_score:
     description: The subject's total score on the assessment.
     type: string
@@ -113,7 +113,6 @@ properties:
   year_of_assessment:
     description: The year the asssessment was taken.
     type: integer
-
 
   core_metadata_collections:
     $ref: "_definitions.yaml#/to_one"

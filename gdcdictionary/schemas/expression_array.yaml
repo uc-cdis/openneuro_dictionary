@@ -8,8 +8,8 @@ namespace: https://gen3.datacommons.io/
 category: data_file
 program: '*'
 project: '*'
-description: Data file containing raw intensity values from an expression array (CEL) or final expression results after array aggregation
-  and normalization.
+description: Data file containing raw intensity values from an expression array (CEL)
+  or final expression results after array aggregation and normalization.
 additionalProperties: false
 submittable: true
 validators: null
@@ -76,8 +76,8 @@ properties:
     term:
       $ref: "_terms.yaml#/data_type"
     enum:
-      - Expression Raw Intensity
       - Expression Array Variation
+      - Expression Raw Intensity
 
   experimental_strategy:
     term:
@@ -92,8 +92,21 @@ properties:
     type: string
 
   version:
-    description: The version of the expression array file (e.g., version 3 for a CEL file).
+    description: The version of the expression array file (e.g., version 3 for a CEL
+      file).
     type: string
+
+  workflow_end_datetime:
+    $ref: "_definitions.yaml#/datetime"
+
+  workflow_link:
+    description: If a specific workflow or pipeline was used to generate the file
+      (aggregation/normalization workflow), provide the name, location or link to
+      the workflow used.
+    type: string
+
+  workflow_start_datetime:
+    $ref: "_definitions.yaml#/datetime"
 
   workflow_type:
     term:
@@ -101,19 +114,9 @@ properties:
     enum:
       - Expression Array
 
-  workflow_link:
-    description: "If a specific workflow or pipeline was used to generate the file (aggregation/normalization workflow), provide the name, location or link to the workflow used."
-    type: string
-
   workflow_version:
-    description: "Major version for a workflow."
+    description: Major version for a workflow.
     type: string
-
-  workflow_start_datetime:
-    $ref: "_definitions.yaml#/datetime"
-
-  workflow_end_datetime:
-    $ref: "_definitions.yaml#/datetime"
 
   core_metadata_collections:
     $ref: "_definitions.yaml#/to_one"

@@ -8,10 +8,10 @@ namespace: https://gen3.datacommons.io/
 category: medical_history
 program: '*'
 project: '*'
-description: Information related to the condition of a subject within the
-  context of a particular study (e.g., a medical diagnosis). This includes a snapshot of the subject's status
-  with respect to certain diseases, disorders, symptoms, injuries, or illnesses within
-  the context of the study.
+description: Information related to the condition of a subject within the context
+  of a particular study (e.g., a medical diagnosis). This includes a snapshot of the
+  subject's status with respect to certain diseases, disorders, symptoms, injuries,
+  or illnesses within the context of the study.
 additionalProperties: false
 submittable: true
 validators: null

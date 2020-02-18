@@ -1,19 +1,21 @@
 <node>	<field>	<description>	<type>	<terms>	<pattern>	<maximum>	<minimum>	<options1>	<options2>	<options3>	<options4>	<options5>	<options6>	<options7>	<options8>
 aliquot	a260_a280_ratio	Ratio 260 and 280 nm	number												
-aliquot	aliquot_container	The device in which the final aliquot is held.	enum					Slide | Vial | Microplate | Tube 							
-aliquot	aliquot_weight	The initial weight of the aliquot.	number												
+aliquot	aliquot_container	The device in which the final aliquot is held.	string												
 aliquot	aliquot_volume	The initial volume of the aliquot.	number												
-aliquot	isolation_method	The name or general description of the method used to isolate the analyte. Alternatively, if you have provided a protocol, put the file_name here.	string												
+aliquot	aliquot_weight	The initial weight of the aliquot.	number												
 aliquot	analyte_qc_class	Term that best describes the analyte's QC Class.	enum					Acceptable | Does Not Meet Spec | High | Low 							
 aliquot	analyte_qc_status	Analyte QC Status	enum					Complete | Incomplete 							
-aliquot	analyte_type	Any aspect of an aliquot used in an analysis or assay to characterize the sample. These aspects range from molecules, such as DNA and RNA, that can be extracted from the aliquot to general descriptions of the aliquot's components, such as cell count and morphology.	enum					Cell Count | DNA | Morphology | Peptide | Plasma | Protein | RNA | Serum | Whole blood 							
+aliquot	analyte_type	Any aspect of an aliquot used in an analysis or assay to characterize the sample. These aspects range from molecules, such as DNA and RNA, that can be extracted from the aliquot to general descriptions of the aliquot's components, such as cell count and morphology (e.g., DNA, RNA, Leukocytes).	string												
 aliquot	clinical_or_contrived	Is the aliquot clinical or contrived?	enum					Clinical | Contrived 							
 aliquot	concentration	Concentration of the analyte in the aliquot.	number												
 aliquot	concentration_units	The units used for the analyte's concentration in the aliquot.	string												
 aliquot	contrivance_method	The name or general description of the contrivance(s) added to the biological aliquot. Alternatively, if you have provided a contrivance protocol, enter its file_name here.	string												
 aliquot	days_to_aliquoting	The amount of time, in days, between the date used for index and the time the aliquot was separated from the whole sample.	integer												
 aliquot	days_to_assay	The amount of time, in days, between the date used for index and the assay used to address this analyte.	integer												
-aliquot	preservation_method		enum	_terms.yaml#/preservation_method				Cryopreserved | FFPE | Fresh | Frozen | OCT | Snap Frozen | Unknown 							
+aliquot	isolation_method	The name or general description of the method used to isolate the analyte. Alternatively, if you have provided a protocol, put the file_name here.	string												
+aliquot	label_name	The name of the label used in preparation of the analyte for analysis (e.g., Biotin).	string												
+aliquot	label_protocol	The protocol used to label the analyte (please either provide link to protocol/file or describe in free text).	string												
+aliquot	preservation_method		string	_terms.yaml#/preservation_method											
 aliquot	storage_temperature	The temperature, in centigrade, at which the aliquot was preserved and/or stored.	number												
 visit	days_to_visit	The number of days between the case Index Date and the date of the visit, call or other interaction.	integer												
 visit	days_to_visit_end	The number of days from the index date to the date the patient's visit ended.	integer												
@@ -29,63 +31,90 @@ visit	visit_number	The order number of this visit in relation to other visits. F
 visit	visit_scheduled	Specify whether the visit was scheduled or unscheduled.	enum					Scheduled | Unscheduled 							
 visit	visit_type	Text term used to describe the type of visit.	enum					Inpatient | Intensive outpatient | Outpatient 							
 visit	visit_units	If a visit is defined by a given interval of time, specify the time interval. For example, for a visit defined as 'Month 6 Visit', specify 'Month' for 'visit_units' and specify '6' for 'visit_number'.	enum					Biweekly | Day | Month | Quarter | Week | Year 							
-imaging_file	echo_time	The time (milliseconds) between the application of the radiofrequency excitation pulse and the peak of the signal induced in the coil.	number												
-imaging_file	field_strength	The field strength (in Tesla, T) of the MRI magnet.	number												
-imaging_file	field_angle	the angle of excitation for a field echo pulse sequence.	number												
-imaging_file	fov	Field-of-view (FOV); the distance (in cm or mm) over which an MR image is acquired or displayed. The FOV is typically divided into several hundred picture elements (pixels), each approximately 1 mm² in size.	number												
-imaging_file	pulse_sequence	"The name of the particular instrument setting of pulse sequences and pulsed field gradients (e.g., ""GRE"" (gradient echo), ""SE"" (spin echo), or ""IR"" (inversion-recovery), etc.)."	string												
-imaging_file	inversion_time	The time period (TI; milliseconds) between the 180° inversion pulse and the 90° excitation pulse in an inversion recovery pulse sequence. The inversion time controls the signal of different tissues.	number												
-imaging_file	repetition_time	The repetition time (TR; milliseconds) is the time from the application of an excitation pulse to the application of the next pulse. It determines how much longitudinal magnetization recovers between each pulse.	number												
-imaging_file	matrix_size	The matrix size is the number of frequency encoding steps, in one direction; and the number of phase encoding steps, in the other direction of the image plane. Assuming everything else is constant, increasing the number of frequency encodings or the number of phase steps results in improved resolution.	string												
-imaging_file	data_type		string	_terms.yaml#/data_type											
-imaging_file	data_format		enum	_terms.yaml#/data_format				JPEG | SVS | TIFF | PNG | GIF | DCM | NII 							
-imaging_file	data_category		string	_terms.yaml#/data_category											
-imaging_file	study_date			_definitions.yaml#/datetime											
-imaging_file	magnification	Magnification used to capture the image.	number												
 imaging_file	body_part_examined	Part of the body that was studied.	string												
+imaging_file	data_category		string	_terms.yaml#/data_category											
+imaging_file	data_format		string	_terms.yaml#/data_format											
+imaging_file	data_type		string	_terms.yaml#/data_type											
 imaging_file	days_to_image	Days from the subject's index event to the date the image was acquired.	integer												
-imaging_file	instrument_model	"The imaging instrument or scanner model.
-"	string												
-imaging_file	instrument_manufacturer	"The imaging instrument or scanner manufacturer.
-"	string												
-imaging_file	imaging_type	The type of imaging exam performed.	enum					MRI | fMRI | CT Scan | Ultrasound 							
+imaging_file	echo_time	The time (milliseconds) between the application of the radiofrequency excitation pulse and the peak of the signal induced in the coil.	number												
+imaging_file	field_angle	the angle of excitation for a field echo pulse sequence.	number												
+imaging_file	field_strength	The field strength (in Tesla, T) of the MRI magnet.	number												
+imaging_file	fov	Field-of-view (FOV); the distance (in cm or mm) over which an MR image is acquired or displayed. The FOV is typically divided into several hundred picture elements (pixels), each approximately 1 mm² in size.	number												
 imaging_file	imaging_subtype	The subtype of imaging exam performed.	enum					T1-Weighted 							
-imaging_file	modality	"Mode instrument was in during image acquisition.
-"	string												
-imaging_file	scan_id	"The identification number for a stack of images generated during a single scan.
-"	string												
+imaging_file	imaging_type	The type of imaging exam performed.	enum					CT Scan | MRI | Ultrasound | fMRI 							
+imaging_file	instrument_manufacturer	The imaging instrument or scanner manufacturer.	string												
+imaging_file	instrument_model	The imaging instrument or scanner model.	string												
+imaging_file	inversion_time	The time period (TI; milliseconds) between the 180° inversion pulse and the 90° excitation pulse in an inversion recovery pulse sequence. The inversion time controls the signal of different tissues.	number												
+imaging_file	magnification	Magnification used to capture the image.	number												
+imaging_file	matrix_size	The matrix size is the number of frequency encoding steps, in one direction; and the number of phase encoding steps, in the other direction of the image plane. Assuming everything else is constant, increasing the number of frequency encodings or the number of phase steps results in improved resolution.	string												
+imaging_file	modality	Mode instrument was in during image acquisition.	string												
+imaging_file	pulse_sequence	"The name of the particular instrument setting of pulse sequences and pulsed field gradients (e.g., ""GRE"" (gradient echo), ""SE"" (spin echo), or ""IR"" (inversion-recovery), etc.)."	string												
+imaging_file	repetition_time	The repetition time (TR; milliseconds) is the time from the application of an excitation pulse to the application of the next pulse. It determines how much longitudinal magnetization recovers between each pulse.	number												
+imaging_file	scan_id	The identification number for a stack of images generated during a single scan.	string												
+imaging_file	study_date			_definitions.yaml#/datetime											
+imaging_file	ImageType	The ImageType specified for a DICOM file.	string												
+imaging_file	ManufacturerModelName	Manufacturer's model name of the equipment that produced the composite instances. Corresponds to DICOM Tag 0008, 1090 Manufacturers Model Name.	string												
+imaging_file	ScanningSequence	Description of the type of data acquired. Corresponds to DICOM Tag 0018, 0020 Scanning Sequence.	string												
+imaging_file	SequenceVariant	Variant of the ScanningSequence. Corresponds to DICOM Tag 0018, 0021 Sequence Variant.	string												
+imaging_file	ScanOptions	Parameters of ScanningSequence. Corresponds to DICOM Tag 0018, 0022 Scan Options.	string												
+imaging_file	MRAcquisitionType	Identification of data encoding scheme. DICOM Tag 0018, 0023.	string												
+imaging_file	SequenceName	Manufacturers designation of the sequence name. Corresponds to DICOM Tag 0018, 0024 Sequence Name.	string												
+imaging_file	RepetitionTime	The time in seconds between the beginning of an acquisition of one volume and the beginning of acquisition of the volume following it (TR). Please note that this definition includes time between scans (when no data has been acquired) in case of sparse acquisition schemes. This value needs to be consistent with the pixdim[4] field (after accounting for units stored in xyzt_units field) in the NIfTI header. This field is mutually exclusive with VolumeTiming and is derived from DICOM Tag 0018, 0080 and converted to seconds.	number												
+imaging_file	EchoTime	Time in ms between the middle of the excitation pulse and the peak of the echo produced (kx=0). In the case of segmented k-space, the TE(eff) is the time between the middle of the excitation pulse to the peak of the echo that is used to cover the center of k-space (i.e.,-kx=0, ky=0). DICOM Tag 0018, 0081.	number												
+imaging_file	InversionTime	The inversion time (TI) for the acquisition, specified in seconds. Inversion time is the time after the middle of inverting RF pulse to middle of excitation pulse to detect the amount of longitudinal magnetization. Corresponds to DICOM Tag 0018, 0082 Inversion Time (please note that the DICOM term is in milliseconds not seconds).	number												
+imaging_file	NumberOfAverages	Number of times a given pulse sequence is repeated before any parameter is changed. DICOM Tag 0018, 0083.	number												
+imaging_file	ImagingFrequency	Imaging Frequency	number												
+imaging_file	MagneticFieldStrength	Nominal field strength of MR magnet in Tesla. DICOM Tag 0018, 0087	number												
+imaging_file	NumberOfPhaseEncodingSteps	Total number of lines in k-space in the 'y' direction collected during acquisition. DICOM Tag 0018, 0089.	number												
+imaging_file	EchoTrainLength	Number of lines in k-space acquired per excitation of the same volume regardless of the type of echo or the number of frames derived from them. DICOM Tag 0018, 0091.	number												
+imaging_file	PercentSampling	Fraction of acquisition matrix lines acquired, expressed as a percent. DICOM Tag 0018, 0093	number												
+imaging_file	PercentPhaseFieldOfView	Ratio of field of view dimension in phase direction to field of view dimension in frequency direction, expressed as a percent. DICOM Tag 0018, 0094.	number												
+imaging_file	PixelBandwidth	Reciprocal of the total sampling period, in hertz per pixel. DICOM Tag 0018, 0095.	number												
+imaging_file	AccelerationFactorPE	Acceleration factor in the phase encode direction.	number												
+imaging_file	AccelNumReferenceLines	Acceleration number of reference lines.	number												
+imaging_file	TotalScanTimeSec	Total time of the scan in seconds.	number												
+imaging_file	ReceiveCoilName	Information describing the receiver coil. Corresponds to DICOM Tag 0018, 1250 Receive Coil Name, although not all vendors populate that DICOM Tag, in which case this field can be derived from an appropriate private DICOM field.	string												
+imaging_file	DeviceSerialNumber	The device serial number.	string												
+imaging_file	SoftwareVersions	Manufacturers designation of software version of the equipment that produced the composite instances. Corresponds to DICOM Tag 0018, 1020 Software Versions.	string												
+imaging_file	ProtocolName	Description of the conditions under which the Series was performed. DICOM Tag 0018, 1030.	string												
+imaging_file	TransmitCoilName	Name of transmit coil used. DICOM Tag 0018, 1251.	string												
+imaging_file	AcquisitionMatrix	Dimensions of the acquired frequency phase data before reconstruction. Multi-valued (frequency, rowsfrequency, columnsphase, rowsphase) columns. DICOM Tag 0018, 1310.	string												
+imaging_file	InPlanePhaseEncodingDirection	The axes of the in-plane phase encoding with respect to the frame. DICOM Tag 0018, 1312.	string												
+imaging_file	FlipAngle	Flip angle for the acquisition, specified in degrees. DICOM Tag 0018, 1314 Flip Angle.	number												
+imaging_file	VariableFlipAngleFlag	Flip angle variation applied during image acquisition. DICOM Tag 0018, 1315.	string												
+imaging_file	PatientPosition	Description of imaging subject's position relative to the equipment. DICOM Tag 0018, 5100	string												
+imaging_file	PhaseEncodingDirection	Possible values are i, j, k, i-, j-, k-. The letters i, j, k correspond to the first, second and third axis of the data in the NIFTI file. The polarity of the phase encoding is assumed to go from zero index to maximum index unless - sign is present (then the order is reversed - starting from the highest index instead of zero). PhaseEncodingDirection is defined as the direction along which phase is was modulated which may result in visible distortions. Note that this is not the same as the DICOM term InPlanePhaseEncodingDirection which can have ROW or COL values. This parameter is REQUIRED if corresponding fieldmap data is present or when using multiple runs with different phase encoding directions (which can be later used for field inhomogeneity correction).	string												
 study	associated_study	The submitter_id or id for any study with which this study is associated, paired, or matched.	string												
+study	created_datetime			_definitions.yaml#/datetime											
 study	data_description	A brief, free-text description of the data being provided for this study.	string												
+study	id			_definitions.yaml#/UUID											
 study	longitudinal	Indicates whether the study has longitudinal or time-series data	boolean												
+study	project_id			_definitions.yaml#/project_id											
+study	state			_definitions.yaml#/state											
 study	study_description	A brief, free-text description of the study being performed.	string												
 study	study_design	Summary of the goals the study is designed to discover. General description of the study's place in relation to a clinical application.	enum					Analytical | Case-Control Cohort Study | Case-Control Cross-Sectional Study | Case-Control Cross-Sequential Study | Case-Control Longitudinal Study | Case-study | Clinical | Clinical Assay | Clinical Utility | Experimental with Random Assignment | Field Experiment | Meta-analysis | Naturalistic Observation | Observational Cohort Study | Observational Cross-Sectional Study | Observational Longitudinal Study | Observational Study | Pre-Analytical | Research/Early Development | Survey 							
 study	study_objective	The general objective of the study. What the study hopes to discover or determine through testing.	enum					Accuracy | Interference | Limit of Detection | Precision (Repeatability) | Precision (Reproducibility) | Specificity/Sensitivity | Stability 							
 study	study_setup	A high level description of the setup used to achieve the study objectives.	enum					Detection/Enumeration/Isolation | Genetic Analysis 							
+study	submitter_id	A project-specific identifier for a node. This property is the calling card/nickname/alias for a unit of submission. It can be used in place of the UUID for identifying or recalling a node.	string												
 study	type	The node_id of this node.	enum					study 							
-study	id			_definitions.yaml#/UUID											
-study	submitter_id	"A project-specific identifier for a node. This property is the calling card/nickname/alias for a unit of submission. It can be used in place of the UUID for identifying or recalling a node.
-"	string												
-study	state			_definitions.yaml#/state											
-study	project_id			_definitions.yaml#/project_id											
-study	created_datetime			_definitions.yaml#/datetime											
 study	updated_datetime			_definitions.yaml#/datetime											
 derived_image	atlas	Atlas used for data output from scans.	string												
 derived_image	data_category		string	_terms.yaml#/data_category											
-derived_image	data_format		enum	_terms.yaml#/data_format				DICOM/DCM | GIF | JPEG | PNG | TIF 							
-derived_image	data_type		enum	_terms.yaml#/data_type				Amygdala Nuclei | Cortical | Cortical Thickness | DTI Analysis | Hippocampal Subfield | Resting State | Subcortical GWAS Cortical GWAS | Subcortical GWAS DTI GWAS | Subcortical GWAS Hippocampal Subfield GWAS | Subcortical GWAS Resting State Canonical Network | Subcortical GWAS Resting State Connectomic Network | Subcortical GWAS Resting State Dynamic Functional | Subcortical GWAS Resting State GWAS | Subcortical GWAS Resting State Machine Learning | Subcortical Volume | Surface Area 							
+derived_image	data_format		string	_terms.yaml#/data_format											
+derived_image	data_type		string	_terms.yaml#/data_type											
 derived_image	derivation_method	The name and version of the method, script or workflow used to generate the derived or combined image (also see 'workflow_type').	string												
 derived_image	scan_identifier	Identifier given to this scan.	string												
-derived_image	workflow_type		enum	_terms.yaml#/workflow_type				Amygdala Nuclei | Combining Image Slices | ENIGMA Cortical Thickness/Surface Area | ENIGMA DTI Analysis | ENIGMA Hippocampal Subfield | ENIGMA Resting State (seed/dual regression) | ENIGMA Subcortical Volume | Subcortical GWAS Cortical GWAS | Subcortical GWAS DTI GWAS | Subcortical GWAS Hippocampal Subfield GWAS | Subcortical GWAS Resting State Canonical Network | Subcortical GWAS Resting State Connectomic Network | Subcortical GWAS Resting State Dynamic Functional | Subcortical GWAS Resting State GWAS | Subcortical GWAS Resting State Machine Learning 							
-derived_image	workflow_link	A hyperlink or storage location for the workflow used.	string												
-derived_image	workflow_version	The version number of the workflow.	string												
-derived_image	workflow_start_datetime	The datetime the workflow started.	string												
 derived_image	workflow_end_datetime	The datetime the workflow ended.	string												
+derived_image	workflow_link	A hyperlink or storage location for the workflow used.	string												
+derived_image	workflow_start_datetime	The datetime the workflow started.	string												
+derived_image	workflow_type		string	_terms.yaml#/workflow_type											
+derived_image	workflow_version	The version number of the workflow.	string												
 lab_test	abnormal_test_action_taken	Abnormal_Laboratory_Tests_(Form_6003) - Action Taken Following Lab Results	enum					Change In Dosing Schedule | Discontinuation of Experimental Drugs | Observe | Reduction In Dosage 							
 lab_test	abnormal_test_exp_meds	Abnormal_Laboratory_Tests_(Form_6003) - Related To Experimental Medication	enum					Definitely Related | Possibly Related | Probably Not Related | Probably Related 							
 lab_test	abnormal_test_health_risk	Abnormal_Laboratory_Tests_(Form_6003) - Health Risk	enum					Poses Definite Health Risks | Poses No Health Risks | Poses Possible Health Risks 							
 lab_test	abnormal_test_nonexp_meds	Abnormal_Laboratory_Tests_(Form_6003) - Related To Nonexperimental Medication	enum					Definitely Related | Possibly Related | Probably Not Related | Probably Related 							
 lab_test	abnormal_test_severity	Abnormal_Laboratory_Tests_(Form_6003) - Severity	enum					Mild | Moderate | Severe 							
-lab_test	analyte_name	The analyte, biological molecule or biomarker that was tested.	enum					3-methoxytyramine | Abeta 42 | Absolute Neutrophil | Activated Partial Thromboplastin Time (APTT-QT) | Alanine Aminotransferase | Albumin | Alkaline Phosphatase (ALK) | Alpha Fetoprotein | Alpha-synuclein | Alpha-tocopherol | Alpha-tocopherol 4 Weeks After Treatment | Alpha-tocopherol Baseline | Alpha-tocopherol On Treatment | Amyloid-Beta | Anti-Alpha-synuclein Antibody | Anti-alpha synuclein IgG Fibrils | Anti-alpha synuclein IgG Monomers | Apolipoprotein A1 | Aspartate transaminase (AST/SGOT) | Bands | Basic Fibroblast Growth Factor (FGF2) | Basophil | Beta 2 Microglobulin | Beta hCG | Bicarbonate | Biopterin | Blood | Blood Urea Nitrogen | Brain-Derived Neurotrophic Factor | C-Reactive Protein | C-X-C Motif Chemokine 10 (CXCL10) | CA 125 | CEA | CKMB | CRP40 Expression | CSF Pressure | Calcium | Carbon Dioxide | Cast | Cellularity | Chemokine (C-C Motif) Ligand 11 (CCL11) | Chemokine (C-C Motif) Ligand 5 (CCL5) | Chemokine (C-X-C Motif) Ligand 9 (CXCL9) | Chloride | Circulating Brain-Enriched miRNA | Coagulation Proteins | Creatine Kinase | Creatinine | Dihydroxyphenylacetic Acid | Dopamine | Dopamine-3-sulfate | ENA 78 | Electrolytes | Eosinophil | Epidermal Growth Factor (EGF) | FABP | Factor VII | Ferric Reducing Antioxidant Power (FRAP) | G-CSF | GBA Enzymatic Activity | GH | GM-CSF | Gamma Globulin | Gamma-glutamyl transferase (GGT) | Gamma-tocopherol | Glucose | Glutamine | HDL Cholesterol | Hematocrit | Hematuria | Hemoglobin | Homovanillic Acid | Homovanillol | Human Chorionic Gonadotropin | ICAM-1 | IGF-1 | IL-10 | IL-12 p40 | IL-12 p70 | IL-13 | IL-15 | IL-16 | IL-17A | IL-18 | IL-1RA | IL-1alpha | IL-1beta | IL-2 | IL-3 | IL-4 | IL-5 | IL-6 | IL-7 | IL-8 | IL-9 | IgE | Immune Markers | Immunoglobulin A | Immunoglobulin G | Immunoglobulin M | Inflammatory Cytokines | Insulin | Interferon Alpha 2 | Interferon Beta | Ketones | LDL Cholesterol | LRRK2 Enzymatic Activity | Lactate Dehydrogenase | Leptin | Leucine-rich repeat kinase 2 (LRRK2) | Leukocytes | Luteinizing Hormone | Lymphoblasts | Lymphocytes | Lymphotactin | Lysosomal Enzyme Activity | M Protein | M-CSF | MCP-1 | MDC | MIP-1 alpha | MIP-1 beta | MMP-3 | MMP-9 | MRM Combination | Mean Corpuscular Volume | Mean Corpusular Hemoglobin (MCH) | Met-Enkephelin | Metabolites | Metamyelocytes | Monocytes | Myeloblasts | Myelocytes | N-acetylspermidine | Neopterin | Neurofilament Light (NFL) | Neutrophil Bands | Neutrophils (Pct) | Not Applicable | Not Reported | PD2 Peptoid | PSA-f | Phosphorus | Phosphorylated Tau Protein (p-tau) | Platelet Derived Growth Factor (PDGF) | Platelets | Polymorphonuclear Leukocyte (PMN) | Potassium | Prolymphocytes | Promonocytes | Promyelocytes | Protein | Prothrombin Time | Pyuria | RBC Morphology | RNA (specify) | Red Blood Cells | SCF | Segmented Neutrophil | Ser(P)-1292 LRRK2 | Serum Free Immunoglobulin Light Chain, Kappa | Serum Free Immunoglobulin Light Chain, Lambda | Serum Free Immunoglobulin Light Chain, NOS | Sodium | Somatostatin | Specific Gravity | T3 | T4 | TF | TNF-alpha | TNF-beta | TPO | TSG101 | TSH | Testosterone | Thyroid Stimulating Hormone | Tocopherol | Total Bilirubin | Total Cholesterol | Total Glucose | Total Lipids | Total Protein | Total Tau Protein (t-tau) | Triglycerides | Troponin | Unknown | Urate | Urate Purine | Urea Nitrogen | Uric Acid | Urine Heme | Vascular Endothelial Growth Factor (VEGF) | Vitamin E | White Blood Cells | Xanthine | microRNA (specify) | mtDNA85 | p-Tau181P | pH 							
+lab_test	analyte_name	The analyte, biological molecule or biomarker that was tested.	string												
 lab_test	assay_kit_name	Name of the assay kit used.	string												
 lab_test	assay_kit_vendor	Vendor that provided the assay kit.	string												
 lab_test	assay_kit_version	Version of the assay kit used.	string												
@@ -101,7 +130,7 @@ lab_test	hematology_test_interpretation	Overall Hematology Interpretation	enum		
 lab_test	high_range	Lab Test High Range	number												
 lab_test	lab_result_changed	Result Has Changed From The Value Reported On The 1st Visit (DELTA)	string												
 lab_test	low_range	Lab Test Low Range	number												
-lab_test	sample_composition	The composition or type of the sample or biological specimen taken from a study subject used for the test	enum					Blood | Bone Marrow | Buccal Mucosa | Buffy Coat | Cerebrospinal Fluid | Connective Tissue | Embryonic Fluid | Embryonic Tissue | Feces | Granulocyte | Muscle Tissue | Nerve Tissue | Not Applicable | Not Reported | Oral Swab | Other (specify) | Peritoneal Fluid | Plasma | Pleural Fluid | Saliva | Serum | Skin | Soft Tissue | Tissue, NOS | Tumor | Unknown | Urine | Whole Blood 							
+lab_test	sample_composition	The composition or type of the sample or biological specimen taken from a study subject used for the test	string												
 lab_test	sample_composition_other	If 'other' was chosen for 'sample_composition', the type or composition of the sample or biological specimen taken from a study subject used for the test	string												
 lab_test	slope	CSF Slope (Unknown Units)	number												
 lab_test	somatos_srif	Somatos SRIF	integer												
@@ -110,10 +139,10 @@ lab_test	test_name	The name of the laboratory test	string
 lab_test	test_out_of_range_alert	Out Of Range Alert	string												
 lab_test	test_panel	The name of the laboratory test panel	string												
 lab_test	test_project_id	The identifier of a project for the laboratory test	string												
-lab_test	test_result	The categorical result of the laboratory test.	enum					1 plus | 2 plus | 3 plus | Abnormal | Above Detection Limit | Anisocytosis | Below Detection Limit | Borderline | Clinically Significant Abnormal | Elliptocytosis | Equivocal | H | HP | HT | Hypochromic | L | LP | LT | Macrocytic | Microcytic | Negative | No | No Review Required | Normal | Normocytic | Not Identified w/in Stability | Not Reported | Poikilocytosis | Polychromatophilia | Positive | Smudge Cells | T | Too High | Too Low | Toxic Granulation | Trace | Unknown | Yes 							
+lab_test	test_result	The categorical result of the laboratory test.	string												
 lab_test	test_status	Abnormal_Laboratory_Tests_(Form_6003) - Status	enum					Active | Inactive 							
-lab_test	test_type	The general type or category of the laboratory test	enum					Abnormal Laboratory Test | Blood Chemistry Test | Cerebrospinal Fluid Test | Coagulation Panel | Complete Blood Count | Cultures | Hematology Test | Lipid Panel | Liver Panel | Not Applicable | Selected Biomarker Test | Serum Test | Urinalysis 							
-lab_test	test_units	The units corresponding to a test_value for a test_analyte_type	enum					Array Signal (log2) | Average Ct | Cell Count | Copy Number per 25ng RNA | Cycle threshold (Ct) | Normalized Ion Intensity by Endogenous Arginine and Autoscaled | Optical Density | Other (specify) | Pct | SD | Standard Deviation Ct | U/mL | Units of Activity | cells/microliter | copies/microliter | counts | katal | mM | mg/dL | mg/mL | micrograms/mL | micromoles/g/h | nM | ng/mL | pg/mL | uIU/mL 							
+lab_test	test_type	The general type or category of the laboratory test	string												
+lab_test	test_units	The units corresponding to a test_value for a test_analyte_type	string												
 lab_test	test_units_other	The units corresponding to a test_value for a test_analyte_type if 'Other (specify)' was chosen for 'test_units	string												
 lab_test	test_value	The numerical value representing the laboratory test result for the analyte_type	number												
 lab_test	text_if_repeated	Text If Repeated	string												
@@ -122,45 +151,57 @@ lab_test	which_visit_being_performed	Blood Chemistry And Hematology Test- Which 
 lab_test	year_of_abnormal_test	Abnormal_Laboratory_Tests_(Form_6003)- Lab Year	integer												
 lab_test	year_of_test_form	Abnormal_Laboratory_Tests_(Form_6003)- Year Of Form 6003	integer												
 lab_test	year_tests_obtained	Year Laboratory Tests Obtained	integer												
-medical_condition	symptom	List any symptoms relevant to listed condition.	string												
-medical_condition	comorbidity	List any comorbidities with respect to the primary diagnosis.	string												
-medical_condition	childhood_trauma_diagnosis	The determined diagnosis of childhood trauma.	string												
-medical_condition	childhood_trauma_scale	The scale used to determine the childhood trauma score.	string												
-medical_condition	childhood_trauma_score	Score given to quantify the patient's level of childhood trauma at the time of diagnosis.	string												
-medical_condition	depression_diagnosis	The patient's depression diagnosis.	string												
-medical_condition	depression_diagnosis_scale	The scale used to diagnose the patient's depression.	string												
-medical_condition	depression_severity	The severity of the patient's depression.	string												
-medical_condition	substance_abuse_scale	The scale used to determine the patient's substance abuse score.	string												
-medical_condition	substance_abuse_score	Score given to quantify the patient's substance abuse at the time of diagnosis.	string												
-medical_condition	tbi_diagnosis	The patient's diagnosis for a traumatic brain injury.	string												
-medical_condition	tbi_type	The type of TBI with which the patient has been diagnosed.	string												
-medical_condition	total_tbi	The total number of TBIs that the patient has experienced.	integer												
-medical_condition	year_of_diagnosis	Year of this diagnosis record.	integer												
-medical_condition	adult_trauma_diagnosis	Diagnosis of adult trauma in the patient.	string												
-medical_condition	adult_trauma_scale	Scale used to determine the adult trauma score.	string												
-medical_condition	adult_trauma_score	Score given to quantify the patient's level of adult trauma at the time of diagnosis.	string												
-medical_condition	age_at_diagnosis	The age of the subject when the primary diagnosis was determined. See age_at_diagnosis_gt89 if the age is over 89 years.	integer			89	0								
-medical_condition	age_at_diagnosis_gt89	Indicates whether the age of the subject when the primary diagnosis was determined is greater than 89 years.	enum					No | Yes 							
-medical_condition	age_at_onset	The age at which the subject acquired, developed, or first experienced symptoms of the primary disease or disorder. If age is greater than 89 years, see age_at_onset_gt89.	number			89	0								
-medical_condition	age_at_onset_gt89	Indicate whether the 'Age at onset (ageonset) in years' is greater than 89 years.	enum					No | Yes 							
-medical_condition	days_to_diagnosis	Number of days between the date used for index and the date of the patient's diagnosis.	integer												
-medical_condition	diagnostic_code	A code used to describe the patient's diagnosis (e.g., ICD code).	string												
-medical_condition	diagnostic_code_type	Text term used to describe the code used to describe the patient's diagnosis (e.g., International Classification of Diseases or ICD).	string												
-medical_condition	neurological_disorders	Specify any neurological disorder(s).	string												
-medical_condition	pd_diagnosis_category	Parkinson's Disease Category.	enum					Accepted PD By Diagnosis Form | Definitely Not PD By Autopsy | Definitely PD By Autopsy | Definitely PD By Diagnosis Form | Not PD by Diagnosis Form | Undetermined 							
-medical_condition	pd_most_affected_side_onset	Side most affected at PD onset	enum					Left | Right | Symmetric 							
-medical_condition	pd_primary_diagnosis	Most Likely Primary Diagnosis	enum					Alzheimer's Disease | Dementia With Lewy Bodies | Dopa-Responsive Dystonia | Essential Tremor | Hemiparkinson/Hemiatrophy Syndrome | Idiopathic PD | Motor Neuron Disease With Parkinsonism | Multiple System Atrophy | Neuroleptic-induced Parkinsonism | No PD Nor Other Neurological Disorder | Other Neurological Disorder(s) (Specify) | Prodromal Motor PD | Prodromal Non-motor PD | Progressive Supranuclear Palsy | Psychogenic Illness | Spinocerebellar Ataxia (SCA) | Vascular Parkinsonism 							
-medical_condition	pd_probability	Probability that individual has Parkinson's disease (PROBIPD)	enum					0 Pct - 9 Pct | 10 Pct - 49 Pct | 50 Pct - 89 Pct | 90 Pct - 100 Pct 							
-medical_condition	persistent_asymmetry_side_onset_most	Persistent asymmetry affecting the side of onset most (DCASYMM).	enum					No | Not Applicable | Yes 							
-medical_condition	primary_diagnosis		enum	_terms.yaml#/primary_diagnosis				Alcohol Abuse | Alzheimer's Disease | Anxiety | Attention Deficit Hyperactivity Disorder (ADHD) | Bipolar Disorder | Cancer | Depression | Drug Abuse | Drug- or Toxin-induced Parkinsonism | Healthy | Healthy Control | Lewy-body Disease | Parkinson's Disease | Parkinsonism-dementia complex of Guam | Post-traumatic Stress Disorder (PTSD) | Post-traumatic Parkinsonism | Prodromal | Progressive Supranuclear Palsy | SWEDD | Schizophrenia | Trauma | Traumatic Brain Injury/Post-Concussion Syndrome | Viral Parkinsonism 							
-medical_condition	ptsd_diagnosis_current	The patient's PTSD diagnosis at the time of diagnosis.	string												
-medical_condition	ptsd_diagnosis_lifetime	The patient's PTSD diagnosis over the course of their lifetime.	string												
-medical_condition	ptsd_diagnosis_scale	The scale used to diagnose the patient with PTSD.	string												
-medical_condition	ptsd_severity_current	The patient's PTSD severity at the time of diagnosis.	string												
-medical_condition	ptsd_severity_lifetime	The patient's PTSD severity over the course of their lifetime.	string												
-medical_condition	ptsd_severity_scale	The scale used to determine the severity of the patient's PTSD.	string												
-medical_condition	ptsd_symptom_duration	The number of years the patient has experienced PTSD symptoms.	number												
-medical_condition	organ_system	The classification of organ system affected by the medical condition.	enum					Blood and lymphatic system disorders | Cardiac disorders | Congenital, familial and genetic disorders | Ear and labyrinth disorders | Endocrine disorders | Eye disorders | Gastrointestinal disorders | General disorders and administration site conditions | Hepatobiliary disorders | Immune system disorders | Infections and infestations | Injury, poisoning and procedural complications | Investigations | Metabolism and nutrition disorders | Musculoskeletal and connective tissue disorders | Neoplasms benign, malignant and unspecified (incl cysts and polyps) | Nervous system disorders | Pregnancy, puerperium and perinatal conditions | Psychiatric disorders | Renal and urinary disorders | Reproductive system and breast disorders | Respiratory, thoracic and mediastinal disorders | Skin and subcutaneous tissue disorders | Social Circumstances | Surgical and medical procedures | Vascular disorders 							
+expression_array	data_category		enum	_terms.yaml#/data_category				Expression Array Data 							
+expression_array	data_format		enum	_terms.yaml#/data_format				CEL | TSV | TXT 							
+expression_array	data_type		enum	_terms.yaml#/data_type				Expression Raw Intensity | Expression Array Variation 							
+expression_array	experimental_strategy		enum	_terms.yaml#/experimental_strategy				Expression Array | Expression Array Genotyping 							
+expression_array	platform		string	_terms.yaml#/platform											
+expression_array	version	The version of the expression array file (e.g., version 3 for a CEL file).	string												
+expression_array	workflow_type		enum	_terms.yaml#/workflow_type				Expression Array 							
+expression_array	workflow_link	If a specific workflow or pipeline was used to generate the file (aggregation/normalization workflow), provide the name, location or link to the workflow used.	string												
+expression_array	workflow_version	Major version for a workflow.	string												
+expression_array	workflow_start_datetime			_definitions.yaml#/datetime											
+expression_array	workflow_end_datetime			_definitions.yaml#/datetime											
+condition	adult_trauma_diagnosis	Diagnosis of adult trauma in the patient.	string												
+condition	adult_trauma_scale	Scale used to determine the adult trauma score.	string												
+condition	adult_trauma_score	Score given to quantify the patient's level of adult trauma at the time of diagnosis.	string												
+condition	age_at_diagnosis	The age of the subject when the primary diagnosis was determined. See age_at_diagnosis_gt89 if the age is over 89 years.	integer			89	0								
+condition	age_at_diagnosis_gt89	Indicates whether the age of the subject when the primary diagnosis was determined is greater than 89 years.	enum					No | Yes 							
+condition	age_at_onset	The age at which the subject acquired, developed, or first experienced symptoms of the primary disease or disorder. If age is greater than 89 years, see age_at_onset_gt89.	number			89	0								
+condition	age_at_onset_gt89	Indicate whether the 'Age at onset (ageonset) in years' is greater than 89 years.	enum					No | Yes 							
+condition	childhood_trauma_diagnosis	The determined diagnosis of childhood trauma.	string												
+condition	childhood_trauma_scale	The scale used to determine the childhood trauma score.	string												
+condition	childhood_trauma_score	Score given to quantify the patient's level of childhood trauma at the time of diagnosis.	string												
+condition	comorbidity	List any comorbidities with respect to the primary diagnosis.	string												
+condition	days_to_diagnosis	Number of days between the date used for index and the date of the patient's diagnosis.	integer												
+condition	depression_diagnosis	The patient's depression diagnosis.	string												
+condition	depression_diagnosis_scale	The scale used to diagnose the patient's depression.	string												
+condition	depression_severity	The severity of the patient's depression.	string												
+condition	diagnostic_code	A code used to describe the patient's diagnosis (e.g., ICD code).	string												
+condition	diagnostic_code_type	Text term used to describe the code used to describe the patient's diagnosis (e.g., International Classification of Diseases or ICD).	string												
+condition	neurological_disorders	Specify any neurological disorder(s).	string												
+condition	organ_system	The classification of organ system affected by the medical condition.	enum					Blood and lymphatic system disorders | Cardiac disorders | Congenital, familial and genetic disorders | Ear and labyrinth disorders | Endocrine disorders | Eye disorders | Gastrointestinal disorders | General disorders and administration site conditions | Hepatobiliary disorders | Immune system disorders | Infections and infestations | Injury, poisoning and procedural complications | Investigations | Metabolism and nutrition disorders | Musculoskeletal and connective tissue disorders | Neoplasms benign, malignant and unspecified (incl cysts and polyps) | Nervous system disorders | Pregnancy, puerperium and perinatal conditions | Psychiatric disorders | Renal and urinary disorders | Reproductive system and breast disorders | Respiratory, thoracic and mediastinal disorders | Skin and subcutaneous tissue disorders | Social Circumstances | Surgical and medical procedures | Vascular disorders 							
+condition	pd_diagnosis_category	Parkinson's Disease Category.	enum					Accepted PD By Diagnosis Form | Definitely Not PD By Autopsy | Definitely PD By Autopsy | Definitely PD By Diagnosis Form | Not PD by Diagnosis Form | Undetermined 							
+condition	pd_most_affected_side_onset	Side most affected at PD onset	enum					Left | Right | Symmetric 							
+condition	pd_primary_diagnosis	Most Likely Primary Diagnosis	enum					Alzheimer's Disease | Dementia With Lewy Bodies | Dopa-Responsive Dystonia | Essential Tremor | Hemiparkinson/Hemiatrophy Syndrome | Idiopathic PD | Motor Neuron Disease With Parkinsonism | Multiple System Atrophy | Neuroleptic-induced Parkinsonism | No PD Nor Other Neurological Disorder | Other Neurological Disorder(s) (Specify) | Prodromal Motor PD | Prodromal Non-motor PD | Progressive Supranuclear Palsy | Psychogenic Illness | Spinocerebellar Ataxia (SCA) | Vascular Parkinsonism 							
+condition	pd_probability	Probability that individual has Parkinson's disease (PROBIPD)	enum					0 Pct - 9 Pct | 10 Pct - 49 Pct | 50 Pct - 89 Pct | 90 Pct - 100 Pct 							
+condition	persistent_asymmetry_side_onset_most	Persistent asymmetry affecting the side of onset most (DCASYMM).	enum					No | Not Applicable | Yes 							
+condition	primary_diagnosis		string	_terms.yaml#/primary_diagnosis											
+condition	ptsd_diagnosis_current	The patient's PTSD diagnosis at the time of diagnosis.	string												
+condition	ptsd_diagnosis_lifetime	The patient's PTSD diagnosis over the course of their lifetime.	string												
+condition	ptsd_diagnosis_scale	The scale used to diagnose the patient with PTSD.	string												
+condition	ptsd_severity_current	The patient's PTSD severity at the time of diagnosis.	string												
+condition	ptsd_severity_lifetime	The patient's PTSD severity over the course of their lifetime.	string												
+condition	ptsd_severity_scale	The scale used to determine the severity of the patient's PTSD.	string												
+condition	ptsd_symptom_duration	The number of years the patient has experienced PTSD symptoms.	number												
+condition	substance_abuse_scale	The scale used to determine the patient's substance abuse score.	string												
+condition	substance_abuse_score	Score given to quantify the patient's substance abuse at the time of diagnosis.	string												
+condition	symptom	List any symptoms relevant to listed condition.	string												
+condition	tbi_diagnosis	The patient's diagnosis for a traumatic brain injury.	string												
+condition	tbi_type	The type of TBI with which the patient has been diagnosed.	string												
+condition	total_tbi	The total number of TBIs that the patient has experienced.	integer												
+condition	year_of_diagnosis	Year of this diagnosis record.	integer												
+read_group	RIN		number	_terms.yaml#/RIN											
 read_group	adapter_name		string	_terms.yaml#/adapter_name											
 read_group	adapter_sequence		string	_terms.yaml#/adapter_sequence											
 read_group	base_caller_name		string	_terms.yaml#/base_caller_name											
@@ -172,76 +213,109 @@ read_group	fragment_mean_length		number	_terms.yaml#/fragment_mean_length
 read_group	fragment_minimum_length		integer	_terms.yaml#/fragment_minimum_length											
 read_group	fragment_standard_deviation_length		number	_terms.yaml#/fragment_standard_deviation_length											
 read_group	includes_spike_ins		boolean	_terms.yaml#/includes_spike_ins											
-read_group	instrument_model		enum					454 GS FLX Titanium | AB SOLiD 4 | AB SOLiD 2 | AB SOLiD 3 | Complete Genomics | Illumina HiSeq X Ten | Illumina HiSeq X Five | Illumina Genome Analyzer II | Illumina Genome Analyzer IIx | Illumina HiSeq 2000 | Illumina HiSeq 2500 | Illumina HiSeq 4000 | Illumina MiSeq | Illumina NextSeq | Ion Torrent PGM | Ion Torrent Proton | PacBio RS | Other 							
+read_group	instrument_model		string												
 read_group	is_paired_end		boolean	_terms.yaml#/is_paired_end											
 read_group	lane_number		integer	_terms.yaml#/lane_number											
 read_group	library_name		string	_terms.yaml#/library_name											
+read_group	library_preparation_kit_catalog_number		string	_terms.yaml#/library_preparation_kit_catalog_number											
 read_group	library_preparation_kit_name		string	_terms.yaml#/library_preparation_kit_name											
 read_group	library_preparation_kit_vendor		string	_terms.yaml#/library_preparation_kit_vendor											
-read_group	library_preparation_kit_catalog_number		string	_terms.yaml#/library_preparation_kit_catalog_number											
 read_group	library_preparation_kit_version		string	_terms.yaml#/library_preparation_kit_version											
-read_group	library_selection		enum	_terms.yaml#/library_selection				Hybrid Selection | PCR | Affinity Enrichment | Poly-T Enrichment | Random | rRNA Depletion | miRNA Size Fractionation | Other 							
-read_group	library_strand		enum	_terms.yaml#/library_strand				Unstranded | First Stranded | Second Stranded | Not Applicable 							
-read_group	library_strategy		enum	_terms.yaml#/library_strategy				WGS | WXS | RNA-Seq | ChIP-Seq | miRNA-Seq | Bisulfite-Seq | Targeted Sequencing | Validation | Amplicon | Other 							
+read_group	library_selection		string	_terms.yaml#/library_selection											
+read_group	library_strand		enum	_terms.yaml#/library_strand				First Stranded | Not Applicable | Second Stranded | Unstranded 							
+read_group	library_strategy		string	_terms.yaml#/library_strategy											
 read_group	multiplex_barcode		string	_terms.yaml#/multiplex_barcode											
-read_group	platform		enum	_terms.yaml#/platform				Illumina | SOLiD | LS454 | Ion Torrent | Complete Genomics | PacBio | Other 							
+read_group	platform		string	_terms.yaml#/platform											
 read_group	read_group_name	Read Group Name	string												
 read_group	read_length	Length of the reads	integer												
-read_group	RIN		number	_terms.yaml#/RIN											
 read_group	sequencing_center		string	_terms.yaml#/sequencing_center											
 read_group	sequencing_date			_definitions.yaml#/datetime											
 read_group	size_selection_range		string	_terms.yaml#/size_selection_range											
 read_group	spike_ins_concentration		string	_terms.yaml#/spike_ins_concentration											
 read_group	spike_ins_fasta		string	_terms.yaml#/spike_ins_fasta											
-read_group	target_capture_kit		enum	_terms.yaml#/target_capture_kit_name				Custom AmpliSeq Cancer Hotspot GENIE-MDA Augmented Panel v1 - 46 Genes | Custom GENIE-DFCI OncoPanel - 275 Genes | Custom GENIE-DFCI Oncopanel - 300 Genes | Custom GENIE-DFCI Oncopanel - 447 Genes | Custom HaloPlex DLBCL Panel - 370 Genes | Custom Ion AmpliSeq Hotspot GENIE-MOSC3 Augmented Panel - 74 Genes | Custom Large Construct Capture TARGET-OS Panel - 8 Genes | Custom MSK IMPACT Panel - 341 Genes | Custom MSK IMPACT Panel - 410 Genes | Custom MSK IMPACT Panel - 468 Genes | Custom Myeloid GENIE-VICC Panel - 37 Genes | Custom PGDX SureSelect CancerSelect VAREPOP-APOLLO Panel - 203 Genes | Custom PGDX SureSelect CancerSelect VAREPOP-APOLLO Panel - 88 Genes | Custom SeqCap EZ HGSC VCRome v2.1 ER Augmented v1 | Custom SeqCap EZ HGSC VCRome v2.1 ER Augmented v2 | Custom SeqCap EZ TARGET-OS Panel - 7.0 Mb | Custom Solid Tumor GENIE-VICC Panel - 34 Genes | Custom SureSelect CGCI-BLGSP Panel - 4.6 Mb | Custom SureSelect GENIE-UHN Panel - 555 Genes | Custom SureSelect TARGET-AML_NBL_WT Panel - 2.8 Mb | Foundation Medicine T5a Panel - 322 Genes | Foundation Medicine T7 Panel - 429 Genes | Ion AmpliSeq Cancer Hotspot Panel v2 | Ion AmpliSeq Comprehensive Cancer Panel | Nextera Rapid Capture Exome v1.2 | SeqCap EZ HGSC VCRome v2.1 | SureSelect Human All Exon v3 | SureSelect Human All Exon v5 | TruSeq Amplicon Cancer Panel | TruSeq Exome Enrichment - 62 Mb | TruSight Myeloid Sequencing Panel | Not Applicable | Unknown 							
+read_group	target_capture_kit		string	_terms.yaml#/target_capture_kit_name											
 read_group	to_trim_adapter_sequence		boolean	_terms.yaml#/to_trim_adapter_sequence											
-sample	anatomic_site	The term that best describes the primary anatomic site of the collected sample.	enum					Abdomen | Abdominal Wall | Acetabulum | Adenoid | Adipose | Adrenal | Alveolar Ridge | Amniotic Fluid | Ampulla Of Vater | Anal Sphincter | Ankle | Anorectum | Antecubital Fossa | Antrum | Anus | Aorta | Aortic Body | Appendix | Aqueous Fluid | Arm | Artery | Ascending Colon | Ascending Colon Hepatic Flexure | Auditory Canal | Autonomic Nervous System | Axilla | Back | Bile Duct | Bladder | Blood | Blood Vessel | Bone | Bone Marrow | Bowel | Brain | Brain Stem | Breast | Broad Ligament | Bronchiole | Bronchus | Brow | Buccal Cavity | Buccal Mucosa | Buttock | Calf | Capillary | Cardia | Carina | Carotid Artery | Carotid Body | Cartilage | Cecum | Cell-Line | Central Nervous System | Cerebellum | Cerebral Cortex | Cerebrospinal Fluid | Cerebrum | Cervical Spine | Cervix | Chest | Chest Wall | Chin | Clavicle | Clitoris | Colon | Colon - Mucosa Only | Common Duct | Conjunctiva | Connective Tissue | Dermal | Descending Colon | Diaphragm | Duodenum | Ear | Ear Canal | Ear, Pinna (External) | Effusion | Elbow | Endocrine Gland | Epididymis | Epidural Space | Esophageal, Distal | Esophageal, Mid | Esophageal, Proximal | Esophagogastric Junction | Esophagus | Esophagus - Mucosa Only | Eye | Fallopian Tube | Femoral Artery | Femoral Vein | Femur | Fibroblasts | Fibula | Finger | Floor Of Mouth | Fluid | Foot | Forearm | Forehead | Foreskin | Frontal Cortex | Frontal Lobe | Fundus Of Stomach | Gallbladder | Ganglia | Gastroesophageal Junction | Gastrointestinal Tract | Groin | Gum | Hand | Hard Palate | Head & Neck | Head - Face Or Neck, Nos | Heart | Hepatic | Hepatic Duct | Hepatic Flexure | Hepatic Vein | Hip | Hippocampus | Humerus | Hypopharynx | Ileum | Ilium | Index Finger | Ischium | Islet Cells | Jaw | Jejunum | Joint | Kidney | Knee | Lacrimal Gland | Large Bowel | Laryngopharynx | Larynx | Leg | Leptomeninges | Ligament | Lip | Liver | Lumbar Spine | Lung | Lymph Node | Lymph Node(s) Axilla | Lymph Node(s) Cervical | Lymph Node(s) Distant | Lymph Node(s) Epitrochlear | Lymph Node(s) Femoral | Lymph Node(s) Hilar | Lymph Node(s) Iliac-Common | Lymph Node(s) Iliac-External | Lymph Node(s) Inguinal | Lymph Node(s) Internal Mammary | Lymph Node(s) Mammary | Lymph Node(s) Mesenteric | Lymph Node(s) Occipital | Lymph Node(s) Paraaortic | Lymph Node(s) Parotid | Lymph Node(s) Pelvic | Lymph Node(s) Popliteal | Lymph Node(s) Regional | Lymph Node(s) Retroperitoneal | Lymph Node(s) Scalene | Lymph Node(s) Splenic | Lymph Node(s) Subclavicular | Lymph Node(s) Submandibular | Lymph Node(s) Supraclavicular | Lymph Nodes(s) Mediastinal | Mandible | Maxilla | Mediastinal Soft Tissue | Mediastinum | Mesentery | Mesothelium | Middle Finger | Mitochondria | Muscle | Nails | Nasal Cavity | Nasal Soft Tissue | Nasopharynx | Neck | Nerve | Nerve(s) Cranial | Not Allowed To Collect | Not Reported | Occipital Cortex | Ocular Orbits | Omentum | Oral Cavity | Oral Cavity - Mucosa Only | Oropharynx | Other (specify) | Ovary | Palate | Pancreas | Paraspinal Ganglion | Parathyroid | Parotid Gland | Patella | Pelvis | Penis | Pericardium | Periorbital Soft Tissue | Peritoneal Cavity | Peritoneum | Pharynx | Pineal | Pineal Gland | Pituitary Gland | Placenta | Pleura | Popliteal Fossa | Prostate | Pylorus | Rectosigmoid Junction | Rectum | Retina | Retro-Orbital Region | Retroperitoneum | Rib | Ring Finger | Round Ligament | Sacrum | Salivary Gland | Scalp | Scapula | Sciatic Nerve | Scrotum | Seminal Vesicle | Shoulder | Sigmoid Colon | Sinus | Sinus(es), Maxillary | Skeletal Muscle | Skin | Skull | Small Bowel | Small Bowel - Mucosa Only | Small Finger | Soft Tissue | Spinal Column | Spinal Cord | Spleen | Splenic Flexure | Sternum | Stomach | Stomach - Mucosa Only | Subcutaneous Tissue | Synovium | Temporal Cortex | Tendon | Testis | Thigh | Thoracic Spine | Thorax | Throat | Thumb | Thymus | Thyroid | Tibia | Tongue | Tonsil | Tonsil (Pharyngeal) | Trachea / Major Bronchi | Transverse Colon | Trunk | Umbilical Cord | Unknown | Ureter | Urethra | Urinary Tract | Uterus | Uvula | Vagina | Vas Deferens | Vein | Venous | Vertebra | Vulva | White Blood Cells | Wrist 							
+clinical_assessment_file	data_category		string	_terms.yaml#/data_category											
+clinical_assessment_file	data_format		enum	_terms.yaml#/data_format				BAM 							
+clinical_assessment_file	data_type		enum	_terms.yaml#/data_type				Aligned Reads 							
+clinical_assessment_file	age_at_assessment	The age of the subject when the assessment was taken in years. See age_at_assessment_gt89 if the age is over 89 years.	integer			89	0								
+clinical_assessment_file	age_at_assessment_gt89	Indicates whether the age of the subject when the assessment was taken is greater than 89 years.	enum					No | Yes 							
+clinical_assessment_file	assessment_class	Classification of the clinical assessment.	string												
+clinical_assessment_file	assessment_name	The name of the clinical assessment.	string												
+clinical_assessment_file	assessment_version	The version of the clinical assessment.	string												
+clinical_assessment_file	total_score	The subject's total score on the assessment.	string												
+clinical_assessment_file	year_of_assessment	The year the asssessment was taken.	integer												
+device	days_to_device_end	The number of days between the subject's index date and the date the subject ended use of the medical device.	string												
+device	days_to_device_start	The number of days between the subject's index date and the date the subject was first exposed to the medical device.	string												
+device	device_code	A code used to describe the medical device.	string												
+device	device_manufacturer	The manufacturer of the medical device.	string												
+device	device_model	The model name or version of the medical device.	string												
+device	device_name	The name of the medical device.	string												
+device	device_type	The general classification of the medical device.	string												
+sample	anatomic_site	The term that best describes the primary anatomic site of the collected sample.	string												
 sample	anatomic_site_other	If 'Other (specify)' was chosen for 'anatomic_site', enter the anatomic site here.	string												
-sample	laterality	The side of the organ or body the biospecimen was taken from (e.g., 'Left' if 'anatomic_site' was 'Lung' and it was taken from the left lung)	enum					Bilateral | Left | Not Reported | Right | Unknown 							
-sample	sample_id	In cases where the same biospecimen is used by multiple institutions, a deidenfitied id may be provided here to tie those together. Work with your collaborators assure the same id is used for the sample in all projects.	string												
 sample	comments	General comments about the sample or sampling procedure.	string												
-sample	composition	The term that best describes the composition of the sample.	enum					Bone Marrow Components | Bone Marrow Components NOS | Buccal Cells | Buffy Coat | Cell | Cerebrospinal Fluid (CSF) | Circulating Tumor Cell (CTC) | Control Analyte | Derived Cell Line | EBV Immortalized | Fibroblasts from Bone Marrow Normal | Granulocytes | Human Original Cells | Lymphocytes | Mononuclear Cells from Bone Marrow Normal | Oral Swab | Other (specify) | Peripheral Blood Components NOS | Peripheral Blood Nucleated Cells | Peripheral Whole Blood | Plasma | Pleural Effusion | RBC-WBC | Saliva | Serum | Solid Normal Tissue | Solid Tumor Tissue | Sputum | Unknown | Urine | Whole Blood | Whole Bone Marrow 							
+sample	composition	The term that best describes the composition of the sample.	string												
 sample	composition_other		string												
 sample	days_to_collection	The number of days between the subject's Index Event and the date the sample was collected.	integer												
 sample	days_to_frozen	The number of days between the subject's Index Event and the date the sample was frozen.	integer												
 sample	days_to_shipped	The number of days between the subject's Index Event and the date the sample was shipped.	integer												
 sample	device_used	List device(s) used for procuring the sample.	string												
 sample	fasting_status	Fasting Status at the time of sample collection	enum					Fasted (Minimum Of 8 Hours) | Low Fat Diet | Not Fasted, No Low Fat Diet 							
-sample	sample_volume	The initial volume of the sample in milliliters (mL).	number												
-sample	sample_weight	The initial mass of the sample in milligrams (mg).	number												
-sample	procurement_method	The term that best describes the method used to extract the sample from the subject.	enum					Abdomino-perineal Resection of Rectum | Anterior Resection of Rectum | Aspirate | Autopsy | Biopsy | Blood Draw | Bone Marrow Aspirate | Cisternal Puncture | Core Biopsy | Cystectomy | Endo Rectal Tumor Resection | Endoscopic Biopsy | Endoscopic Mucosal Resection (EMR) | Enucleation | Excisional Biopsy | Fine Needle Aspiration | Full Hysterectomy | Gross Total Resection | Hand Assisted Laparoscopic Radical Nephrectomy | Hysterectomy NOS | Incisional Biopsy | Indeterminant | Laparoscopic Biopsy | Laparoscopic Partial Nephrectomy | Laparoscopic Radical Nephrectomy | Laparoscopic Radical Prostatectomy with Robotics | Laparoscopic Radical Prostatectomy without Robotics | Left Hemicolectomy | Lobectomy | Local Resection (Exoresection, wall resection) | Lumbar Puncture | Lumpectomy | Modified Radical Mastectomy | Needle Biopsy | Not Reported | Open Craniotomy | Open Partial Nephrectomy | Open Radical Nephrectomy | Open Radical Prostatectomy | Orchiectomy | Other (specify) | Other Surgical Resection | Pan-Procto Colectomy | Pancreatectomy | Paracentesis | Pneumonectomy | Right Hemicolectomy | Sigmoid Colectomy | Simple Mastectomy | Subtotal Resection | Surgical Resection | Thoracoscopic Biopsy | Total Colectomy | Total Mastectomy | Transplant | Transurethral resection (TURBT) | Transverse Colectomy | Tumor Resection | Unknown | Ventricular Puncture | Wedge Resection | Whipple Procedure 							
-sample	procurement_method_other	If 'Other (specify)' was chosen for 'procurement_method', specify the method of sample procurement here.	string												
+sample	laterality	The side of the organ or body the biospecimen was taken from (e.g., 'Left' if 'anatomic_site' was 'Lung' and it was taken from the left lung)	enum					Bilateral | Left | Not Reported | Right | Unknown 							
 sample	preservation_method	The text term that describes the method used to preserve the biospecimen after collection.	enum					Cryopreserved | FFPE | Fresh | Frozen | Not Reported | OCT | Snap Frozen | Unknown 							
 sample	procured_or_purchased	Was the biospecimen purchased from a vendor or procured from a study participant.	enum					Procured | Purchased 							
-sample	storage_temperature	The sample storage temperature (C)	number												
-sample	sample_container	The type of container used for sample collection.	enum					Cell Preparation Tube | EDTA Tube | Lithium Heparin Tube | Serum Separator Tube | Streck Tube 							
+sample	procurement_method	The term that best describes the method used to extract the sample from the subject.	string												
+sample	procurement_method_other	If 'Other (specify)' was chosen for 'procurement_method', specify the method of sample procurement here.	string												
+sample	sample_container	The type of container used for sample collection.	string												
+sample	sample_id	In cases where the same biospecimen is used by multiple institutions, a deidenfitied id may be provided here to tie those together. Work with your collaborators assure the same id is used for the sample in all projects.	string												
+sample	sample_volume	The initial volume of the sample in milliliters (mL).	number												
+sample	sample_weight	The initial mass of the sample in milligrams (mg).	number												
 sample	sample_year	The year the sample was obtained.	integer												
+sample	storage_temperature	The sample storage temperature (C)	number												
+sample	time_point	"Indicate a simple text term that describes the time-point at which the sample was collected (e.g., ""pre-deployment"", ""post-operation"", ""baseline"", etc.). To add more detailed longitudinal information, use the visit_id property to link to a record in the visit node."	string												
 supplementary_file	data_category		enum	_terms.yaml#/data_category				Supplementary File 							
 supplementary_file	data_description	Provide a brief description of the supplementary file.	string												
 supplementary_file	data_format		string	_terms.yaml#/data_format											
-supplementary_file	data_type		enum	_terms.yaml#/data_type				Audio | Data | Data Dictionary | Documentation | Figure | Image | Other | Software | Video 							
-unaligned_reads_file	data_category		enum	_terms.yaml#/data_category				Sequencing Data | Sequencing Reads | Raw Sequencing Data 							
+supplementary_file	data_type		string	_terms.yaml#/data_type											
+unaligned_reads_file	data_category		enum	_terms.yaml#/data_category				Raw Sequencing Data | Sequencing Data | Sequencing Reads 							
+unaligned_reads_file	data_format		enum	_terms.yaml#/data_format				BAM | FASTA | FASTQ 							
 unaligned_reads_file	data_type		enum	_terms.yaml#/data_type				Unaligned Reads 							
-unaligned_reads_file	data_format		enum	_terms.yaml#/data_format				BAM | FASTQ | FASTA 							
-unaligned_reads_file	experimental_strategy		enum	_terms.yaml#/experimental_strategy				ATAC-Seq | Bisulfite-Seq | ChIP-Seq | Low Pass WGS | miRNA-Seq | RNA-Seq | Targeted Sequencing | WGS | WXS 							
+unaligned_reads_file	experimental_strategy		enum	_terms.yaml#/experimental_strategy				ATAC-Seq | Bisulfite-Seq | ChIP-Seq | Low Pass WGS | RNA-Seq | Targeted Sequencing | WGS | WXS | miRNA-Seq 							
 unaligned_reads_file	read_pair_number		enum	_terms.yaml#/read_pair_number				R1 | R2 							
-procedure	adverse_event	Was there an adverse event related to the procedure?	enum					Yes | No | Not Reported 							
-procedure	procedure_type	"The general type of procedure (e.g., ""Surgery"")."	enum					Surgery | Biopsy | Radiation 							
-procedure	related_medications	Any medications or infusions related to the procedure like chemotherapy drugs.	string												
-procedure	anatomic_site	The term that best describes the primary anatomic site of the procedure.	enum					Abdomen | Abdominal Wall | Acetabulum | Adenoid | Adipose | Adrenal | Alveolar Ridge | Amniotic Fluid | Ampulla Of Vater | Anal Sphincter | Ankle | Anorectum | Antecubital Fossa | Antrum | Anus | Aorta | Aortic Body | Appendix | Aqueous Fluid | Arm | Artery | Ascending Colon | Ascending Colon Hepatic Flexure | Auditory Canal | Autonomic Nervous System | Axilla | Back | Bile Duct | Bladder | Blood | Blood Vessel | Bone | Bone Marrow | Bowel | Brain | Brain Stem | Breast | Broad Ligament | Bronchiole | Bronchus | Brow | Buccal Cavity | Buccal Mucosa | Buttock | Calf | Capillary | Cardia | Carina | Carotid Artery | Carotid Body | Cartilage | Cecum | Cell-Line | Central Nervous System | Cerebellum | Cerebral Cortex | Cerebrospinal Fluid | Cerebrum | Cervical Spine | Cervix | Chest | Chest Wall | Chin | Clavicle | Clitoris | Colon | Colon - Mucosa Only | Common Duct | Conjunctiva | Connective Tissue | Dermal | Descending Colon | Diaphragm | Duodenum | Ear | Ear Canal | Ear, Pinna (External) | Effusion | Elbow | Endocrine Gland | Epididymis | Epidural Space | Esophageal, Distal | Esophageal, Mid | Esophageal, Proximal | Esophagogastric Junction | Esophagus | Esophagus - Mucosa Only | Eye | Fallopian Tube | Femoral Artery | Femoral Vein | Femur | Fibroblasts | Fibula | Finger | Floor Of Mouth | Fluid | Foot | Forearm | Forehead | Foreskin | Frontal Cortex | Frontal Lobe | Fundus Of Stomach | Gallbladder | Ganglia | Gastroesophageal Junction | Gastrointestinal Tract | Groin | Gum | Hand | Hard Palate | Head & Neck | Head - Face Or Neck, Nos | Heart | Hepatic | Hepatic Duct | Hepatic Flexure | Hepatic Vein | Hip | Hippocampus | Humerus | Hypopharynx | Ileum | Ilium | Index Finger | Ischium | Islet Cells | Jaw | Jejunum | Joint | Kidney | Knee | Lacrimal Gland | Large Bowel | Laryngopharynx | Larynx | Leg | Leptomeninges | Ligament | Lip | Liver | Lumbar Spine | Lung | Lymph Node | Lymph Node(s) Axilla | Lymph Node(s) Cervical | Lymph Node(s) Distant | Lymph Node(s) Epitrochlear | Lymph Node(s) Femoral | Lymph Node(s) Hilar | Lymph Node(s) Iliac-Common | Lymph Node(s) Iliac-External | Lymph Node(s) Inguinal | Lymph Node(s) Internal Mammary | Lymph Node(s) Mammary | Lymph Node(s) Mesenteric | Lymph Node(s) Occipital | Lymph Node(s) Paraaortic | Lymph Node(s) Parotid | Lymph Node(s) Pelvic | Lymph Node(s) Popliteal | Lymph Node(s) Regional | Lymph Node(s) Retroperitoneal | Lymph Node(s) Scalene | Lymph Node(s) Splenic | Lymph Node(s) Subclavicular | Lymph Node(s) Submandibular | Lymph Node(s) Supraclavicular | Lymph Nodes(s) Mediastinal | Mandible | Maxilla | Mediastinal Soft Tissue | Mediastinum | Mesentery | Mesothelium | Middle Finger | Mitochondria | Muscle | Nails | Nasal Cavity | Nasal Soft Tissue | Nasopharynx | Neck | Nerve | Nerve(s) Cranial | Not Allowed To Collect | Not Reported | Occipital Cortex | Ocular Orbits | Omentum | Oral Cavity | Oral Cavity - Mucosa Only | Oropharynx | Other (specify) | Ovary | Palate | Pancreas | Paraspinal Ganglion | Parathyroid | Parotid Gland | Patella | Pelvis | Penis | Pericardium | Periorbital Soft Tissue | Peritoneal Cavity | Peritoneum | Pharynx | Pineal | Pineal Gland | Pituitary Gland | Placenta | Pleura | Popliteal Fossa | Prostate | Pylorus | Rectosigmoid Junction | Rectum | Retina | Retro-Orbital Region | Retroperitoneum | Rib | Ring Finger | Round Ligament | Sacrum | Salivary Gland | Scalp | Scapula | Sciatic Nerve | Scrotum | Seminal Vesicle | Shoulder | Sigmoid Colon | Sinus | Sinus(es), Maxillary | Skeletal Muscle | Skin | Skull | Small Bowel | Small Bowel - Mucosa Only | Small Finger | Soft Tissue | Spinal Column | Spinal Cord | Spleen | Splenic Flexure | Sternum | Stomach | Stomach - Mucosa Only | Subcutaneous Tissue | Synovium | Temporal Cortex | Tendon | Testis | Thigh | Thoracic Spine | Thorax | Throat | Thumb | Thymus | Thyroid | Tibia | Tongue | Tonsil | Tonsil (Pharyngeal) | Trachea / Major Bronchi | Transverse Colon | Trunk | Umbilical Cord | Unknown | Ureter | Urethra | Urinary Tract | Uterus | Uvula | Vagina | Vas Deferens | Vein | Venous | Vertebra | Vulva | White Blood Cells | Wrist | Globus Pallidus (GPi) | Not Applicable | Subthalamic Nucleus (STN) 							
+procedure	adverse_event	Was there an adverse event related to the procedure?	enum					No | Not Reported | Yes 							
+procedure	anatomic_site	The term that best describes the primary anatomic site of the procedure.	enum					Abdomen | Abdominal Wall | Acetabulum | Adenoid | Adipose | Adrenal | Alveolar Ridge | Amniotic Fluid | Ampulla Of Vater | Anal Sphincter | Ankle | Anorectum | Antecubital Fossa | Antrum | Anus | Aorta | Aortic Body | Appendix | Aqueous Fluid | Arm | Artery | Ascending Colon | Ascending Colon Hepatic Flexure | Auditory Canal | Autonomic Nervous System | Axilla | Back | Bile Duct | Bladder | Blood | Blood Vessel | Bone | Bone Marrow | Bowel | Brain | Brain Stem | Breast | Broad Ligament | Bronchiole | Bronchus | Brow | Buccal Cavity | Buccal Mucosa | Buttock | Calf | Capillary | Cardia | Carina | Carotid Artery | Carotid Body | Cartilage | Cecum | Cell-Line | Central Nervous System | Cerebellum | Cerebral Cortex | Cerebrospinal Fluid | Cerebrum | Cervical Spine | Cervix | Chest | Chest Wall | Chin | Clavicle | Clitoris | Colon | Colon - Mucosa Only | Common Duct | Conjunctiva | Connective Tissue | Dermal | Descending Colon | Diaphragm | Duodenum | Ear | Ear Canal | Ear, Pinna (External) | Effusion | Elbow | Endocrine Gland | Epididymis | Epidural Space | Esophageal, Distal | Esophageal, Mid | Esophageal, Proximal | Esophagogastric Junction | Esophagus | Esophagus - Mucosa Only | Eye | Fallopian Tube | Femoral Artery | Femoral Vein | Femur | Fibroblasts | Fibula | Finger | Floor Of Mouth | Fluid | Foot | Forearm | Forehead | Foreskin | Frontal Cortex | Frontal Lobe | Fundus Of Stomach | Gallbladder | Ganglia | Gastroesophageal Junction | Gastrointestinal Tract | Globus Pallidus (GPi) | Groin | Gum | Hand | Hard Palate | Head & Neck | Head - Face Or Neck, Nos | Heart | Hepatic | Hepatic Duct | Hepatic Flexure | Hepatic Vein | Hip | Hippocampus | Humerus | Hypopharynx | Ileum | Ilium | Index Finger | Ischium | Islet Cells | Jaw | Jejunum | Joint | Kidney | Knee | Lacrimal Gland | Large Bowel | Laryngopharynx | Larynx | Leg | Leptomeninges | Ligament | Lip | Liver | Lumbar Spine | Lung | Lymph Node | Lymph Node(s) Axilla | Lymph Node(s) Cervical | Lymph Node(s) Distant | Lymph Node(s) Epitrochlear | Lymph Node(s) Femoral | Lymph Node(s) Hilar | Lymph Node(s) Iliac-Common | Lymph Node(s) Iliac-External | Lymph Node(s) Inguinal | Lymph Node(s) Internal Mammary | Lymph Node(s) Mammary | Lymph Node(s) Mesenteric | Lymph Node(s) Occipital | Lymph Node(s) Paraaortic | Lymph Node(s) Parotid | Lymph Node(s) Pelvic | Lymph Node(s) Popliteal | Lymph Node(s) Regional | Lymph Node(s) Retroperitoneal | Lymph Node(s) Scalene | Lymph Node(s) Splenic | Lymph Node(s) Subclavicular | Lymph Node(s) Submandibular | Lymph Node(s) Supraclavicular | Lymph Nodes(s) Mediastinal | Mandible | Maxilla | Mediastinal Soft Tissue | Mediastinum | Mesentery | Mesothelium | Middle Finger | Mitochondria | Muscle | Nails | Nasal Cavity | Nasal Soft Tissue | Nasopharynx | Neck | Nerve | Nerve(s) Cranial | Not Allowed To Collect | Not Applicable | Not Reported | Occipital Cortex | Ocular Orbits | Omentum | Oral Cavity | Oral Cavity - Mucosa Only | Oropharynx | Other (specify) | Ovary | Palate | Pancreas | Paraspinal Ganglion | Parathyroid | Parotid Gland | Patella | Pelvis | Penis | Pericardium | Periorbital Soft Tissue | Peritoneal Cavity | Peritoneum | Pharynx | Pineal | Pineal Gland | Pituitary Gland | Placenta | Pleura | Popliteal Fossa | Prostate | Pylorus | Rectosigmoid Junction | Rectum | Retina | Retro-Orbital Region | Retroperitoneum | Rib | Ring Finger | Round Ligament | Sacrum | Salivary Gland | Scalp | Scapula | Sciatic Nerve | Scrotum | Seminal Vesicle | Shoulder | Sigmoid Colon | Sinus | Sinus(es), Maxillary | Skeletal Muscle | Skin | Skull | Small Bowel | Small Bowel - Mucosa Only | Small Finger | Soft Tissue | Spinal Column | Spinal Cord | Spleen | Splenic Flexure | Sternum | Stomach | Stomach - Mucosa Only | Subcutaneous Tissue | Subthalamic Nucleus (STN) | Synovium | Temporal Cortex | Tendon | Testis | Thigh | Thoracic Spine | Thorax | Throat | Thumb | Thymus | Thyroid | Tibia | Tongue | Tonsil | Tonsil (Pharyngeal) | Trachea / Major Bronchi | Transverse Colon | Trunk | Umbilical Cord | Unknown | Ureter | Urethra | Urinary Tract | Uterus | Uvula | Vagina | Vas Deferens | Vein | Venous | Vertebra | Vulva | White Blood Cells | Wrist 							
 procedure	anatomic_site_other	If 'Other (specify)' was chosen for 'anatomic_site', enter the anatomic site here.	string												
 procedure	general_anesthesia	Did subject receive general anesthesia?	boolean												
 procedure	laterality	Side of body for the procedure's anatomic site.	enum					Bilateral | Left | Not Applicable | Right | Unknown 							
 procedure	procedure_purpose	Describe the purpose of the procedure.	string												
+procedure	procedure_type	"The general type of procedure (e.g., ""Surgery"")."	string												
+procedure	related_medications	Any medications or infusions related to the procedure like chemotherapy drugs.	string												
 procedure	type_of_surgery_for_pd	Type Of Surgery For Parkinson Disease	enum					DBS (Deep Brain Stimulation) | Levodopa Intestinal Gel Infusion | Other, Specify 							
-variant_call_file	data_category		enum	_terms.yaml#/data_category				Simple Nucleotide Variation | Combined Nucleotide Variation 							
-variant_call_file	data_type		enum	_terms.yaml#/data_type				Annotated Somatic Mutation | Raw Simple Somatic Mutation 							
+variant_call_file	data_category		enum	_terms.yaml#/data_category				Combined Nucleotide Variation | Simple Nucleotide Variation 							
 variant_call_file	data_format		enum	_terms.yaml#/data_format				VCF 							
-variant_call_file	experimental_strategy		enum	_terms.yaml#/experimental_strategy				WGS | WXS | Low Pass WGS | Validation | Targeted Sequencing 							
-variant_call_file	variant_calling_workflow	"Indicate the variant calling workflow or pipeline used to generate the variant calls.
-"	string												
-exposure	exposure_type	The general type of exposure (e.g., radiation, alcohol, tobacco, pollutants, etc.).	string												
-exposure	exposure_level	The general level of exposure.	string												
+variant_call_file	data_type		enum	_terms.yaml#/data_type				Annotated Somatic Mutation | Raw Simple Somatic Mutation 							
+variant_call_file	experimental_strategy		enum	_terms.yaml#/experimental_strategy				Low Pass WGS | Targeted Sequencing | Validation | WGS | WXS 							
+variant_call_file	variant_calling_workflow	Indicate the variant calling workflow or pipeline used to generate the variant calls.	string												
+exposure	primary_exposure	"Provide a text term that describes the primary type of exposure for this subject in this record (e.g., ""military deployment"", ""alcohol abuse"", ""tobacco use"")."	string												
+exposure	age_at_exposure	The age of the subject when (first) exposed to the primary_exposure.	integer												
+exposure	military_service_end	The number of days from the index date to the date the patient's military service ended. Note if multiple the patient had multiple periods of servive, complete one military_service node for each period.	integer												
+exposure	military_service_start	The number of days from the index date to the date the patient's military service began. Note if multiple the patient had multiple periods of servive, complete one military_service node for each period.	integer												
+exposure	military_branch	Text term used to describe the military branch in which the patient has served.	enum					Army Reserve | US Air Force | US Air Force Reserve | US Air National Guard | US Army | US Army National Guard | US Coast Guard | US Coast guard Reserve | US Marine Corps | US Marine Corps Reserve | US Navy | US Navy Reserve | Unknown 							
+exposure	military_service	Indicates whether the patient has ever served in the military.	enum					No | Yes 							
+exposure	military_service_country	The country in which the subject served the military.	enum					Canadian | None | Other (specify) | United States 							
+exposure	military_service_other	If 'other (specify) was chosen for 'military_service', enter military served in	string												
+exposure	military_status	Current military status.	enum					Active Duty | National Guard | Reserve | Veteran 							
+exposure	military_active	I am currently on active duty	boolean												
+exposure	military_discharged	I am currently discharged from the military	boolean												
+exposure	military_discharged_type	Characterization of military service at discharge	enum					General (Under honorable conditions) | Honorable | Other than honorable 							
+exposure	military_pow	Were you ever a Prisoner of War?	enum					No | Yes 							
+exposure	military_tour_name	"List of operations or wars served in (e.g., ""Operation Iraqi Freedom"" or ""Vietnam War"")."	string												
+exposure	military_wounded	Were you wounded or injured while serving in the military?	enum					No | Yes 							
+exposure	military_under_fire	Have you ever been under enemy fire while serving in the military?	enum					No | Yes 							
+exposure	military_warzone	Did you serve in a war or operation zone?	enum					No | Yes 							
+exposure	military_combat	Did you serve in a Combat unit (line combat unit) during war-zone service?	boolean												
+exposure	military_tours	The total number of military tours on which the individual served.	integer												
 exposure	acetaminophen_pills_per_week	Acetaminophen Average Dose (tablets per week)	integer												
 exposure	acetaminophen_regular_taken	Acetaminophen (Tylenol)- Ever Used Regularly (2 Or More Tablets Per Week For 6 Months Or Longer)	enum					Don't Know | No | Refused | Yes 							
 exposure	acetaminophen_regular_taken_past_year	Acetaminophen (Tylenol)- Regular Use In Past Year (2 Or More Tablets Per Week For 6 Months Or Longer)	enum					Don't Know | No | Refused | Yes 							
@@ -435,6 +509,8 @@ exposure	ex_smoking_cigars_stop_age	Ex-Smoking - Smoking Cigars End Age	integer
 exposure	ex_smoking_pipes_per_day	Ex-Smoking - Number Of Pipes Per Day	integer												
 exposure	ex_smoking_pipes_start_age	Ex-Smoking - Smoking Pipes Start Age	integer												
 exposure	ex_smoking_pipes_stop_age	Ex-Smoking - Smoking Pipes End Age	integer												
+exposure	exposure_level	The general level of exposure.	string												
+exposure	exposure_type	The general type of exposure (e.g., radiation, alcohol, tobacco, pollutants, etc.).	string												
 exposure	green_tea_cups_per_week	Caffeinated green tea-cups per week. Variable from Caffeine RFQ Form (gtecpwk)	integer												
 exposure	green_tea_cups_unknown	Caffeinated green tea-cups unknown. Variable from Caffeine RFQ Form (gtecpdk)	enum					Don't Know | Refused 							
 exposure	green_tea_not_periods	During this time, periods X years or more NOT regularly drinking caffeinated green tea. Variable from Caffeine RFQ Form (gtenot)	enum					Don't Know | No | Refused | Yes 							
@@ -607,26 +683,18 @@ exposure	years_smoked		number	_terms.yaml#/years_smoked
 exposure	yrs_since_last_took_estrogen_progest_regularly	Hormone Replacement Therapy And Oral Contraceptives Use Survey (HRT)- 08. Years Since Last Took Estrogen Or Progesterone (Cream, Suppository, Progest) Regularly (hrt08)	integer			89	0								
 exposure	yrs_since_received_estrogen_injection	Hormone Replacement Therapy And Oral Contraceptives Use Survey (HRT)- 10. Years Since Received An Estrogen Injection (hrt10)	integer			89	0								
 imaging_report	atlas	Atlas used for data output from scans.	string												
-imaging_report	data_category		enum	_terms.yaml#/data_category				Combined Slice Image | Derived Image | Derived Measures 							
-imaging_report	data_format		enum	_terms.yaml#/data_format				CSV | TSV | TXT | XLS/XLSX 							
-imaging_report	data_type		enum	_terms.yaml#/data_type				Amygdala Nuclei | Cortical | Cortical Thickness | DTI Analysis | Hippocampal Subfield | Resting State | Subcortical GWAS Cortical GWAS | Subcortical GWAS DTI GWAS | Subcortical GWAS Hippocampal Subfield GWAS | Subcortical GWAS Resting State Canonical Network | Subcortical GWAS Resting State Connectomic Network | Subcortical GWAS Resting State Dynamic Functional | Subcortical GWAS Resting State GWAS | Subcortical GWAS Resting State Machine Learning | Subcortical Volume | Surface Area 							
+imaging_report	data_category		string	_terms.yaml#/data_category											
+imaging_report	data_format		string	_terms.yaml#/data_format											
+imaging_report	data_type		string	_terms.yaml#/data_type											
 imaging_report	derivation_method	The name, version and description of the method, script or workflow used to generate the derived or combined image	string												
 imaging_report	scan_identifier	Identifier given to this scan.	string												
-medical_device	device_name	The name of the medical device.	string												
-medical_device	device_type	The general classification of the medical device.	string												
-medical_device	device_manufacturer	The manufacturer of the medical device.	string												
-medical_device	device_model	The model name or version of the medical device.	string												
-medical_device	device_code	A code used to describe the medical device.	string												
-medical_device	days_to_device_start	The number of days between the subject's index date and the date the subject was first exposed to the medical device.	string												
-medical_device	days_to_device_end	The number of days between the subject's index date and the date the subject ended use of the medical device.	string												
-aligned_reads_file	alignment_workflow	"Indicate the alignment workflow or pipeline used for alignment of unaligned reads.
-"	string												
-aligned_reads_file	data_category		enum	_terms.yaml#/data_category				Sequencing Data | Sequencing Reads | Raw Sequencing Data 							
-aligned_reads_file	data_type		enum	_terms.yaml#/data_type				Aligned Reads 							
+aligned_reads_file	alignment_workflow	Indicate the alignment workflow or pipeline used for alignment of unaligned reads.	string												
+aligned_reads_file	data_category		string	_terms.yaml#/data_category											
 aligned_reads_file	data_format		enum	_terms.yaml#/data_format				BAM 							
-aligned_reads_file	experimental_strategy		enum	_terms.yaml#/experimental_strategy				WGS | WXS | Low Pass WGS | RNA-Seq | miRNA-Seq | Targeted Sequencing | Bisulfite-Seq | ChIP-Seq | ATAC-Seq 							
-aligned_reads_file	molecular_tagging_workflow	"A description of the specific bioinformatics workflow or pipeline used for molecular tagging of sequenced reads.
-"	string												
+aligned_reads_file	data_type		enum	_terms.yaml#/data_type				Aligned Reads 							
+aligned_reads_file	experimental_strategy		string	_terms.yaml#/experimental_strategy											
+aligned_reads_file	molecular_tagging_workflow	A description of the specific bioinformatics workflow or pipeline used for molecular tagging of sequenced reads.	string												
+medication	comments	Any general comments about the medication being taken (free text).	string												
 medication	active_deep_brain_stimulation_electrodes	Were active deep brain stimulation electrodes used? (Variable from Levodopa Equivalent Dose Form, actdbs)	boolean												
 medication	age_at_assessment	The age of the subject when the information was recorded in days, if the age is less than 90 years	integer			32872	0								
 medication	age_at_assessment_gt89	Indicates whether the age of the subject when the information was recorded is greater than 89 years	enum					No | Yes 							
@@ -756,30 +824,29 @@ medication	year_started	Year medications were started	integer
 medication	year_stopped	Year medications were stopped	integer												
 medication	year_to_dispense_washout_packet	Year to dispense washout packet	integer												
 medication	year_to_start_washout_packet	Year to start washout packet	integer												
+clinical_assessment	age_at_assessment	The age of the subject when the assessment was taken in years. See age_at_assessment_gt89 if the age is over 89 years.	integer			89	0								
+clinical_assessment	age_at_assessment_gt89	Indicates whether the age of the subject when the assessment was taken is greater than 89 years.	enum					No | Yes 							
 clinical_assessment	assessment_class	Classification of the clinical assessment.	string												
 clinical_assessment	assessment_name	The name of the clinical assessment.	string												
 clinical_assessment	assessment_version	The version of the clinical assessment.	string												
 clinical_assessment	total_score	The subject's total score on the assessment.	string												
 clinical_assessment	year_of_assessment	The year the asssessment was taken.	integer												
-clinical_assessment	age_at_assessment	The age of the subject when the assessment was taken in years. See age_at_assessment_gt89 if the age is over 89 years.	integer			89	0								
-clinical_assessment	age_at_assessment_gt89	Indicates whether the age of the subject when the assessment was taken is greater than 89 years.	enum					No | Yes 							
-publication	type	The node_id of this node.	enum					publication 							
-publication	id			_definitions.yaml#/UUID											
-publication	submitter_id	"A project-specific identifier for a node. This property is the calling card/nickname/alias for a unit of submission. It can be used in place of the UUID for identifying or recalling a node.
-"	string												
-publication	state			_definitions.yaml#/state											
-publication	project_id			_definitions.yaml#/project_id											
-publication	created_datetime			_definitions.yaml#/datetime											
-publication	updated_datetime			_definitions.yaml#/datetime											
-publication	publication_title	The title of an association publication.	string												
-publication	doi	The DOI of the publication.	string												
-publication	publication_id	An standard identification code for a publication (PMID, PMCID, etc.).	string												
-publication	authors	A list of authors on the publication.	string												
-publication	affiliations	A list of publication author affiliations.	string												
 publication	acknowledgements	A list of acknowledgees in the publication.	string												
+publication	affiliations	A list of publication author affiliations.	string												
+publication	authors	A list of authors on the publication.	string												
 publication	citation	The citation for the publication.	string												
-publication	corresponding_author	The corresponding author for the publication.	string												
 publication	contact_info	The contact info for the corresponding author of the publication.	string												
+publication	corresponding_author	The corresponding author for the publication.	string												
+publication	created_datetime			_definitions.yaml#/datetime											
+publication	doi	The DOI of the publication.	string												
+publication	id			_definitions.yaml#/UUID											
+publication	project_id			_definitions.yaml#/project_id											
+publication	publication_id	An standard identification code for a publication (PMID, PMCID, etc.).	string												
+publication	publication_title	The title of an association publication.	string												
+publication	state			_definitions.yaml#/state											
+publication	submitter_id	A project-specific identifier for a node. This property is the calling card/nickname/alias for a unit of submission. It can be used in place of the UUID for identifying or recalling a node.	string												
+publication	type	The node_id of this node.	enum					publication 							
+publication	updated_datetime			_definitions.yaml#/datetime											
 subject	accession	The subject's accession ID or number.	string												
 subject	age_at_enrollment	The age of the study subject at enrollment; must be less than 90 years.	integer			89	0								
 subject	age_at_enrollment_gt89	The age of the subject at enrollment is greater than 89 years.	enum					No | Yes 							
@@ -791,29 +858,26 @@ subject	days_to_immigration	The number of days between the subject's Index Date 
 subject	days_to_lost_to_followup	The number of days between the date used for index and the date the patient was lost to follow-up.	integer												
 subject	death_year	The subject's death year.	integer												
 subject	ethnicity		enum	_terms.yaml#/ethnicity				Hispanic or Latino | Not Hispanic or Latino | Not Reported | Other (specify) | Unknown 							
-subject	ethnicity_other	If 'Other (specify)' was chosen for ethnicity, Ethnicity (free text) (ethnctxt)	string												
+subject	ethnicity_other	If 'Other (specify)' was chosen for ethnicity, Ethnicity (free text).	string												
 subject	experimental_group	The group into which this subject has been classified for this study.	string												
 subject	gender		enum	_terms.yaml#/gender				Female | Male | Not Reported | Unknown | Unspecified 							
-subject	handedness	Handedness of the subject	enum					Left | Mixed | Right 							
+subject	handedness	Handedness of the subject.	enum					Left | Mixed | Right 							
 subject	index_date	The reference or anchor date used during date obfuscation, where a single date is obscurred by creating one or more date ranges in relation to this date.	enum					Diagnosis | First Patient Visit | Not Reported | Study Enrollment 							
 subject	index_event_status	A measure of our confidence that the logitundinal structure of the study is well described as data-defined or via curation.	enum					Data-Derived | Imputed 							
 subject	lost_to_followup	A yes/no indicator related to whether a patient was unable to be contacted for follow-up.	enum					No | Not Applicable | Not Reported | Yes 							
 subject	place_of_birth	Place of birth or origin.	string												
-subject	race		enum	_terms.yaml#/race				American Indian or Alaska Native | Asian | Biracial | Black or African American | Multiracial | Native Hawaiian or Other Pacific Islander | Other (specify) | Unknown | White | Caribbean Indian | Hispanic | Jewish | Lebanese/Non-jewish 							
+subject	race		enum	_terms.yaml#/race				American Indian or Alaska Native | Asian | Biracial | Black or African American | Caribbean Indian | Hispanic | Jewish | Lebanese/Non-jewish | Multiracial | Native Hawaiian or Other Pacific Islander | Other (specify) | Unknown | White 							
 subject	race_other	If 'Other (specify)' was chosen for race, free text to describe race as collected.	string												
 subject	species	Taxonomic species of the subject.	string												
-pathology_slide	data_type		string	_terms.yaml#/data_type											
-pathology_slide	data_format		enum	_terms.yaml#/data_format				JPEG | SVS | TIFF | PNG | GIF | DCM | NII 							
-pathology_slide	data_category		string	_terms.yaml#/data_category											
-pathology_slide	magnification	Magnification used to capture the image.	number												
 pathology_slide	body_part_examined	What part of the body was studied.	string												
+pathology_slide	data_category		string	_terms.yaml#/data_category											
+pathology_slide	data_format		string	_terms.yaml#/data_format											
+pathology_slide	data_type		string	_terms.yaml#/data_type											
 pathology_slide	days_to_image	Days from the case index date to the date the image was acquired.	integer												
-pathology_slide	imaging_instrument	"The instrument model used to acquire the image.
-"	string												
-pathology_slide	modality	"What mode the imaging instrument was in during image acquisition.
-"	string												
-pathology_slide	scan_id	"The identification number for a stack of images generated during a single scan.
-"	string												
+pathology_slide	imaging_instrument	The instrument model used to acquire the image.	string												
+pathology_slide	magnification	Magnification used to capture the image.	number												
+pathology_slide	modality	What mode the imaging instrument was in during image acquisition.	string												
+pathology_slide	scan_id	The identification number for a stack of images generated during a single scan.	string												
 core_metadata_collection	contributor	An entity responsible for making contributions to the resource. Examples of a Contributor include a person, an organization, or a service. Typically, the name of a Contributor should be used to indicate the entity.	string												
 core_metadata_collection	coverage	The spatial or temporal topic of the resource, the spatial applicability of the resource, or the jurisdiction under which the resource is relevant. Spatial topic and spatial applicability may be a named place or a location specified by its geographic coordinates. Temporal topic may be a named period, date, or date range. A jurisdiction may be a named administrative entity or a geographic place to which the resource applies. Recommended best practice is to use a controlled vocabulary such as the Thesaurus of Geographic Names [TGN] (http-//www.getty.edu/research/tools/vocabulary/tgn/index.html). Where appropriate, named places or time periods can be used in preference to numeric identifiers such as sets of coordinates or date ranges.	string												
 core_metadata_collection	creator	An entity primarily responsible for making the resource. Examples of a Creator include a person, an organization, or a service. Typically, the name of a Creator should be used to indicate the entity.	string												

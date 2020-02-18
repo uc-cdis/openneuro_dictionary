@@ -3,6 +3,7 @@ $schema: "http://json-schema.org/draft-04/schema#"
 id: "aligned_reads_file"
 title: Aligned Reads File
 type: object
+nodeTerms: null
 namespace: https://gen3.datacommons.io/
 category: data_file
 program: '*'

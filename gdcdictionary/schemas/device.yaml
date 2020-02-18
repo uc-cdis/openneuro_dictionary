@@ -8,7 +8,9 @@ namespace: https://gen3.datacommons.io/
 category: medical_history
 program: '*'
 project: '*'
-description: Information related to a subject's exposure to or use of a device (e.g., a medical device like a heart monitor). Can be linked to a specific (medical) condition or not.
+description: Information related to a subject's exposure to or use of a device (e.g.,
+  a medical device like a heart monitor). Can be linked to a specific (medical) condition
+  or not.
 additionalProperties: false
 submittable: true
 validators: null
@@ -81,5 +83,6 @@ properties:
 
   subjects:
     $ref: "_definitions.yaml#/to_one"
+
   conditions:
     $ref: "_definitions.yaml#/to_one"

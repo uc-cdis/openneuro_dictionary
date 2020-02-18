@@ -14,7 +14,7 @@ description: Any material sample taken from a biological entity for testing, dia
   functions. Biospecimen can contain one or more components including but not limited
   to cellular molecules, cells, tissues, organs, body fluids, embryos, and body excretory
   products. In the case of contrived samples, it describes any material obtained from
-  a normal donor. 
+  a normal donor.
 additionalProperties: false
 submittable: true
 validators: null
@@ -161,7 +161,10 @@ properties:
     type: number
 
   time_point:
-    description: Indicate a simple text term that describes the time-point at which the sample was collected (e.g., "pre-deployment", "post-operation", "baseline", etc.). To add more detailed longitudinal information, use the visit_id property to link to a record in the visit node.
+    description: Indicate a simple text term that describes the time-point at which
+      the sample was collected (e.g., "pre-deployment", "post-operation", "baseline",
+      etc.). To add more detailed longitudinal information, use the visit_id property
+      to link to a record in the visit node.
     type: string
 
   subjects:
