@@ -8,7 +8,7 @@ namespace: https://gen3.datacommons.io/
 category: medical_history
 program: '*'
 project: '*'
-description: Risk factors to which a subject was exposed during their lifetime.
+description: Risk factors to which a subject was exposed during their lifetime (e.g., drugs of abuse, military combat, radiation exposure). For prescription drug exposure, see 'medication' node.
 additionalProperties: false
 submittable: true
 validators: null
@@ -32,6 +32,7 @@ required:
   - submitter_id
   - type
   - subjects
+  - primary_exposure
 
 uniqueKeys:
   - [id]
@@ -40,6 +41,123 @@ uniqueKeys:
 properties:
 
   $ref: "_definitions.yaml#/ubiquitous_properties"
+
+  primary_exposure:
+    description: Provide a text term that describes the primary type of exposure for this subject in this record (e.g., "military deployment", "alcohol abuse", "tobacco use").
+    type: string
+
+  age_at_exposure:
+    description: The age of the subject when (first) exposed to the primary_exposure.
+    type: integer
+
+  military_service_end:
+    description: The number of days from the index date to the date the patient's
+      military service ended. Note if multiple the patient had multiple periods of
+      servive, complete one military_service node for each period.
+    type: integer
+
+  military_service_start:
+    description: The number of days from the index date to the date the patient's
+      military service began. Note if multiple the patient had multiple periods of
+      servive, complete one military_service node for each period.
+    type: integer
+
+  military_branch:
+    description: Text term used to describe the military branch in which the patient
+      has served.
+    enum:
+      - Army Reserve
+      - US Air Force
+      - US Air Force Reserve
+      - US Air National Guard
+      - US Army
+      - US Army National Guard
+      - US Coast Guard
+      - US Coast guard Reserve
+      - US Marine Corps
+      - US Marine Corps Reserve
+      - US Navy
+      - US Navy Reserve
+      - Unknown
+
+  military_service:
+    description: Indicates whether the patient has ever served in the military.
+    enum:
+      - "No"
+      - "Yes"
+
+  military_service_country:
+    description: The country in which the subject served the military.
+    enum:
+      - Canadian
+      - None
+      - Other (specify)
+      - United States
+
+  military_service_other:
+    description: If 'other (specify) was chosen for 'military_service', enter military
+      served in
+    type: string
+
+  military_status:
+    description: Current military status.
+    enum:
+      - Active Duty
+      - National Guard
+      - Reserve
+      - Veteran
+
+  military_active:
+    description: I am currently on active duty
+    type: boolean
+
+  military_discharged:
+    description: I am currently discharged from the military
+    type: boolean
+
+  military_discharged_type:
+    description: Characterization of military service at discharge
+    enum:
+      - General (Under honorable conditions)
+      - Honorable
+      - Other than honorable
+
+  military_pow:
+    description: Were you ever a Prisoner of War?
+    enum:
+      - "No"
+      - "Yes"
+
+  military_tour_name:
+    description: List of operations or wars served in (e.g., "Operation Iraqi Freedom" or "Vietnam War").
+    type: string
+
+  military_wounded:
+    description: Were you wounded or injured while serving in the military?
+    enum:
+      - "No"
+      - "Yes"
+
+  military_under_fire:
+    description: Have you ever been under enemy fire while serving in the military?
+    enum:
+      - "No"
+      - "Yes"
+
+  military_warzone:
+    description: Did you serve in a war or operation zone?
+    enum:
+      - "No"
+      - "Yes"
+
+  military_combat:
+    description: Did you serve in a Combat unit (line combat unit) during war-zone
+      service?
+    type: boolean
+
+  military_tours:
+    description: The total number of military tours on which the individual served.
+    type: integer
 
   acetaminophen_pills_per_week:
     description: Acetaminophen Average Dose (tablets per week)

@@ -1,15 +1,15 @@
 $schema: "http://json-schema.org/draft-04/schema#"
 
-id: "medical_condition"
-title: Medical Condition
+id: "condition"
+title: Condition
 type: object
 nodeTerms: null
 namespace: https://gen3.datacommons.io/
 category: medical_history
 program: '*'
 project: '*'
-description: Information related to the medical condition of a subject within the
-  context of a particular study. This includes a snapshot of the subject's status
+description: Information related to the condition of a subject within the
+  context of a particular study (e.g., a medical diagnosis). This includes a snapshot of the subject's status
   with respect to certain diseases, disorders, symptoms, injuries, or illnesses within
   the context of the study.
 additionalProperties: false
@@ -25,7 +25,7 @@ systemProperties:
 
 links:
   - name: subjects
-    backref: medical_conditions
+    backref: conditions
     label: related_to
     target_type: subject
     multiplicity: many_to_one

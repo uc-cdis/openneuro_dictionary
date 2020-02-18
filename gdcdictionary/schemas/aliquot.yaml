@@ -113,6 +113,14 @@ properties:
       analyte. Alternatively, if you have provided a protocol, put the file_name here.
     type: string
 
+  label_name:
+    description: The name of the label used in preparation of the analyte for analysis (e.g., Biotin).
+    type: string
+
+  label_protocol:
+    description: The protocol used to label the analyte (please either provide link to protocol/file or describe in free text).
+    type: string
+
   preservation_method:
     term:
       $ref: "_terms.yaml#/preservation_method"

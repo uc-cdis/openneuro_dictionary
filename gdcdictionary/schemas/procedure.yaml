@@ -31,10 +31,10 @@ links:
         target_type: subject
         multiplicity: many_to_one
         required: false
-      - name: medical_conditions
+      - name: conditions
         backref: procedures
         label: data_from
-        target_type: medical_condition
+        target_type: condition
         multiplicity: many_to_one
         required: false
 
@@ -389,5 +389,5 @@ properties:
 
   subjects:
     $ref: "_definitions.yaml#/to_one"
-  medical_conditions:
+  conditions:
     $ref: "_definitions.yaml#/to_one"
