@@ -225,6 +225,7 @@ workflow_properties:
 
 ubiquitous_properties:
   type:
+    description: The node_id of the node in the data model; the name of the node used in queries and API requests (e.g., "aligned_reads_file" for the "Aligned Reads File" node).
     type: string
   id:
     $ref: "#/UUID"
