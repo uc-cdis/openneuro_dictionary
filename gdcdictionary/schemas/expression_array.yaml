@@ -28,15 +28,21 @@ links:
     required: true
     subgroup:
       - name: core_metadata_collections
-        backref: submitted_expression_array_files
+        backref: expression_arrays
         label: data_from
         target_type: core_metadata_collection
         multiplicity: many_to_one
         required: false
       - name: aliquots
-        backref: submitted_expression_array_files
+        backref: expression_arrays
         label: data_from
         target_type: aliquot
+        multiplicity: one_to_one
+        required: false
+      - name: subjects
+        backref: expression_arrays
+        label: data_from
+        target_type: subject
         multiplicity: one_to_one
         required: false
 
@@ -122,4 +128,7 @@ properties:
     $ref: "_definitions.yaml#/to_one"
 
   aliquots:
+    $ref: "_definitions.yaml#/to_one"
+
+  subjects:
     $ref: "_definitions.yaml#/to_one"
