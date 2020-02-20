@@ -24,7 +24,7 @@ systemProperties:
 
 links:
   - name: subjects
-    backref: clinical_assessment
+    backref: clinical_assessments
     label: related_to
     target_type: subject
     multiplicity: many_to_one
