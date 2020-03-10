@@ -10,7 +10,7 @@ program: '*'
 project: '*'
 description: Risk factors to which a subject was exposed during their lifetime (e.g.,
   drugs of abuse, military combat, radiation exposure). For prescription drug exposure,
-  see 'medication' node.
+  or drugs used in a clinical trial, see 'drug' node.
 additionalProperties: false
 submittable: true
 validators: null

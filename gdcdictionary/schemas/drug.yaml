@@ -57,6 +57,22 @@ properties:
 
   $ref: "_definitions.yaml#/ubiquitous_properties"
 
+  drug_class:
+    description: A textual description of the class of a drug.
+    type: string
+  drug_mechanism:
+    description: A textual description of the mechanism of a drug.
+    type: string
+  clinical_trial_phase:
+    description: The drug's highest phase in a clinical trial.
+    type: string
+  drug_manufacturer:
+    description: The name of the drug's manufacturer.
+    type: string
+  target_molecule:
+    description: The target molecule for the drug.
+    type: string
+
   active_deep_brain_stimulation_electrodes:
     description: Were active deep brain stimulation electrodes used? (Variable from
       Levodopa Equivalent Dose Form, actdbs)
@@ -327,24 +343,7 @@ properties:
 
   dose_frequency:
     description: Dose frequency
-    enum:
-      - BID
-      - HS
-      - Other, Specify
-      - PRN
-      - QAM
-      - QD
-      - QID
-      - QMT
-      - QOD
-      - QPM
-      - QWK
-      - TID
-      - Unknown
-      - q2h
-      - q4h
-      - q6h
-      - q8h
+    type: string
 
   dose_frequency_specify:
     description: Dose frequency "Other
@@ -360,29 +359,15 @@ properties:
 
   dosing_schedule:
     description: Concomitant Medication Dosing Schedule
-    enum:
-      - Cyclical
-      - Daily
-      - PRN
-
+    type: string
   drug_category:
     description: Concomitant Medication Drug Category
-    enum:
-      - Antidepressants
-      - Antiparkinson Drugs
-      - Antipsychotics/Neuroleptic
-      - Miscellaneous drugs commonly used in PD
-      - Other General Drug Categories (specify)
-      - Sedative/Hypnotics
-      - Unknown
+    type: string
 
   drug_category_other:
     description: Concomitant Medication Drug Category if 'Other' was chosen for 'drug_category
     type: string
 
-  drug_class:
-    description: Concomitant Medication Drug Class
-    type: string
 
   exclusionary_med_flag:
     description: Concomitant Medication Exclusionary Medication Flag
