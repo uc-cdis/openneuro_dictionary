@@ -52,6 +52,10 @@ properties:
 
   $ref: "_definitions.yaml#/ubiquitous_properties"
 
+  analyte_dose:
+    description: The dose of the test analyte.
+    type: number
+
   abnormal_test_action_taken:
     description: Abnormal_Laboratory_Tests_(Form_6003) - Action Taken Following Lab
       Results
@@ -186,11 +190,11 @@ properties:
     type: integer
 
   test_code:
-    description: The code used for a laboratory test
+    description: The code used for a laboratory test.
     type: string
 
   test_name:
-    description: The name of the laboratory test
+    description: The name of the laboratory test.
     type: string
 
   test_out_of_range_alert:
@@ -198,11 +202,11 @@ properties:
     type: string
 
   test_panel:
-    description: The name of the laboratory test panel
+    description: The name of the laboratory test panel.
     type: string
 
   test_project_id:
-    description: The identifier of a project for the laboratory test
+    description: The identifier of a project for the laboratory test.
     type: string
 
   test_result:
@@ -219,18 +223,34 @@ properties:
     description: The general type or category of the laboratory test
     type: string
 
+  test_analyte:
+    description: The name of the analyte being tested.
+    type: string
+
   test_units:
-    description: The units corresponding to a test_value for a test_analyte_type
+    description: The units corresponding to a test_value for a test_analyte
     type: string
 
   test_units_other:
-    description: The units corresponding to a test_value for a test_analyte_type if
+    description: The units corresponding to a test_value for a test_analyte if
       'Other (specify)' was chosen for 'test_units
     type: string
 
   test_value:
     description: The numerical value representing the laboratory test result for the
       analyte_type
+    type: number
+
+
+  test_value_sd:
+    description: The standard deviation of a number of numerical test results.
+      analyte_type
+    type: number
+  test_value_median:
+    description:  The median of a number of numerical test results.
+    type: number
+  test_value_mean:
+    description:  The mean of a number of numerical test results.
     type: number
 
   text_if_repeated:
