@@ -164,6 +164,10 @@ properties:
     description: Place of birth or origin.
     type: string
 
+  primary_site:
+    description: The primary anatomical site of disease in the subject.
+    type: string
+
   race:
     term:
       $ref: "_terms.yaml#/race"

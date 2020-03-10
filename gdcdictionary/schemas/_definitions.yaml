@@ -203,12 +203,11 @@ data_file_properties:
     $ref: "#/md5sum"
   object_id:
     $ref: "#/object_id"
-  file_state:
-    $ref: "#/file_state"
-  error_type:
-    $ref: "#/data_file_error_type"
-  object_id:
-    $ref: "#/object_id"
+  storage_urls:
+    description: A list of URLs where the file is stored in the cloud.
+    type: array
+    items:
+      type: string
 
 workflow_properties:
   $ref: "#/ubiquitous_properties"
@@ -233,9 +232,11 @@ ubiquitous_properties:
   submitter_id:
     description: "A human-readable, unique identifier for a record in the metadata database. It can be used in place of the UUID for identifying or recalling a record (e.g., in data queries or uploads/exports)."
     type: string
-  subject_id:
-    description: "The submitter_id of a subject in the study."
-    type: string
+  subject_ids:
+    description: "A list of one or more subject submitter_ids associated with this file."
+    type: array
+    items:
+      type: string
   visit_id:
     description: "The submitter_id of a subject's visit in the study."
     type: string
