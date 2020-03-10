@@ -108,11 +108,11 @@ properties:
     type: string
 
   data_format:
-    description: The format of the data file. For example: "BAM".
+    description: The format of the data file. For example, "BAM".
     type: string
 
   data_type:
-    description: The type of data file. For example: "Aligned Reads".
+    description: The type of data file. For example, "Aligned Reads".
     type: string
 
   experimental_strategy:

@@ -70,23 +70,19 @@ properties:
   $ref: "_definitions.yaml#/data_file_properties"
 
   data_category:
-    description: >
-        The category of the data file, for example, "Raw Sequencing Data", "Sequencing Data", or "Sequencing Reads".
+    description: "The category of the data file, for example, 'Raw Sequencing Data', 'Sequencing Data', or 'Sequencing Reads'."
     type: string
 
   data_format:
-    description: >
-        The format of the data file, for example, "BAM", "FASTA", or "FASTQ".
+    description: "The format of the data file, for example, 'BAM', 'FASTA', or 'FASTQ'."
     type: string
 
   data_type:
-    description: >
-        The type of data file, for example, "Unaligned Reads".
+    description: "The type of data file, for example, 'Unaligned Reads'."
     type: string
 
   experimental_strategy:
-    description: >
-        The strategy used to obtain the sequencing reads. For example: "ATAC-Seq", "Bisulfite-Seq", "ChIP-Seq", "Low Pass WGS", "RNA-Seq", "Targeted Sequencing", "WGS", "WXS", or "miRNA-Seq".
+    description: "The strategy used to obtain the sequencing reads. For example, 'ATAC-Seq', 'Bisulfite-Seq', 'ChIP-Seq', 'Low Pass WGS', 'RNA-Seq', 'Targeted Sequencing', 'WGS', 'WXS', or 'miRNA-Seq'."
     type: string
 
   read_pair_number:

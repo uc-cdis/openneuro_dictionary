@@ -71,19 +71,19 @@ properties:
       -
 
   data_category:
-    description: The category of the data file. For example: "Expression Array Data".
+    description: The category of the data file. For example, "Expression Array Data".
     type: string
 
   data_format:
-    description: The format of the data file. For example: "CEL", "TSV", or "TXT".
+    description: The format of the data file. For example, "CEL", "TSV", or "TXT".
     type: string
 
   data_type:
-    description: The type of data file. For example: "Expression Array Variation" or "Expression Raw Intensity".
+    description: The type of data file. For example, "Expression Array Variation" or "Expression Raw Intensity".
     type: string
 
   experimental_strategy:
-    description: The strategy used to obtain the data. For example: "Expression Array" or "Expression Array Genotyping".
+    description: The strategy used to obtain the data. For example, "Expression Array" or "Expression Array Genotyping".
     type: string
 
   platform:

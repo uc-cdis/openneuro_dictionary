@@ -95,7 +95,7 @@ properties:
 
 
   experimental_strategy:
-    description: The experimental strategy used for variant calling. For example: Low Pass WGS, Targeted Sequencing, Validation, WGS, or WXS.
+    description: The experimental strategy used for variant calling. For example, "Low Pass WGS", "Targeted Sequencing", "Validation", "WGS", or "WXS".
     type: string
 
   variant_calling_workflow:
