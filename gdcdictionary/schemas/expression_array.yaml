@@ -68,29 +68,23 @@ properties:
     term:
       $ref: "_terms.yaml#/data_category"
     enum:
-      - Expression Array Data
+      -
+
+  data_category:
+    description: The category of the data file. For example: "Expression Array Data".
+    type: string
 
   data_format:
-    term:
-      $ref: "_terms.yaml#/data_format"
-    enum:
-      - CEL
-      - TSV
-      - TXT
+    description: The format of the data file. For example: "CEL", "TSV", or "TXT".
+    type: string
 
   data_type:
-    term:
-      $ref: "_terms.yaml#/data_type"
-    enum:
-      - Expression Array Variation
-      - Expression Raw Intensity
+    description: The type of data file. For example: "Expression Array Variation" or "Expression Raw Intensity".
+    type: string
 
   experimental_strategy:
-    term:
-      $ref: "_terms.yaml#/experimental_strategy"
-    enum:
-      - Expression Array
-      - Expression Array Genotyping
+    description: The strategy used to obtain the data. For example: "Expression Array" or "Expression Array Genotyping".
+    type: string
 
   platform:
     term:
@@ -117,8 +111,7 @@ properties:
   workflow_type:
     term:
       $ref: "_terms.yaml#/workflow_type"
-    enum:
-      - Expression Array
+    type: string
 
   workflow_version:
     description: Major version for a workflow.
