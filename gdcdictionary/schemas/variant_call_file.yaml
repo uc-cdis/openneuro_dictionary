@@ -8,7 +8,7 @@ namespace: https://gen3.datacommons.io/
 category: data_file
 program: '*'
 project: '*'
-description: Data file containing variants called from sequencing reads.
+description: Data file containing variants called from sequencing reads or genotyping arrays.
 additionalProperties: false
 submittable: false
 validators: null
@@ -82,20 +82,19 @@ properties:
   $ref: "_definitions.yaml#/data_file_properties"
 
   data_category:
-    description: The category of the data file, for example, "Combined Nucleotide Variation" or "Simple Nucleotide Variation".
+    description: The category of the data file, for example, "Combined Nucleotide Variation", "Simple Nucleotide Variation", "SNP Genotyping Array".
     type: string
 
   data_format:
-    description: The format of the data file, for example, "VCF".
+    description: The format of the data file, for example, "VCF" or "CEL".
     type: string
 
   data_type:
-    description: The type of data file, for example, "Annotated Somatic Mutation" or "Raw Simple Somatic Mutation".
+    description: The type of data file, for example, "Annotated Somatic Mutation", "Raw Simple Somatic Mutation", "Genotyping Raw Intensity".
     type: string
 
-
   experimental_strategy:
-    description: The experimental strategy used for variant calling. For example, "Low Pass WGS", "Targeted Sequencing", "Validation", "WGS", or "WXS".
+    description: The experimental strategy used for variant calling. For example, "Low Pass WGS", "Targeted Sequencing", "Validation", "WGS", "Genotyping Array", or "WXS".
     type: string
 
   variant_calling_workflow:

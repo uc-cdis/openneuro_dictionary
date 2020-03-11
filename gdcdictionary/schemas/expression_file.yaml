@@ -1,0 +1,126 @@
+$schema: "http://json-schema.org/draft-04/schema#"
+
+id: "expression_file"
+title: Expression File
+type: object
+nodeTerms: null
+namespace: https://gen3.datacommons.io/
+category: data_file
+program: '*'
+project: '*'
+description: Files containing expression data from, for example, gene expression microarrays, RNA-seq, or various other transcriptomics data. Files can contain raw intensity data or aggregated and normalized data.
+additionalProperties: false
+submittable: true
+validators: null
+
+systemProperties:
+  - id
+  - project_id
+  - state
+  - created_datetime
+  - updated_datetime
+  - file_state
+  - error_type
+
+links:
+  - exclusive: false
+    required: true
+    subgroup:
+      - name: core_metadata_collections
+        backref: expression_files
+        label: data_from
+        target_type: core_metadata_collection
+        multiplicity: many_to_one
+        required: false
+      - name: aliquots
+        backref: expression_files
+        label: data_from
+        target_type: aliquot
+        multiplicity: one_to_one
+        required: false
+      - name: subjects
+        backref: expression_files
+        label: data_from
+        target_type: subject
+        multiplicity: one_to_one
+        required: false
+
+required:
+  - submitter_id
+  - type
+  - file_name
+  - data_category
+  - data_type
+  - data_format
+  - md5sum
+  - file_size
+
+uniqueKeys:
+  - [id]
+  - [project_id, submitter_id]
+
+properties:
+
+  $ref: "_definitions.yaml#/data_file_properties"
+
+  data_category:
+    term:
+      $ref: "_terms.yaml#/data_category"
+    enum:
+      -
+
+  data_category:
+    description: The category of the data file. For example, "Expression Array Data".
+    type: string
+
+  data_format:
+    description: The format of the data file. For example, "CEL", "TSV", or "TXT".
+    type: string
+
+  data_type:
+    description: The type of data file. For example, "Expression Array Variation" or "Expression Raw Intensity".
+    type: string
+
+  experimental_strategy:
+    description: The strategy used to obtain the data. For example, "Expression Array" or "Expression Array Genotyping".
+    type: string
+
+  platform:
+    term:
+      $ref: "_terms.yaml#/platform"
+    type: string
+
+  version:
+    description: The version of the expression array file (e.g., version 3 for a CEL
+      file).
+    type: string
+
+  workflow_end_datetime:
+    $ref: "_definitions.yaml#/datetime"
+
+  workflow_link:
+    description: If a specific workflow or pipeline was used to generate the file
+      (aggregation/normalization workflow), provide the name, location or link to
+      the workflow used.
+    type: string
+
+  workflow_start_datetime:
+    $ref: "_definitions.yaml#/datetime"
+
+  workflow_type:
+    term:
+      $ref: "_terms.yaml#/workflow_type"
+    type: string
+
+  workflow_version:
+    description: Major version for a workflow.
+    type: string
+
+  core_metadata_collections:
+    $ref: "_definitions.yaml#/to_one"
+
+  aliquots:
+    $ref: "_definitions.yaml#/to_one"
+
+  subjects:
+    $ref: "_definitions.yaml#/to_one"

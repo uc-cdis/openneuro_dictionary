@@ -279,12 +279,8 @@ properties:
       - T1-Weighted
 
   imaging_type:
-    description: The type of imaging exam performed.
-    enum:
-      - CT Scan
-      - MRI
-      - Ultrasound
-      - fMRI
+    description: The type of imaging exam performed, for example, "CT Scan","MRI","Ultrasound","fMRI".
+    type: string
 
   instrument_manufacturer:
     description: The imaging instrument or scanner manufacturer.
