@@ -50,12 +50,34 @@ properties:
   $ref: "_definitions.yaml#/ubiquitous_properties"
 
 
-  start_position:
-    description: The start position of the genotype on the chromosome.
+  panel_definition_ids:
+    description: The ids or submitter_ids of any associated panel definitions.
+    type: array
+    items:
+      type: string
+  cohort_center:
+    description: The cohort center, for example, 'Broad Institute'.
     type: string
-
+  hugo_symbol:
+    description: The gene's hugo symbol, for example, 'EGFR'.
+    type: string
+  build_version:
+    description: The build version, for example, 'NCBI 36'.
+    type: string
+  sequencing_phase:
+    description: The phase of sequencing for the assay, for example, 'Phase 1'.
+    type: string
+  reference_allele:
+    description: The reference allele genotype, for example, 'A', 'C', 'T', or 'G'.
+    type: string
+  chromosome:
+    description: The chromosome of the locus genotyped.
+    type: string
+  start_position:
+    description: The start position on the chromosome of the locus genotyped.
+    type: string
   end_position:
-    description: The end position of the genotype on the chromosome.
+    description: The end position on the chromosome of the locus genotyped.
     type: string
 
   comments:
@@ -114,4 +136,6 @@ properties:
   subjects:
     $ref: "_definitions.yaml#/to_many"
   aliquots:
+    $ref: "_definitions.yaml#/to_many"
+  panel_definitions:
     $ref: "_definitions.yaml#/to_many"

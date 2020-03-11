@@ -97,6 +97,9 @@ properties:
     description: The experimental strategy used for variant calling. For example, "Low Pass WGS", "Targeted Sequencing", "Validation", "WGS", "Genotyping Array", or "WXS".
     type: string
 
+  platform:
+    description: The platform used to generate the file, for example, "Affymetrix Genome-Wide Human SNP Array 6.0".
+
   variant_calling_workflow:
     description: Indicate the variant calling workflow or pipeline used to generate
       the variant calls.
