@@ -27,7 +27,7 @@ links:
     backref: clinical_assessments
     label: related_to
     target_type: subject
-    multiplicity: many_to_one
+    multiplicity: many_to_many
     required: true
 
 required:
@@ -71,6 +71,10 @@ properties:
 
   total_score:
     description: The subject's total score on the assessment.
+    type: number
+
+  total_score_units:
+    description: The units of the subject's total score on the assessment, if any; or the subject's score on the assessment if the score is not numerical.
     type: string
 
   year_of_assessment:
@@ -78,4 +82,4 @@ properties:
     type: integer
 
   subjects:
-    $ref: "_definitions.yaml#/to_one"
+    $ref: "_definitions.yaml#/to_many"

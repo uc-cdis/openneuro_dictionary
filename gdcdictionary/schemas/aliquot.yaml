@@ -59,17 +59,11 @@ properties:
 
   analyte_qc_class:
     description: Term that best describes the analyte's QC Class.
-    enum:
-      - Acceptable
-      - Does Not Meet Spec
-      - High
-      - Low
+    type: string
 
   analyte_qc_status:
     description: Analyte QC Status
-    enum:
-      - Complete
-      - Incomplete
+    type: string
 
   analyte_type:
     description: Any aspect of an aliquot used in an analysis or assay to characterize
@@ -80,9 +74,7 @@ properties:
 
   clinical_or_contrived:
     description: Is the aliquot clinical or contrived?
-    enum:
-      - Clinical
-      - Contrived
+    type: string
 
   concentration:
     description: Concentration of the analyte in the aliquot.

@@ -64,12 +64,6 @@ properties:
   $ref: "_definitions.yaml#/data_file_properties"
 
   data_category:
-    term:
-      $ref: "_terms.yaml#/data_category"
-    enum:
-      -
-
-  data_category:
     description: The category of the data file. For example, "Expression Array Data".
     type: string
 

@@ -1,0 +1,117 @@
+$schema: "http://json-schema.org/draft-04/schema#"
+
+id: "genotyping_result"
+title: Genotyping Result
+type: object
+nodeTerms: null
+namespace: https://gen3.datacommons.io/
+category: data_observations
+program: '*'
+project: '*'
+description: Genotyping results; an individual's genotype at a particular locus or loci.
+additionalProperties: false
+submittable: true
+validators: null
+
+systemProperties:
+  - id
+  - project_id
+  - state
+  - created_datetime
+  - updated_datetime
+
+links:
+  - exclusive: false
+    required: true
+    subgroup:
+      - name: subjects
+        backref: genotyping_results
+        label: related_to
+        target_type: subject
+        multiplicity: many_to_many
+        required: false
+      - name: aliquots
+        backref: genotyping_results
+        label: related_to
+        target_type: aliquot
+        multiplicity: many_to_many
+        required: false
+
+required:
+  - submitter_id
+  - type
+
+uniqueKeys:
+  - [id]
+  - [project_id, submitter_id]
+
+properties:
+
+  $ref: "_definitions.yaml#/ubiquitous_properties"
+
+
+  start_position:
+    description: The start position of the genotype on the chromosome.
+    type: string
+
+  end_position:
+    description: The end position of the genotype on the chromosome.
+    type: string
+
+  comments:
+    description: Specific comments about the test.
+    type: string
+
+  experimental_method:
+    description: The experimental method used for the genotyping test, for example, "WXS", "WGS", "Targeted Sequencing", "Microarray", "RT-qPCR", "Microsatellite Analysis", "RNA Sequencing", or "Southern Blotting".
+    type: string
+
+  gene_category:
+    description: The gene category of the genotype, for example, "GBA", "LRRK2", "SNCA", etc.
+    type: string
+
+  genetic_risk_score:
+    description: The genetic risk score.
+    type: string
+
+  genotyping_array:
+    description: The specific genotyping array or chip used for the test.
+    type: string
+
+  molecular_consequence:
+    description: The consequence of the molecular variant, for example, "Coding Sequence Variant", "Frameshift Variant", "Intron Variant", "Missense Variant", "Non-coding Transcript Variant", Start Lost", "Stop Gain", "Synonymous Variant", etc.
+    type: string
+
+  number_of_allele_copies:
+    description: The number of allelic copies.
+    type: integer
+
+  snp_genotype:
+    description: The genotype at the specified SNP, for example, 'A/A', 'A/G', 'C/C', 'G/T, 'T/T', etc.
+    type: string
+  allele_2_genotype:
+    description: The genotype for allele two, for example, 'A', 'G', 'C', 'T', etc.
+    type: string
+  allele_1_genotype:
+    description: The genotype for allele one, for example,  'A', 'G', 'C', 'T', etc.
+    type: string
+  strand:
+    description: The strand used for the genotyping.
+    type: string
+  snp_id:
+    description: The ID of the SNP (single nucleotide polymorphism) being tested, for example, "rs1234".
+    type: string
+  analyte_type:
+    description: The biological molecule that was used for the test, for example, DNA, Protein, Total RNA, mRNA, miRNA.
+    type: string
+  variant_type:
+    description: The text term used to describe the type of genetic variation, for example, Alleles, Amplification, Chrimerism, Conversion, Deletion, Duplication, Extension, Gain, Insertion, Inversion, Loss, Mosaicism, Methylation, Rearrangement, Repeat, Splice, Substitution, Translocation.
+    type: string
+  year_tests_obtained:
+    description: Year sequencing assay results were obtained
+    type: integer
+
+  subjects:
+    $ref: "_definitions.yaml#/to_many"
+  aliquots:
+    $ref: "_definitions.yaml#/to_many"

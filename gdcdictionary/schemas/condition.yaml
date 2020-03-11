@@ -135,43 +135,11 @@ properties:
 
   organ_system:
     description: The classification of organ system affected by the medical condition.
-    enum:
-      - Blood and lymphatic system disorders
-      - Cardiac disorders
-      - Congenital, familial and genetic disorders
-      - Ear and labyrinth disorders
-      - Endocrine disorders
-      - Eye disorders
-      - Gastrointestinal disorders
-      - General disorders and administration site conditions
-      - Hepatobiliary disorders
-      - Immune system disorders
-      - Infections and infestations
-      - Injury, poisoning and procedural complications
-      - Investigations
-      - Metabolism and nutrition disorders
-      - Musculoskeletal and connective tissue disorders
-      - Neoplasms benign, malignant and unspecified (incl cysts and polyps)
-      - Nervous system disorders
-      - Pregnancy, puerperium and perinatal conditions
-      - Psychiatric disorders
-      - Renal and urinary disorders
-      - Reproductive system and breast disorders
-      - Respiratory, thoracic and mediastinal disorders
-      - Skin and subcutaneous tissue disorders
-      - Social Circumstances
-      - Surgical and medical procedures
-      - Vascular disorders
+    type: string
 
   pd_diagnosis_category:
     description: Parkinson's Disease Category.
-    enum:
-      - Accepted PD By Diagnosis Form
-      - Definitely Not PD By Autopsy
-      - Definitely PD By Autopsy
-      - Definitely PD By Diagnosis Form
-      - Not PD by Diagnosis Form
-      - Undetermined
+    type: string
 
   pd_most_affected_side_onset:
     description: Side most affected at PD onset
@@ -182,26 +150,9 @@ properties:
 
   pd_primary_diagnosis:
     description: Most Likely Primary Diagnosis
-    enum:
-      - Alzheimer's Disease
-      - Dementia With Lewy Bodies
-      - Dopa-Responsive Dystonia
-      - Essential Tremor
-      - Hemiparkinson/Hemiatrophy Syndrome
-      - Idiopathic PD
-      - Motor Neuron Disease With Parkinsonism
-      - Multiple System Atrophy
-      - Neuroleptic-induced Parkinsonism
-      - No PD Nor Other Neurological Disorder
-      - Other Neurological Disorder(s) (Specify)
-      - Prodromal Motor PD
-      - Prodromal Non-motor PD
-      - Progressive Supranuclear Palsy
-      - Psychogenic Illness
-      - Spinocerebellar Ataxia (SCA)
-      - Vascular Parkinsonism
+    type: string
 
-  pd_probability:
+  pd_probability_bin:
     description: Probability that individual has Parkinson's disease (PROBIPD)
     enum:
       - 0 Pct - 9 Pct

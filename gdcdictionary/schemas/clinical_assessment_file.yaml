@@ -36,13 +36,13 @@ links:
         backref: clinical_assessment_files
         label: data_from
         target_type: subject
-        multiplicity: many_to_one
+        multiplicity: many_to_many
         required: false
       - name: clinical_assessments
         backref: clinical_assessment_files
         label: data_from
         target_type: clinical_assessment
-        multiplicity: one_to_one
+        multiplicity: many_to_many
         required: false
 
 required:
@@ -97,17 +97,19 @@ properties:
   data_format:
     term:
       $ref: "_terms.yaml#/data_format"
-    enum:
-      - BAM
+    type: string
 
   data_type:
     term:
       $ref: "_terms.yaml#/data_type"
-    enum:
-      - Aligned Reads
+    type: string
 
   total_score:
-    description: The subject's total score on the assessment.
+    description: The value of subject's total score on the assessment.
+    type: number
+
+  total_score_units:
+    description: The units of the subject's total score on the assessment, if any; or the subject's score on the assessment if the score is not numerical.
     type: string
 
   year_of_assessment:
@@ -118,7 +120,7 @@ properties:
     $ref: "_definitions.yaml#/to_one"
 
   subjects:
-    $ref: "_definitions.yaml#/to_one"
+    $ref: "_definitions.yaml#/to_many"
 
   clinical_assessments:
-    $ref: "_definitions.yaml#/to_one"
+    $ref: "_definitions.yaml#/to_many"

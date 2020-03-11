@@ -208,6 +208,11 @@ data_file_properties:
     type: array
     items:
       type: string
+  associated_ids:
+    description: A list of UUIDs or submitter_ids associated with this file.
+    type: array
+    items:
+      type: string
 
 workflow_properties:
   $ref: "#/ubiquitous_properties"

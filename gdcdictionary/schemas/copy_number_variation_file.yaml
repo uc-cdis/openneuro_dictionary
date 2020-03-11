@@ -1,14 +1,14 @@
 $schema: "http://json-schema.org/draft-04/schema#"
 
-id: "variant_call_file"
-title: Variant Call File (VCF)
+id: "copy_number_variation_file"
+title: Copy Number Variation File (CNV)
 type: object
 nodeTerms: null
 namespace: https://gen3.datacommons.io/
 category: data_file
 program: '*'
 project: '*'
-description: Data file containing variants called from sequencing reads or genotyping arrays.
+description: Data file containing copy number variation data. Data can be genotyping arrays, segment files, or copy number estimates. If a workflow was used to generate the file, then specify the workflow properties.
 additionalProperties: false
 submittable: false
 validators: null
@@ -27,37 +27,37 @@ links:
     required: true
     subgroup:
       - name: core_metadata_collections
-        backref: variant_call_files
+        backref: copy_number_variation_files
         label: data_from
         target_type: core_metadata_collection
         multiplicity: many_to_one
         required: false
       - name: subjects
-        backref: variant_call_files
+        backref: copy_number_variation_files
         label: data_from
         target_type: subject
         multiplicity: many_to_many
         required: false
       - name: unaligned_reads_files
-        backref: variant_call_files
+        backref: copy_number_variation_files
         label: data_from
         target_type: unaligned_reads_file
         multiplicity: many_to_many
         required: false
       - name: aligned_reads_files
-        backref: variant_call_files
+        backref: copy_number_variation_files
         label: data_from
         target_type: aligned_reads_file
         multiplicity: many_to_many
         required: false
       - name: aliquots
-        backref: variant_call_files
+        backref: copy_number_variation_files
         label: data_from
         target_type: aliquot
         multiplicity: many_to_many
         required: false
       - name: read_groups
-        backref: variant_call_files
+        backref: copy_number_variation_files
         label: data_from
         target_type: read_group
         multiplicity: many_to_many
