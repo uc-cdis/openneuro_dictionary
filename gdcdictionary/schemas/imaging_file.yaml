@@ -274,9 +274,8 @@ properties:
     type: number
 
   imaging_subtype:
-    description: The subtype of imaging exam performed.
-    enum:
-      - T1-Weighted
+    description: The subtype of imaging exam performed, for example, "T1-Weighted".
+    type: string
 
   imaging_type:
     description: The type of imaging exam performed, for example, "CT Scan","MRI","Ultrasound","fMRI".
