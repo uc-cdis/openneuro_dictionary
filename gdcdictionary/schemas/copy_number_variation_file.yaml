@@ -99,6 +99,7 @@ properties:
 
   platform:
     description: The platform used to generate the file, for example, "Affymetrix Genome-Wide Human SNP Array 6.0".
+    type: string
 
   variant_calling_workflow:
     description: Indicate the variant calling workflow or pipeline used to generate
