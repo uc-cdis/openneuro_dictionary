@@ -137,5 +137,3 @@ properties:
     $ref: "_definitions.yaml#/to_many"
   aliquots:
     $ref: "_definitions.yaml#/to_many"
-  panel_definitions:
-    $ref: "_definitions.yaml#/to_many"

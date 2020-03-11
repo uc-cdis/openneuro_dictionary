@@ -40,7 +40,6 @@ links:
 required:
   - submitter_id
   - type
-  - visits
 
 uniqueKeys:
   - [id]
@@ -155,6 +154,4 @@ properties:
   aliquots:
     $ref: "_definitions.yaml#/to_many"
   subjects:
-    $ref: "_definitions.yaml#/to_many"
-  panel_definitions:
     $ref: "_definitions.yaml#/to_many"
