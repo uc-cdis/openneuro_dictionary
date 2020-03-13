@@ -310,3 +310,5 @@ properties:
     $ref: "_definitions.yaml#/to_one"
   drugs:
     $ref: "_definitions.yaml#/to_many"
+  samples:
+    $ref: "_definitions.yaml#/to_one"
