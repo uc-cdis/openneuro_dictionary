@@ -23,24 +23,32 @@ systemProperties:
   - updated_datetime
 
 links:
-  - name: subjects
-    backref: lab_tests
-    label: related_to
-    target_type: subject
-    multiplicity: many_to_one
+  - exclusive: false
     required: true
-  - name: drugs
-    backref: lab_tests
-    label: related_to
-    target_type: drug
-    multiplicity: many_to_many
-    required: true
+    subgroup:
+      - name: subjects
+        backref: lab_tests
+        label: related_to
+        target_type: subject
+        multiplicity: many_to_one
+        required: false
+      - name: drugs
+        backref: lab_tests
+        label: related_to
+        target_type: drug
+        multiplicity: many_to_many
+        required: false
+      - name: samples
+        backref: lab_tests
+        label: related_to
+        target_type: sample
+        multiplicity: many_to_many
+        required: false
 
 required:
   - submitter_id
   - type
   - test_type
-  - subjects
 
 uniqueKeys:
   - [id]
@@ -243,10 +251,6 @@ properties:
 
   test_type:
     description: The general type or category of the laboratory test
-    type: string
-
-  test_analyte:
-    description: The name of the analyte being tested.
     type: string
 
   test_units:
