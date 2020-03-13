@@ -39,9 +39,7 @@ links:
 required:
   - submitter_id
   - type
-  - sample_composition
   - test_type
-  - analyte_name
   - subjects
 
 uniqueKeys:
@@ -52,8 +50,36 @@ properties:
 
   $ref: "_definitions.yaml#/ubiquitous_properties"
 
-  analyte_dose:
-    description: The dose of the test analyte.
+  analyte:
+    description: The compound, biological molecule or biomarker that was assayed or analyzed in the test.
+    type: string
+
+  EC50:
+    description: The concentration at which the compound reaches 50% of its maximum effectiveness.
+    type: number
+
+  IC50:
+    description:  The concentration at which the compound reaches 50% of its maximum inhibition.
+    type: number
+
+  max_activity:
+    description: The maximum activity in the fitted dose response curve for an analyte or compound.
+    type: number
+
+  activity_area:
+    description: The area above the fitted dose response curve for an analyte or compound.
+    type: number
+
+  fit_type:
+    description: The type of fit used for the dose response curve associated with activity_area.
+    type: string
+
+  dose:
+    description: The quantity of a compound or analyte administered for the test.
+    type: number
+
+  concentration:
+    description: The concentration of a compound or analyte used in the test.
     type: number
 
   abnormal_test_action_taken:
@@ -95,10 +121,6 @@ properties:
       - Mild
       - Moderate
       - Severe
-
-  analyte_name:
-    description: The analyte, biological molecule or biomarker that was tested.
-    type: string
 
   assay_kit_name:
     description: Name of the assay kit used.
