@@ -78,6 +78,10 @@ properties:
       collaborators to decide on the patient's id.
     type: string
 
+  comments:
+    description: Any extra comments or notes about this subject.
+    type: string
+
   days_to_birth:
     description: The number of days between the subject's Index Date and the date
       of birth.
