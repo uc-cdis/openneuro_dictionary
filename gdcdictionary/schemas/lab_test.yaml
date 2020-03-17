@@ -58,6 +58,10 @@ properties:
 
   $ref: "_definitions.yaml#/ubiquitous_properties"
 
+  repetition_number:
+    description: The test number if the test is one of series of experimental/clinical repetitions.
+    type: string
+
   analyte:
     description: The compound, biological molecule or biomarker that was assayed or analyzed in the test.
     type: string
@@ -267,14 +271,15 @@ properties:
       analyte_type
     type: number
 
-
   test_value_sd:
     description: The standard deviation of a number of numerical test results.
       analyte_type
     type: number
+
   test_value_median:
     description:  The median of a number of numerical test results.
     type: number
+
   test_value_mean:
     description:  The mean of a number of numerical test results.
     type: number
