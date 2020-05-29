@@ -51,7 +51,7 @@ properties:
     $ref: "_definitions.yaml#/datetime"
 
   data_description:
-    description: A brief, free-text description of the data being provided for this
+    description: A brief, free-text description of the data files and associated metadata provided for this
       study.
     type: string
 
@@ -69,7 +69,7 @@ properties:
     $ref: "_definitions.yaml#/state"
 
   study_description:
-    description: A brief, free-text description of the study being performed.
+    description: A brief, free-text description or abstract of the study being performed. For example, the hypothesis being tested and a very brief description of the materials, methods and results.
     type: string
 
   study_design:
@@ -114,6 +114,10 @@ properties:
     enum:
       - Detection/Enumeration/Isolation
       - Genetic Analysis
+
+  study_url:
+    description: A URL for the study's source data or the contributing organization's website.
+    type: string
 
   submitter_id:
     description: A project-specific identifier for a node. This property is the calling
