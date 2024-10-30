@@ -5,7 +5,7 @@ setup(
     version='0.0.0',
     packages=find_packages(),
     install_requires=[
-        'dictionaryutils',
+        'dictionaryutils==3.4.10',
     ],
     dependency_links=[
        "git+https://github.com/uc-cdis/dictionaryutils.git@3.4.10#egg=dictionaryutils",
